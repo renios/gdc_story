@@ -30,10 +30,10 @@ public class PopupOX : MonoBehaviour
 				{
 					SceneIS = Instantiate(ScenePF) as CutScene;
 					SceneIS.SceneType = CutScene.SceneTypes.ClubIntroduce;
-					
+
 					Var.Money -= 5;
 					Var.Mng.RecordMoneyChange(-5, "동아리소개제");
-					
+
 					if(Var.OnTutorial == true && Var.Mng.Tutorial.Page == 46)
 					{
 						Var.Mng.Tutorial.SendMessage("DeActivateRenderer");
@@ -47,10 +47,13 @@ public class PopupOX : MonoBehaviour
 			}
 			else
 			{
-				if(Var.Fame >= 200)
+				int NewMemberCount;
+				NewMemberCount = (1 + (Var.Fame/300)) / 2;
+				if(NewMemberCount > 4)
 				{
-					Var.Mng.CreateNormMem(1);
+					NewMemberCount = 4;
 				}
+				Var.Mng.CreateNormMem(NewMemberCount);
 				Notice = Instantiate(NoticePrefab) as NoticeMessage;
 				Notice.NoticeType = NoticeMessage.NoticeTypes.NewMember;
 				Destroy(Parent.gameObject);

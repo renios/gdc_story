@@ -588,14 +588,21 @@ public class CutScene : MonoBehaviour
 
 			int NewMemberCount;
 
-			if(Var.Fame >= 200)
+			NewMemberCount = 1 + ((Var.Fame)/300);
+
+			if (NewMemberCount > 4)
+			{
+				NewMemberCount = 4;
+			}
+
+			/*if(Var.Fame >= 200)
 			{
 				NewMemberCount = 2;
 			}
 			else
 			{
 				NewMemberCount = 1;
-			}
+			}*/
 
 			/*for(int i = 0; NewMemberCount>i; i++)
 			{
