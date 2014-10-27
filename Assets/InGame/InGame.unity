@@ -1486,6 +1486,7 @@ MonoBehaviour:
     Money: 10
     Fame: 0
     Semester: 0
+    PjStan: 0
     DecLoyalHard: 5
     DecLoyalEasy: 3
     DinCnt: 0

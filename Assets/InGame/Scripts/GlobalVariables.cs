@@ -26,6 +26,7 @@ public class GlobalVariables
 	public int Fame;
 	
 	public int Semester;
+	public int PjStan;
 	
 	public int DecLoyalHard = 5;
 	public int DecLoyalEasy = 3;

@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 			Var.Money = 25;
 			Var.Fame = 100;
 			Var.Semester = 0;
+			Var.PjStan = 8;
 			Var.MenuActivated = true;
 
 			if(PlayerPrefs.GetInt("PassTuto") == 1)
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
 			Var.Money = PlayerPrefs.GetFloat("Slot"+Slot+"Money");
 			Var.Fame = PlayerPrefs.GetInt("Slot"+Slot+"Fame");
 			Var.Semester = PlayerPrefs.GetInt ("Slot"+Slot+"Semester");
+			Var.PjStan = PlayerPrefs.GetInt("Slot"+Slot+"PjStan");
 			
 			Debug.Log ("Loaded Member Number is "+PlayerPrefs.GetInt("Slot"+Slot+"Members"));
 			

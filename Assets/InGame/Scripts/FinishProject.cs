@@ -19,12 +19,12 @@ public class FinishProject : MonoBehaviour
 	{
 		if(Var.OnTutorial == false)
 		{
-			Var.Stan1st = (Var.Semester * 900) - 100;
-			Var.Stan2nd = (Var.Stan1st / 4) * 3;
-			Var.Stan3rd = (Var.Stan1st / 2);
-			Var.Stan4th = (Var.Stan1st / 10) * 3;
-			Var.Stan5th = (Var.Stan1st / 5);
-			Var.Stan6th = (Var.Stan1st / 10);
+			Var.Stan1st = Var.PjStan*100;
+			Var.Stan2nd = Var.PjStan*75;
+			Var.Stan3rd = Var.PjStan*50;
+			Var.Stan4th = Var.PjStan*30;
+			Var.Stan5th = Var.PjStan*20;
+			Var.Stan6th = Var.PjStan*10;
 			
 			Result = Instantiate (ResultPrefab) as ProjectResult;
 			
@@ -224,7 +224,7 @@ public class FinishProject : MonoBehaviour
 				Destroy(PJ.gameObject);
 			}
 			
-			if(HighScore > 4)
+			if(HighScore < 4)
 			{
 				Var.Fame += FameChange;
 				
@@ -234,6 +234,12 @@ public class FinishProject : MonoBehaviour
 				Var.Money += MoneyChange;
 				Var.MoneyChangeLog.Add (MoneyChange);
 				Var.MoneyRemainLog.Add (Var.Money);
+
+				Var.PjStan += 10-HighScore;
+			}
+			else
+			{
+				Var.PjStan += 6;
 			}
 			
 			Var.ProjectHighScore = HighScore;

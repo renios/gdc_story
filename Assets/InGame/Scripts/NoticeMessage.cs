@@ -1188,7 +1188,7 @@ public class NoticeMessage : MonoBehaviour
 
 	string PjResultMessage(int Order)
 	{
-		if(Var.ProjectRanks[Order-1] > 4)
+		if(Var.ProjectRanks[Order-1] < 4)
 		{
 			return Order + "번째 프로젝트는 " + Var.ProjectRanks [Order - 1] + "등을 했다!\n";
 		}

@@ -15,8 +15,7 @@ public class SaveSlots : MonoBehaviour
 	void OnMouseDown()
 	{
 		PlayerPrefs.SetInt("SaveSlot"+SlotNumber, 1);
-		
-		//PlayerPrefs.SetInt ("FirstPlay", 1);
+
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"Year", Var.Year);
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"Month", Var.Month);
 		if(Var.Day == "초")
@@ -42,6 +41,7 @@ public class SaveSlots : MonoBehaviour
 		}
 		
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"Semester", Var.Semester);
+		PlayerPrefs.SetInt ("Slot" + SlotNumber + "PjStan", Var.PjStan);
 		
 		PlayerPrefs.SetFloat ("Slot"+SlotNumber+"Money", Var.Money);
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"Fame", Var.Fame);
