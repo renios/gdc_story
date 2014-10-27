@@ -206,6 +206,8 @@ public class Character : MonoBehaviour
 				Var.FemaleMems.Add(this);
 			}
 		}
+
+		transform.Translate (0, 0, -0.02f * MemberNumber);
 	}
 
 	void Update()
@@ -562,7 +564,7 @@ public class Character : MonoBehaviour
 		{
 			Renderer.sprite = Jiwon;
 			Tal = Talents.Plan;
-			UnTal = Talents.Programming;
+			UnTal = Talents.Sound;
 		}
 		else if(Name == "이유진")
 		{
@@ -585,18 +587,20 @@ public class Character : MonoBehaviour
 		else if(Name == "오레오")
 		{
 			Renderer.sprite = Oreo;
-			Tal = Talents.Programming;
-			UnTal = Talents.Sound;
+			Tal = Talents.Sound;
+			UnTal = Talents.Plan;
 		}
 		else if(Name == "오키드")
 		{
 			Renderer.sprite = Orchid;
 			Tal = Talents.Programming;
-			UnTal = Talents.Plan;
+			UnTal = Talents.Art;
 		}
 		else if(Name == "김고니")
 		{
 			Renderer.sprite = Gon;
+			Tal = Talents.Art;
+			UnTal = Talents.Sound;
 		}
 	}
 
@@ -612,37 +616,55 @@ public class Character : MonoBehaviour
 		else if(Name == "이유진")
 		{
 			Plan = 250;
-			
+			Programming = 10;
+			Art = 20;
+			Sound = 5;
 			Loyalty = 10;
 		}
 		else if(Name == "부렁봇")
 		{
+			Plan = 50;
+			Programming = 10;
 			Art = 430;
+			Sound = 50;
 			
 			Loyalty = 20;
 		}
 		else if(Name == "쎈타")
 		{
+			Plan = 50;
+			Programming = 30;
+			Art = 5;
 			Sound = 430;
 			
 			Loyalty = 20;
 		}
 		else if(Name == "오레오")
 		{
-			Programming = 610;
+			Plan = 200;
+			Programming = 210;
+			Art = 5;
+			Sound = 210;
 			
 			Loyalty = 20;
 		}
 		else if(Name == "오키드")
 		{
+			Plan = 20;
 			Programming = 150;
+			Art = 5;
 			Sound = 150;
 			
 			Loyalty = 20;
 		}
 		else if(Name == "김고니")
 		{
+			Plan = 25;
+			Programming = 200;
+			Art = 200;
+			Sound = 10;
 
+			Loyalty = 20;
 		}
 	}
 
@@ -826,6 +848,6 @@ public class Character : MonoBehaviour
 		float PointX = Random.Range (-1.3f, 1.7f);
 		float PointY = Random.Range (-0.4f, 1);
 
-		transform.position = new Vector3(PointX, PointY, -2-(MemberNumber*0.02f));
+		//transform.position = new Vector3(PointX, PointY, -2-(MemberNumber*0.02f));
 	}
 }

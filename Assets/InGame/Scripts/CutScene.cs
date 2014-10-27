@@ -586,17 +586,34 @@ public class CutScene : MonoBehaviour
 				Notice.SceneText = AfterShuffle[0].Name+" : 열정 넘치는 신입회원들이 많이 들어왔으면 좋겠군!";
 			}
 
-			Notice.NewMember = Instantiate(Notice.NewMemberPrefab) as Character;
+			int NewMemberCount;
 
-			int NewMemberGender = UnityEngine.Random.Range(0, 2);
-			if(NewMemberGender == 0)
+			if(Var.Fame >= 200)
 			{
-				Notice.NewMember.Gender = true;
+				NewMemberCount = 2;
 			}
 			else
 			{
-				Notice.NewMember.Gender = false;
+				NewMemberCount = 1;
 			}
+
+			/*for(int i = 0; NewMemberCount>i; i++)
+			{
+				Notice.NewMember = Instantiate(Notice.NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), Notice.NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+
+				int NewMemberGender = UnityEngine.Random.Range(0, 2);
+				if(NewMemberGender == 0)
+				{
+					Notice.NewMember.Gender = true;
+				}
+				else
+				{
+					Notice.NewMember.Gender = false;
+				}
+
+				Var.NewMembers.Add(Notice.NewMember);
+			}*/
+			Var.Mng.CreateNormMem(NewMemberCount);
 		}
 		else if(SceneType == SceneTypes.Exam)
 		{

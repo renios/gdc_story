@@ -1215,7 +1215,20 @@ public class NoticeMessage : MonoBehaviour
 		}
 		else if(NoticeType == NoticeTypes.NewMember)
 		{
-			Text.text = "신입 "+Var.Mems[Var.Mems.Count-1].Name+CheckSubjectFinalConsonant2(Var.Mems[Var.Mems.Count-1].Name)+" 가입했다!";
+			if(Var.NewMembers.Count != 0)
+			{
+				Text.text = "\n";
+				for(int i = 0; i < Var.NewMembers.Count; i++)
+				{
+					Text.text += "신입 "+Var.NewMembers[i].Name+CheckSubjectFinalConsonant2(Var.NewMembers[i].Name)+" 가입했다!\n";
+				}
+			}
+			else
+			{
+				Text.text = "새로 가입한 회원이 없다...";
+			}
+
+			Var.NewMembers.Clear();
 		}
 		else if(NoticeType == NoticeTypes.PlanResult)
 		{

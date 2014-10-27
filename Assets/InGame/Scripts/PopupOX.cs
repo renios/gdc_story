@@ -22,25 +22,38 @@ public class PopupOX : MonoBehaviour
 	void OnMouseDown()
 	{
 		Var.Mng.AudioSources [2].Play ();
-		if(Parent.QuestionType == Question.QuestionTypes.ClbIntro && OX == true)
+		if(Parent.QuestionType == Question.QuestionTypes.ClbIntro)
 		{
-			if(Var.Money >= 5)
+			if(OX == true)
 			{
-				SceneIS = Instantiate(ScenePF) as CutScene;
-				SceneIS.SceneType = CutScene.SceneTypes.ClubIntroduce;
-
-				Var.Money -= 5;
-				Var.Mng.RecordMoneyChange(-5, "동아리소개제");
-				
-				if(Var.OnTutorial == true && Var.Mng.Tutorial.Page == 46)
+				if(Var.Money >= 5)
 				{
-					Var.Mng.Tutorial.SendMessage("DeActivateRenderer");
+					SceneIS = Instantiate(ScenePF) as CutScene;
+					SceneIS.SceneType = CutScene.SceneTypes.ClubIntroduce;
+					
+					Var.Money -= 5;
+					Var.Mng.RecordMoneyChange(-5, "동아리소개제");
+					
+					if(Var.OnTutorial == true && Var.Mng.Tutorial.Page == 46)
+					{
+						Var.Mng.Tutorial.SendMessage("DeActivateRenderer");
+					}
+				}
+				else
+				{
+					Notice = Instantiate(NoticePrefab, new Vector3(NoticePrefab.transform.position.x, NoticePrefab.transform.position.y, -4), Quaternion.identity) as NoticeMessage;
+					Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughMoney;
 				}
 			}
 			else
 			{
-				Notice = Instantiate(NoticePrefab, new Vector3(NoticePrefab.transform.position.x, NoticePrefab.transform.position.y, -4), Quaternion.identity) as NoticeMessage;
-				Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughMoney;
+				if(Var.Fame >= 200)
+				{
+					Var.Mng.CreateNormMem(1);
+				}
+				Notice = Instantiate(NoticePrefab) as NoticeMessage;
+				Notice.NoticeType = NoticeMessage.NoticeTypes.NewMember;
+				Destroy(Parent.gameObject);
 			}
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.RoomUpg && OX == true)
@@ -962,15 +975,8 @@ public class PopupOX : MonoBehaviour
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
 		}
-
 		if (UsedMoney != 0) 
 		{
-			/*Var.MoneyMonthLog.Add (Var.Month);
-			Var.MoneyDayLog.Add(Var.Day);
-			Var.MoneyReasonLog.Add ("업그레이드");
-			Var.MoneyChangeLog.Add(UsedMoney*(-1));
-			Var.MoneyRemainLog.Add (Var.Money);*/
-
 			Var.Mng.RecordMoneyChange(UsedMoney*(-1), "업그레이드");
 		}
 

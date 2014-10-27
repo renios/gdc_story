@@ -73,6 +73,7 @@ public class GlobalVariables
 	public List <Character> LeaveMems = new List<Character>();
 	public List <Character> NewFriends = new List<Character> ();
 	public List <Character> NewLovers = new List<Character> ();
+	public List <Character> NewMembers = new List<Character> ();
 	
 	public List <Character> GameMems = new List<Character>();
 	public List <Character> ProgramMems = new List<Character>();

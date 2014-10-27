@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScenePF: {fileID: 0}
   Parent: {fileID: 11400004}
-  NoticePrefab: {fileID: 0}
+  NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
   NewAchPF: {fileID: 0}
   OX: 0
 --- !u!114 &11400002

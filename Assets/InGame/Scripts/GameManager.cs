@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 			
 			for(int i = 0; i < PlayerPrefs.GetInt("Slot"+Slot+"Members"); i++)
 			{
-				NewMember = Instantiate(NewMemberPrefab) as Character;
+				NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
 				NewMember.SetPosition();
 				NewMember.Loaded = true;
 				
@@ -217,21 +217,9 @@ public class GameManager : MonoBehaviour
 		if(PlayerPrefs.HasKey("NewGame") == true)
 		{
 			Instantiate (Jiwon);
-			
-			for (int i = 0; i < 2; i++)
-			{
-				NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
-				
-				int NewMemberGender = UnityEngine.Random.Range(0, 2);
-				if(NewMemberGender == 0)
-				{
-					NewMember.Gender = true;
-				}
-				else
-				{
-					NewMember.Gender = false;
-				}
-			}
+
+			CreateNormMem(2);
+			Var.NewMembers.Clear();
 			
 			for(int i=0; i<5; i++)
 			{
@@ -483,5 +471,25 @@ public class GameManager : MonoBehaviour
 		Var.MoneyReasonLog.Add (Reason);
 		Var.MoneyChangeLog.Add (MoneyChange);
 		Var.MoneyRemainLog.Add (Var.Money);
+	}
+
+	public void CreateNormMem(int Count)
+	{
+		for (int i = 0; i < Count; i++)
+		{
+			NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+			
+			int NewMemberGender = UnityEngine.Random.Range(0, 2);
+			if(NewMemberGender == 0)
+			{
+				NewMember.Gender = true;
+			}
+			else
+			{
+				NewMember.Gender = false;
+			}
+
+			Var.NewMembers.Add (NewMember);
+		}
 	}
 }
