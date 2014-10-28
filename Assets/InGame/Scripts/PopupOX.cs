@@ -983,9 +983,9 @@ public class PopupOX : MonoBehaviour
 			Var.Mng.RecordMoneyChange(UsedMoney*(-1), "업그레이드");
 		}
 
-		if(Var.OnTutorial == false || OX == true)
+		if(Var.OnTutorial == false && OX == true)
 		{
-			Var.Mng.SendMessage ("SetPositionAll");
+			Var.Mng.SetPositionAll();
 			Var.Mng.Reset.SendMessage("OnMouseDown");
 			Destroy (Parent.WallIs.gameObject);
 			Destroy (Parent.gameObject);

@@ -436,7 +436,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 	
-	void SetPositionAll()
+	public void SetPositionAll()
 	{
 		Room.transform.position = new Vector3 (0, 0, 1);
 		Wb.SendMessage ("SetPosition");

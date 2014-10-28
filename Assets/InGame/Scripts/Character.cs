@@ -848,6 +848,6 @@ public class Character : MonoBehaviour
 		float PointX = Random.Range (-1.3f, 1.7f);
 		float PointY = Random.Range (-0.4f, 1);
 
-		//transform.position = new Vector3(PointX, PointY, -2-(MemberNumber*0.02f));
+		transform.position = new Vector3(PointX, PointY, -2-(MemberNumber*0.02f));
 	}
 }
