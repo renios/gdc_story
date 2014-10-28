@@ -53,7 +53,7 @@ public class RoomUpgrade : MonoBehaviour
 			else if(Var.Mng.Room.Level == 4)
 			{
 				Text.text = "동아리방\n업그레이드 완료";
-				collider.enabled = false;
+				Collider.enabled = false;
 			}
 		}
 		if(ObjectType == ObjectTypes.Wb)
@@ -72,7 +72,7 @@ public class RoomUpgrade : MonoBehaviour
 			{
 				Renderer.sprite = Level3;
 				Text.text = "화이트보드\n업그레이드 완료";
-				collider.enabled = false;
+				Collider.enabled = false;
 			}
 		}
 		else if(ObjectType == ObjectTypes.Cpu)
@@ -91,7 +91,7 @@ public class RoomUpgrade : MonoBehaviour
 			{
 				Renderer.sprite = Level3;
 				Text.text = "컴퓨터\n업그레이드 완료";
-				collider.enabled = false;
+				Collider.enabled = false;
 			}
 		}
 		else if(ObjectType == ObjectTypes.Sb)
@@ -110,7 +110,7 @@ public class RoomUpgrade : MonoBehaviour
 			{
 				Renderer.sprite = Level3;
 				Text.text = "스케치북\n업그레이드 완료";
-				collider.enabled = false;
+				Collider.enabled = false;
 			}
 		}
 		else if(ObjectType == ObjectTypes.Cps)
@@ -129,7 +129,7 @@ public class RoomUpgrade : MonoBehaviour
 			{
 				Renderer.sprite = Level3;
 				Text.text = "작곡연습\n업그레이드 완료";
-				collider.enabled = false;
+				Collider.enabled = false;
 			}
 		}
 		else if(ObjectType == ObjectTypes.Bg)
@@ -155,7 +155,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "보드게임\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
@@ -186,7 +186,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "TV\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
@@ -217,7 +217,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "게임기\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
@@ -248,7 +248,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "책장\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
@@ -279,7 +279,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "조리도구\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
@@ -310,7 +310,7 @@ public class RoomUpgrade : MonoBehaviour
 				{
 					Renderer.sprite = Level3;
 					Text.text = "피아노\n업그레이드 완료";
-					collider.enabled = false;
+					Collider.enabled = false;
 				}
 			}
 			else
