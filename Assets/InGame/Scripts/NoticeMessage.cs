@@ -393,7 +393,7 @@ public class NoticeMessage : MonoBehaviour
 		{
 			Var.Mng.WallInstance = Instantiate(ProjectWallPrefab) as Wall;
 
-			if(Var.Year == 2014 && Var.Month == 7 && PlayerPrefs.HasKey("PassTuto") == false)
+			if(Var.Year == 2014 && Var.Month == 7 && Var.TutorialPass == false)
 			{
 				Var.OnTutorial = true;
 				Var.Mng.PjTuto = Instantiate(Var.Mng.PjTutoPf) as PjTutoText;

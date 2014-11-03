@@ -44,19 +44,24 @@ public class PopupOX : MonoBehaviour
 					Notice = Instantiate(NoticePrefab, new Vector3(NoticePrefab.transform.position.x, NoticePrefab.transform.position.y, -4), Quaternion.identity) as NoticeMessage;
 					Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughMoney;
 				}
+
+				Destroy(Parent.gameObject);
 			}
 			else
 			{
-				int NewMemberCount;
-				NewMemberCount = (1 + (Var.Fame/300)) / 2;
-				if(NewMemberCount > 4)
+				if(Var.OnTutorial == false)
 				{
-					NewMemberCount = 4;
+					int NewMemberCount;
+					NewMemberCount = (1 + (Var.Fame/300)) / 2;
+					if(NewMemberCount > 4)
+					{
+						NewMemberCount = 4;
+					}
+					Var.Mng.CreateNormMem(NewMemberCount);
+					Notice = Instantiate(NoticePrefab) as NoticeMessage;
+					Notice.NoticeType = NoticeMessage.NoticeTypes.NewMember;
+					Destroy(Parent.gameObject);
 				}
-				Var.Mng.CreateNormMem(NewMemberCount);
-				Notice = Instantiate(NoticePrefab) as NoticeMessage;
-				Notice.NoticeType = NoticeMessage.NoticeTypes.NewMember;
-				Destroy(Parent.gameObject);
 			}
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.RoomUpg && OX == true)
@@ -983,7 +988,7 @@ public class PopupOX : MonoBehaviour
 			Var.Mng.RecordMoneyChange(UsedMoney*(-1), "업그레이드");
 		}
 
-		if(Var.OnTutorial == false && OX == true)
+		if(Var.OnTutorial == false || OX == true)
 		{
 			Var.Mng.SetPositionAll();
 			Var.Mng.Reset.SendMessage("OnMouseDown");

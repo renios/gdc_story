@@ -26,6 +26,13 @@ public class Question : MonoBehaviour
 	
 	void Start()
 	{
-		WallIs = Instantiate (WallPf, new Vector3(WallPf.transform.position.x, WallPf.transform.position.y, -5), Quaternion.identity) as Wall;
+		if(QuestionType == QuestionTypes.ClbIntro || QuestionType == QuestionTypes.PassTuto)
+		{
+			WallIs = Instantiate (WallPf, new Vector3(WallPf.transform.position.x, WallPf.transform.position.y, WallPf.transform.position.z), Quaternion.identity) as Wall;
+		}
+		else
+		{
+			WallIs = Instantiate (WallPf, new Vector3(WallPf.transform.position.x, WallPf.transform.position.y, -7), Quaternion.identity) as Wall;
+		}
 	}
 }
