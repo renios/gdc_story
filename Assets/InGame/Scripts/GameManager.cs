@@ -316,7 +316,6 @@ public class GameManager : MonoBehaviour
 		}
 		else if(Sb.Level == 2)
 		{
-			Debug.Log ("SketchBook's Level is 2");
 			Sb.Renderer.sprite = Sb.Level2;
 		}
 		else

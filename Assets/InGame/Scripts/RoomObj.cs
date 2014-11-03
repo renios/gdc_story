@@ -42,7 +42,7 @@ public class RoomObj : MonoBehaviour
 
 	void Start ()
 	{
-		if(Upgrades == true && PlayerPrefs.HasKey("FirstPlay") == false)
+		if(Upgrades == true && PlayerPrefs.HasKey("NewGame") == true)
 		{
 			Renderer.sprite = Level1;
 		}
