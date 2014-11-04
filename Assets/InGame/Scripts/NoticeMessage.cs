@@ -1903,7 +1903,7 @@ public class NoticeMessage : MonoBehaviour
 		}
 		else if(NoticeType == NoticeTypes.ProjectResult)
 		{
-			Text.text = "NOXEN프로젝트가 끝났다!\n";
+			Text.text = "\nNOXEN프로젝트가 끝났다!\n";
 			if(Var.ProjectRanks.Count > 0)
 			{
 				Text.text += PjResultMessage(1);
@@ -1919,9 +1919,10 @@ public class NoticeMessage : MonoBehaviour
 		}
 		else if(NoticeType == NoticeTypes.ProjectResult2)
 		{
+			Text.text = "\n";
 			if(Var.ProjectRanks.Count > 2)
 			{
-				Text.text = PjResultMessage(3);
+				Text.text += PjResultMessage(3);
 			}
 			if(Var.ProjectRanks.Count > 3)
 			{
