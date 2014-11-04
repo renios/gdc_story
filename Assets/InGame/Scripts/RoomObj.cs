@@ -40,13 +40,14 @@ public class RoomObj : MonoBehaviour
 	}
 	public ObjTypes ObjType;
 
-	void Start ()
+	//중복되는 부분이 있어 주석 처리함
+	/*void Start ()
 	{
 		if(Upgrades == true && PlayerPrefs.HasKey("NewGame") == true)
 		{
 			Renderer.sprite = Level1;
 		}
-	}
+	}*/
 
 	void Update()
 	{

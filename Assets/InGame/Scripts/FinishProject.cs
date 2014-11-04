@@ -85,68 +85,7 @@ public class FinishProject : MonoBehaviour
 					Var.NewAchs.Add (0);
 					PlayerPrefs.SetInt("Ach0", 1);
 					
-					if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && ArtScore*2 >= TotalScore)
-					{
-						Var.AchTimesList[3] += 1;
-						FameChange += 40;
 
-						Var.NewAchs.Add (3);
-						PlayerPrefs.SetInt("Ach3", 1);
-						
-						if(Var.AchTimesList[3] == 2)
-						{
-							Var.AchBoolList[2] = true;
-							FameChange += 50;
-
-							Var.NewAchs.Add (7);
-							PlayerPrefs.SetInt("Ach7", 1);
-							
-							Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
-							Var.Mng.NewMember.Special = true;
-							Var.Mng.NewMember.Gender = false;
-							Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.부렁봇;
-							Var.NewSpecMems.Add ("부렁봇");
-						}
-						else if(Var.AchTimesList[3] == 4)
-						{
-							Var.AchBoolList[4] = true;
-							FameChange += 200;
-
-							Var.NewAchs.Add (9);
-							PlayerPrefs.SetInt("Ach9", 1);
-						}
-					}
-					if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && SoundScore*2 >= TotalScore)
-					{
-						Var.AchTimesList[4] += 1;
-						FameChange += 40;
-
-						Var.NewAchs.Add (4);
-						PlayerPrefs.SetInt("Ach4", 1);
-						
-						if(Var.AchTimesList[4] == 2)
-						{
-							Var.AchBoolList[3] = true;
-							FameChange += 50;
-
-							Var.NewAchs.Add (8);
-							PlayerPrefs.SetInt("Ach8", 1);
-							
-							Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
-							Var.Mng.NewMember.Special = true;
-							Var.Mng.NewMember.Gender = true;
-							Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.쎈타;
-							Var.NewSpecMems.Add ("쎈타");
-						}
-						else if(Var.AchTimesList[4] == 4)
-						{
-							Var.AchBoolList[5] = true;
-							FameChange += 200;
-
-							Var.NewAchs.Add (10);
-							PlayerPrefs.SetInt("Ach10", 1);
-						}
-					}
 					if(Var.AchBoolList[0] == false)
 					{
 						Var.AchBoolList[0] = true;
@@ -219,6 +158,69 @@ public class FinishProject : MonoBehaviour
 				{
 					PJ.Rank = 7;
 					Var.ProjectRanks.Add (7);
+				}
+
+				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && ArtScore*2 >= TotalScore)
+				{
+					Var.AchTimesList[3] += 1;
+					FameChange += 40;
+					
+					Var.NewAchs.Add (3);
+					PlayerPrefs.SetInt("Ach3", 1);
+					
+					if(Var.AchTimesList[3] == 2)
+					{
+						Var.AchBoolList[2] = true;
+						FameChange += 50;
+						
+						Var.NewAchs.Add (7);
+						PlayerPrefs.SetInt("Ach7", 1);
+						
+						Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
+						Var.Mng.NewMember.Special = true;
+						Var.Mng.NewMember.Gender = false;
+						Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.부렁봇;
+						Var.NewSpecMems.Add ("부렁봇");
+					}
+					else if(Var.AchTimesList[3] == 4)
+					{
+						Var.AchBoolList[4] = true;
+						FameChange += 200;
+						
+						Var.NewAchs.Add (9);
+						PlayerPrefs.SetInt("Ach9", 1);
+					}
+				}
+				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && SoundScore*2 >= TotalScore)
+				{
+					Var.AchTimesList[4] += 1;
+					FameChange += 40;
+					
+					Var.NewAchs.Add (4);
+					PlayerPrefs.SetInt("Ach4", 1);
+					
+					if(Var.AchTimesList[4] == 2)
+					{
+						Var.AchBoolList[3] = true;
+						FameChange += 50;
+						
+						Var.NewAchs.Add (8);
+						PlayerPrefs.SetInt("Ach8", 1);
+						
+						Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
+						Var.Mng.NewMember.Special = true;
+						Var.Mng.NewMember.Gender = true;
+						Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.쎈타;
+						Var.NewSpecMems.Add ("쎈타");
+					}
+					else if(Var.AchTimesList[4] == 4)
+					{
+						Var.AchBoolList[5] = true;
+						FameChange += 200;
+						
+						Var.NewAchs.Add (10);
+						PlayerPrefs.SetInt("Ach10", 1);
+					}
 				}
 				
 				Destroy(PJ.gameObject);
