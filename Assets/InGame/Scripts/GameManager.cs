@@ -437,6 +437,16 @@ public class GameManager : MonoBehaviour
 	
 	public void SetPositionAll()
 	{
+		SetPositionItems ();
+		
+		foreach(Character Mem in Var.Mems)
+		{
+			Mem.SetPosition();
+		}
+	}
+
+	public void SetPositionItems()
+	{
 		Room.transform.position = new Vector3 (0, 0, 1);
 		Wb.SendMessage ("SetPosition");
 		Cpu.SendMessage ("SetPosition");
@@ -456,11 +466,6 @@ public class GameManager : MonoBehaviour
 		Rfr.SendMessage ("SetPosition");
 		Ck.SendMessage ("SetPosition");
 		Pia.SendMessage ("SetPosition");
-		
-		foreach(Character Mem in Var.Mems)
-		{
-			Mem.SetPosition();
-		}
 	}
 	
 	public void RecordMoneyChange(float MoneyChange, string Reason)

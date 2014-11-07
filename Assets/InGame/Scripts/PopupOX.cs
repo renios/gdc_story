@@ -229,6 +229,7 @@ public class PopupOX : MonoBehaviour
 			}
 
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Wb.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.CpuUpg && OX == true)
 		{
@@ -294,6 +295,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Cpu.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.SbUpg && OX == true)
 		{
@@ -359,6 +361,9 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Sb.SendMessage("SetPosition");
+			Var.Mng.Table.SendMessage("SetPosition");
+			Var.Mng.Cps.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.CpsUpg && OX == true)
 		{
@@ -424,6 +429,9 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Sb.SendMessage("SetPosition");
+			Var.Mng.Table.SendMessage("SetPosition");
+			Var.Mng.Cps.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.BgUpg && OX == true)
 		{
@@ -442,14 +450,6 @@ public class PopupOX : MonoBehaviour
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bg.Level = 1;
 							Var.Mng.Bg.Renderer.sprite = Var.Mng.Bg.Level1;
-							/*if(Var.Mng.Room.Level > 2)
-							{
-								Var.Mng.Bg.transform.position = new Vector3(0, -0.4f, 0);
-							}
-							else
-							{
-								Var.Mng.Bg.transform.position = new Vector3(0, -2, 0);
-							}*/
 						}
 						else
 						{
@@ -526,6 +526,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Bg.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.TvUpg && OX == true)
 		{
@@ -620,6 +621,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Tv.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.GmUpg && OX == true)
 		{
@@ -714,6 +716,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Gm.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.BkUpg && OX == true)
 		{
@@ -808,6 +811,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Bk.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.PiaUpg && OX == true)
 		{
@@ -902,6 +906,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Pia.SendMessage("SetPosition");
 		}
 		else if(Parent.QuestionType == Question.QuestionTypes.CkUpg && OX == true)
 		{
@@ -982,6 +987,7 @@ public class PopupOX : MonoBehaviour
 			}
 			
 			Var.Mng.UpgPupCloser.SendMessage("OnMouseDown");
+			Var.Mng.Ck.SendMessage("SetPosition");
 		}
 		if (UsedMoney != 0) 
 		{
@@ -990,8 +996,12 @@ public class PopupOX : MonoBehaviour
 
 		if(Var.OnTutorial == false || OX == true)
 		{
-			Var.Mng.SetPositionAll();
-			Var.Mng.Reset.SendMessage("OnMouseDown");
+			if(Parent.QuestionType == Question.QuestionTypes.RoomUpg)
+			{	
+				Var.Mng.SetPositionAll();
+				Var.Mng.Reset.SendMessage("OnMouseDown");
+			}
+
 			Destroy (Parent.WallIs.gameObject);
 			Destroy (Parent.gameObject);
 		}
