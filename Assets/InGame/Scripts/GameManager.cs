@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 	
 	public AudioClip[] Clips;
 	public AudioSource[] AudioSources;
+
+	public AudioSource BGM;
 	
 	void Awake()
 	{
