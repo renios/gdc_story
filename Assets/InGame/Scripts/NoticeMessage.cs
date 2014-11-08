@@ -1006,6 +1006,299 @@ public class NoticeMessage : MonoBehaviour
 		}
 	}
 
+	void AddRandomFeedbackText_Game(Character Member, int GameNum)
+	{
+		Text.text += Member.Name + " : ";
+
+		if(GameNum == 1)
+		{
+			if(Member.Control >= 8)
+			{
+				Text.text += "클리어는 했지만 솔직히 형편없는 작품이군.\n";
+			}
+			else if(Member.Tal == Character.Talents.Sound)
+			{
+				Text.text += "딴 건 모르겠지만 음악이 중독성있군.\n";
+			}
+			else if(Member.Violence >= 7)
+			{
+				Text.text += "개발자를 때리고 싶어지는 게임이다.\n";
+			}
+			else if(Member.Tal == Character.Talents.Plan)
+			{
+				Text.text += "기획할 때 이런 실수는 하지 말아야겠군.\n";
+			}
+			else
+			{
+				Text.text += "이 게임은 인류의 재앙이다.\n";
+			}
+		}
+		else if(GameNum == 2)
+		{
+			if(Member.Violence <= 3)
+			{
+				Text.text += "으으 데드씬이 너무 잔인해... 흑흑\n";
+			}
+			else if(Member.Tal == Character.Talents.Art)
+			{
+				Text.text += "나도 이런 예술적인 그래픽을 만들 수 있었으면 좋을 텐데.\n";
+			}
+			else if(Member.Liberty >= 7)
+			{
+				Text.text += "단방향 진행이라 게임성은 좀 아쉽다.\n";
+			}
+			else if(Member.Emotion >= 8)
+			{
+				Text.text += "결말에선 펑펑 울었어...\n";
+			}
+			else if(Member.Story >= 7)
+			{
+				Text.text += "소...소름돋는 반전이다!\n";
+			}
+			else
+			{
+				Text.text += "감동적인 게임이었다.\n";
+			}
+		}
+		else if(GameNum == 3)
+		{
+			if(Member.Emotion <=2)
+			{
+				Text.text += "내 취향에는 전혀 안 맞아서 하다가 말았다..\n";
+			}
+			else if(Member.Story >= 6)
+			{
+				Text.text += "세상에 이런 아름다운 이야기가 또 있을까...\n";
+			}
+			else if(Member.Tal == Character.Talents.Plan)
+			{
+				Text.text += "나도 이런 훌륭한 스토리를 쓸 수 있으면 좋겠다.\n";
+			}
+			else if(Member.Liberty >=7)
+			{
+				Text.text += "단방향 진행이라 게임성은 좀 아쉽군.\n";
+			}
+			else if(Member.Emotion>=7)
+			{
+				Text.text += "결말에선 펑펑 울었어...\n";
+			}
+			else
+			{
+				Text.text += "감동적인 게임이었다.\n";
+			}
+		}
+		else if(GameNum == 4)
+		{
+			if(Member.Violence>=8)
+			{
+				Text.text += "폭력! 광기! 약물! 의 예술!\n";
+			}
+			else if(Member.Violence<=2)
+			{
+				Text.text += "히익! 잔인해 ㅜㅜ\n";
+			}
+			else if(Member.Control<=3)
+			{
+				Text.text += "1시간을 해도 이 스테이지를 못 깨겠어... 도와줘!\n";
+			}
+			else if(Member.Control>=8)
+			{
+				Text.text += "2시간만에 올클리어했네.\n";
+			}
+			else if(Member.Tal == Character.Talents.Art)
+			{
+				Text.text += "아하, 약물을 복용하면 이런 그래픽이 나오는구나! 나도 해봐야겠다.\n";
+			}
+			else if(Member.Story >= 8)
+			{
+				Text.text += "내가 왜 죽여야 하는지 납득할만한 이유가 없잖아. 무슨 재미로 하는 거지?\n";
+			}
+			else
+			{
+				Text.text += "뭐지 이 약빤 게임은!\n";
+			}
+		}
+		else if(GameNum == 5)
+		{
+			if(Member.Puzzle>=8)
+			{
+				Text.text += "아누비스의 10콤보? 그 정도 콤보는 코를 후비면서 해도 나오는 거 아니던가?\n";
+			}
+			else if(Member.Puzzle<=2)
+			{
+				Text.text += "(일주일을 해도 애니팡 수준의 플레이를 못 넘고 있다)\n";
+			}
+			else if(Member.Tal == Character.Talents.Art)
+			{
+				Text.text += "이 정도로 많은 일러스트를 질 좋고 통일성 있게 뽑아내다니 대단하네.\n";
+			}
+			else
+			{
+				Text.text += "(중독됨)\n";
+			}
+		}
+		else if(GameNum == 6)
+		{
+			if(Member.Strategy>=8 && Member.Control>=7)
+			{
+				Text.text += "다이아 별 거 아니던데?\n";
+			}
+			else if(Member.Strategy >= 7)
+			{
+				Text.text += "롤의 참재미는 고도의 운영 싸움에 있지.\n";
+			}
+			else if(Member.Strategy <= 2)
+			{
+				Text.text += "이 게임은 내 취향이 아니네...\n";
+			}
+			else if(Member.Control <= 3)
+			{
+				Text.text += "으아 또 벽점멸 썼어!\n";
+			}
+			else{
+				Text.text += "롤 때문에 가정이 무너지고 학점이 무너지고\n";
+			}
+		}
+		else if(GameNum == 7)
+		{
+			if(Member.Strategy >= 9)
+			{
+				Text.text += "신 난이도가 뭐 이렇게 쉬워? 모드나 만들어볼까나.\n";
+			}
+			else if(Member.Strategy>=7)
+			{
+				Text.text += "괜찮은 게임이군. 그런데 언제 수요일이 됐지?\n";
+			}
+			else if(Member.Tal == Character.Talents.Plan)
+			{
+				Text.text += "매니악한 듯하면서도 즐길 거리가 많은 훌륭한 게임이다.\n";
+			}
+			else if(Member.Strategy<=2)
+			{
+				Text.text += "난 역시 전략시뮬은 취향이 아냐.\n";
+			}
+			else
+			{
+				Text.text += "소문대로 악마의 게임이군.\n";
+			}
+		}
+		else if(GameNum == 8)
+		{
+			if(Member.Control>=8)
+			{
+				Text.text += "쉬운데?\n";
+			}
+			else if(Member.Control<=2)
+			{
+				Text.text += "컨트롤무능력자는 웁니다...\n";
+			}
+			else if(Member.Tal == Character.Talents.Plan)
+			{
+				Text.text += "긴장감과 아슬아슬함, 그리고 극복할 때의 성취감이 재미있구나.\n";
+			}
+			else
+			{
+				Text.text += "고통받으면서도 계속 할 수 밖에 없는 게임 ㅜㅜ\n";
+			}
+		}
+		else if(GameNum == 9)
+		{
+			if(Member.Emotion>=7)
+			{
+				Text.text += "엔딩에서 어느새 눈물이 흐르고 있었다 ㅜㅜ 감동의 걸작...\n";
+			}
+			else if(Member.Tal == Character.Talents.Sound)
+			{
+				Text.text += "음악이 정말 좋은 게임이야.\n";
+			}
+			else if(Member.Emotion<=2)
+			{
+				Text.text += "별 느낌이 없었다...\n";
+			}
+			else if(Member.Tal == Character.Talents.Art)
+			{
+				Text.text += "이거 배경이 참 아름답지 않아?\n";
+			}
+			else if(Member.Liberty >= 6)
+			{
+				Text.text += "그냥 길만 가잖아. 전혀 재미없어.\n";
+			}
+			else
+			{
+				Text.text += "감동적인 게임이네.\n";
+			}
+		}
+		else if(GameNum == 10)
+		{
+			if(Member.Emotion>=7)
+			{
+				Text.text += "정말 아름다운 게임이었어.\n";
+			}
+			else if(Member.Tal == Character.Talents.Art)
+			{
+				Text.text += "나도 이런 멋진 그래픽을 그릴 수 있었으면 좋겠다.\n";
+			}
+			else if(Member.Tal == Character.Talents.Plan)
+			{
+				Text.text += "와, 대체 어떻게 이런 식으로 상호작용하는 게임을 떠올렸을까?\n";
+			}
+			else if(Member.Puzzle<=3)
+			{
+				Text.text += "퍼즐게임은 취향이 아니라서...\n";
+			}
+			else
+			{
+				Text.text += "명작이군.\n";
+			}
+		}
+		else if(GameNum == 11)
+		{
+			if(Member.Strategy >= 7)
+			{
+				Text.text += "내가 탱커! 넌 딜러! 네가 힐러 해! 가자!\n";
+			}
+			else if(Member.Violence >= 8)
+			{
+				Text.text += "나름 재미있는데 타격감이 좀 부족하네.\n";
+			}
+			else if(Member.Liberty >= 8)
+			{
+				Text.text += "난 언데드 사제가 되고 싶어. 뭐? 안 된다고?\n";
+			}
+			else if(Member.Story >= 7)
+			{
+				Text.text += "난 이곳 세계의 주민이 돼서 퀘스트를 다 하고 말 거야.\n";
+			}
+			else
+			{
+				Text.text += "얼라이언스를 위하여!\n";
+			}
+		}
+		else if(GameNum == 12)
+		{
+			if(Member.Strategy >= 8)
+			{
+				Text.text += "후후, 걸려들었군. 함정 카드 발동!\n";
+			}
+			else if(Member.Simplity >= 8)
+			{
+				Text.text += "체력과 공격력밖에 없는 게 간결해서 좋네.\n";
+			}
+			else if(Member.Tal == Character.Talents.Programming)
+			{
+				Text.text += "유니티로 이 정도까지 만들 수 있다니, 대단한걸.\n";
+			}
+			else if(Member.Control <= 2)
+			{
+				Text.text += "난 턴제 게임을 할 때 마음이 편하더라.\n";
+			}
+			else
+			{
+				Text.text += "나의 턴! 드로!\n";
+			}
+		}
+	}
+
 	public void EndActionPhase()
 	{
 		if(Var.NewFriends.Count > 1)
@@ -1564,14 +1857,17 @@ public class NoticeMessage : MonoBehaviour
 		else if(NoticeType == NoticeTypes.GameResult)
 		{
 			Text.text = "\n";
+
+			int GameNumber = (int)UnityEngine.Random.Range (1, 13);
+
 			if(Var.GameMems.Count == 1)
 			{
-				Text.text += Var.GameMems[0].Name+CheckSubjectFinalConsonant1(Var.GameMems[0].Name)+" 혼자 게임을 했다.\n";
+				Text.text += Var.GameMems[0].Name+CheckSubjectFinalConsonant1(Var.GameMems[0].Name)+" 혼자 "+RandomGameName(GameNumber)+" 했다.\n";
 			}
 			else if(Var.GameMems.Count == 2)
 			{
 				Text.text += Var.GameMems[0].Name+CheckSubjectFinalConsonant1(Var.GameMems[0].Name)+" "+Var.GameMems[1].Name;
-				Text.text += CheckTogetherFinalConsonant(Var.GameMems[1].Name)+" 함께 게임을 했다.\n";
+				Text.text += CheckTogetherFinalConsonant(Var.GameMems[1].Name)+" 함께 "+RandomGameName(GameNumber)+" 했다.\n";
 				Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] += 5;
 				Var.GameMems[1].Relationship[Var.GameMems[0].MemberNumber] += 5;
 				
@@ -1613,7 +1909,7 @@ public class NoticeMessage : MonoBehaviour
 			}
 			foreach(Character GameMem in Var.GameMems)
 			{
-				//AddRandomFeedbackText_Game(GameMem);
+				AddRandomFeedbackText_Game(GameMem, GameNumber);
 			}
 		}
 		else if(NoticeType == NoticeTypes.BookResult)
@@ -1961,6 +2257,58 @@ public class NoticeMessage : MonoBehaviour
 		else if(NoticeType == NoticeTypes.AlreadyGroupActivity)
 		{
 			Text.text = "변회장 : 이번 주는 이미 놀러갔다 왔으니까, 다음 주를 기약하자.";
+		}
+	}
+
+	string RandomGameName(int GameNumber)
+	{
+		if(GameNumber == 1)
+		{
+			return "<치타맨>을";
+		}
+		else if(GameNumber == 2)
+		{
+			return "<림보>를";
+		}
+		else if(GameNumber == 3)
+		{
+			return "<To the Moon>을";
+		}
+		else if(GameNumber == 4)
+		{
+			return "<핫라인 마이애미>를";
+		}
+		else if(GameNumber == 5)
+		{
+			return "<퍼즐앤드래곤>을";
+		}
+		else if(GameNumber == 6)
+		{
+			return "<리그오브레전드>를";
+		}
+		else if(GameNumber == 7)
+		{
+			return "<문명 5>를";
+		}
+		else if(GameNumber == 8)
+		{
+			return "<다크소울 2>를";
+		}
+		else if(GameNumber == 9)
+		{
+			return "<Journey>를";
+		}
+		else if(GameNumber == 10)
+		{
+			return "<모뉴먼트 밸리>를";
+		}
+		else if(GameNumber == 11)
+		{
+			return "<월드 오브 워크래프트>를";
+		}
+		else
+		{
+			return "<하스스톤>을";
 		}
 	}
 }

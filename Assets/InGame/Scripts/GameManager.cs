@@ -140,6 +140,15 @@ public class GameManager : MonoBehaviour
 				NewMember.Sound = PlayerPrefs.GetInt("Slot"+Slot+"Sound"+i);
 				NewMember.Loyalty = PlayerPrefs.GetInt("Slot"+Slot+"Loyalty"+i);
 				NewMember.MemberNumber = PlayerPrefs.GetInt("Slot"+Slot+"Number"+i);
+
+				NewMember.Violence = PlayerPrefs.GetInt("Slot"+Slot+"Violence"+i);
+				NewMember.Emotion = PlayerPrefs.GetInt("Slot"+Slot+"Emotion"+i);
+				NewMember.Strategy = PlayerPrefs.GetInt("Slot"+Slot+"Strategy"+i);
+				NewMember.Control = PlayerPrefs.GetInt("Slot"+Slot+"Control"+i);
+				NewMember.Liberty = PlayerPrefs.GetInt("Slot"+Slot+"Liberty"+i);
+				NewMember.Puzzle = PlayerPrefs.GetInt("Slot"+Slot+"Puzzle"+i);
+				NewMember.Simplity = PlayerPrefs.GetInt("Slot"+Slot+"Simplity"+i);
+				NewMember.Story = PlayerPrefs.GetInt("Slot"+Slot+"Story"+i);
 				
 				for(int j=0; j<PlayerPrefs.GetInt("Slot"+Slot+"Members"); j++)
 				{

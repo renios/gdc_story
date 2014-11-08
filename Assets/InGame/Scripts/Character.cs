@@ -24,6 +24,15 @@ public class Character : MonoBehaviour
 
 	public bool Special;
 	public bool Gender;
+
+	public int Violence;
+	public int Emotion;
+	public int Strategy;
+	public int Control;
+	public int Liberty;
+	public int Puzzle;
+	public int Simplity;
+	public int Story;
 	
 	public bool Chief;
 	public bool Loaded;
@@ -182,6 +191,15 @@ public class Character : MonoBehaviour
 				PantsR = (float)UnityEngine.Random.Range (0, 11);
 				PantsG = (float)UnityEngine.Random.Range (0, 11);
 				PantsB = (float)UnityEngine.Random.Range (0, 11);
+
+				Violence = (int)UnityEngine.Random.Range (1, 10);
+				Emotion = (int)UnityEngine.Random.Range (1, 10);
+				Strategy = (int)UnityEngine.Random.Range (1, 10);
+				Control = (int)UnityEngine.Random.Range (1, 10);
+				Liberty = (int)UnityEngine.Random.Range (1, 10);
+				Puzzle = (int)UnityEngine.Random.Range (1, 10);
+				Simplity = (int)UnityEngine.Random.Range (1, 10);
+				Story = (int)UnityEngine.Random.Range (1, 10);
 
 				SetRendererColors();
 
@@ -610,6 +628,15 @@ public class Character : MonoBehaviour
 		{
 			Plan = 70;
 			Art = 70;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
 			
 			Loyalty = 1000;
 		}
@@ -619,6 +646,16 @@ public class Character : MonoBehaviour
 			Programming = 10;
 			Art = 20;
 			Sound = 5;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 10;
 		}
 		else if(Name == "부렁봇")
@@ -627,7 +664,16 @@ public class Character : MonoBehaviour
 			Programming = 10;
 			Art = 430;
 			Sound = 50;
-			
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "쎈타")
@@ -636,7 +682,16 @@ public class Character : MonoBehaviour
 			Programming = 30;
 			Art = 5;
 			Sound = 430;
-			
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "오레오")
@@ -645,7 +700,16 @@ public class Character : MonoBehaviour
 			Programming = 210;
 			Art = 5;
 			Sound = 210;
-			
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "오키드")
@@ -654,7 +718,16 @@ public class Character : MonoBehaviour
 			Programming = 150;
 			Art = 5;
 			Sound = 150;
-			
+
+			Violence = 5;
+			Emotion = 6;
+			Strategy = 9;
+			Control = 4;
+			Liberty = 5;
+			Puzzle = 8;
+			Simplity = 2;
+			Story = 8;
+
 			Loyalty = 20;
 		}
 		else if(Name == "김고니")
@@ -663,6 +736,15 @@ public class Character : MonoBehaviour
 			Programming = 200;
 			Art = 200;
 			Sound = 10;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
 
 			Loyalty = 20;
 		}

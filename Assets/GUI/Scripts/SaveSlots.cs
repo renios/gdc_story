@@ -127,6 +127,15 @@ public class SaveSlots : MonoBehaviour
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsR"+Mem.MemberNumber, Mem.PantsR);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsG"+Mem.MemberNumber, Mem.PantsG);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsB"+Mem.MemberNumber, Mem.PantsB);
+
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Violence"+Mem.MemberNumber, Mem.Violence);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Emotion"+Mem.MemberNumber, Mem.Emotion);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Strategy"+Mem.MemberNumber, Mem.Strategy);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Control"+Mem.MemberNumber, Mem.Control);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Liberty"+Mem.MemberNumber, Mem.Liberty);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Puzzle"+Mem.MemberNumber, Mem.Puzzle);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Simplity"+Mem.MemberNumber, Mem.Simplity);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Story"+Mem.MemberNumber, Mem.Story);
 				
 				if(Mem.Tal == Character.Talents.Plan)
 				{
