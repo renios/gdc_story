@@ -40,7 +40,8 @@ public class FinishProject : MonoBehaviour
 				
 				if(PJ.ProjectManager != null)
 				{
-					PMScore = PJ.ProjectManager.Plan*2+PJ.ProjectManager.Programming+PJ.ProjectManager.Art+PJ.ProjectManager.Sound;
+					PMScore = ComputeScore(PJ.ProjectManager, 1, PJ.Type);
+					//PMScore = PJ.ProjectManager.Plan*2+PJ.ProjectManager.Programming+PJ.ProjectManager.Art+PJ.ProjectManager.Sound;
 				}
 				else
 				{
@@ -48,7 +49,8 @@ public class FinishProject : MonoBehaviour
 				}
 				if(PJ.Programmer != null)
 				{
-					DVScore = PJ.Programmer.Plan + PJ.Programmer.Programming*2+PJ.Programmer.Art+PJ.Programmer.Sound;
+					DVScore = ComputeScore(PJ.Programmer, 2, PJ.Type);
+					//DVScore = PJ.Programmer.Plan + PJ.Programmer.Programming*2+PJ.Programmer.Art+PJ.Programmer.Sound;
 				}
 				else
 				{
@@ -56,7 +58,8 @@ public class FinishProject : MonoBehaviour
 				}
 				if(PJ.ArtDirecter != null)
 				{
-					ArtScore = PJ.ArtDirecter.Plan+PJ.ArtDirecter.Programming+PJ.ArtDirecter.Art*2+PJ.ArtDirecter.Sound;
+					ArtScore = ComputeScore(PJ.ArtDirecter, 3, PJ.Type);
+					//ArtScore = PJ.ArtDirecter.Plan+PJ.ArtDirecter.Programming+PJ.ArtDirecter.Art*2+PJ.ArtDirecter.Sound;
 				}
 				else
 				{
@@ -64,7 +67,8 @@ public class FinishProject : MonoBehaviour
 				}
 				if(PJ.SoundDirecter != null)
 				{
-					SoundScore = PJ.SoundDirecter.Plan+PJ.SoundDirecter.Programming+PJ.SoundDirecter.Art+PJ.SoundDirecter.Sound*2;
+					SoundScore = ComputeScore(PJ.SoundDirecter, 4, PJ.Type);
+					//SoundScore = PJ.SoundDirecter.Plan+PJ.SoundDirecter.Programming+PJ.SoundDirecter.Art+PJ.SoundDirecter.Sound*2;
 				}
 				else
 				{
@@ -251,7 +255,181 @@ public class FinishProject : MonoBehaviour
 			Destroy (Var.Mng.WallInstance.gameObject);
 			
 			Destroy (Parent.gameObject);
-			//Destroy (gameObject);
+		}
+	}
+
+	int ComputeScore(Character Mem, int Role, Project.Types Genre)
+	{
+		if(Genre == Project.Types.None)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*9/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*9/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*9/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*9/10;
+			}
+		}
+		else if(Genre == Project.Types.Violence)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Violence+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Violence+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Violence+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Violence+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Emotion)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Emotion+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Emotion+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Emotion+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Emotion+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Strategy)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Strategy+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Strategy+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Strategy+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Strategy+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Control)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Control+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Control+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Control+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Control+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Liberty)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Liberty+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Liberty+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Liberty+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Liberty+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Puzzle)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Puzzle+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Puzzle+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Puzzle+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Puzzle+5)/10;
+			}
+		}
+		else if(Genre == Project.Types.Simplity)
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Simplity+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Simplity+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Simplity+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Simplity+5)/10;
+			}
+		}
+		else
+		{
+			if(Role == 1)
+			{
+				return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Story+5)/10;
+			}
+			else if(Role == 2)
+			{
+				return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Story+5)/10;
+			}
+			else if(Role == 3)
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Story+5)/10;
+			}
+			else
+			{
+				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Story+5)/10;
+			}
 		}
 	}
 }
