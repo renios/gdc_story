@@ -29,6 +29,21 @@ public class Project : MonoBehaviour
 	
 	public int Rank;
 
+	public enum Types
+	{
+		None,
+		Violence,
+		Emotion,
+		Strategy,
+		Control,
+		Liberty,
+		Puzzle,
+		Simplity,
+		Story,
+	}
+	
+	public Types Type;
+
 	void Start()
 	{
 		if(Number == 1)
