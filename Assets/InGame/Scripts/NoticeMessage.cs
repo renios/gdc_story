@@ -1381,11 +1381,11 @@ public class NoticeMessage : MonoBehaviour
 
 		if(Var.Year == 2018 && Var.Month == 3 && Var.Day == "초")
 		{
-			if(Var.Fame >= 800 && Var.Mems.Count >= 8)
+			if(Var.Fame >= 850 && Var.Mems.Count >= 15)
 			{
 				Application.LoadLevel("BestEnding");
 			}
-			else if(Var.Fame <= 150 || Var.Mems.Count <= 4)
+			else if(Var.Fame <= 200 || Var.Mems.Count <= 5)
 			{
 				Application.LoadLevel("BadEnding");
 			}
