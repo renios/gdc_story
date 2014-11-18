@@ -149,6 +149,8 @@ public class GameManager : MonoBehaviour
 				NewMember.Puzzle = PlayerPrefs.GetInt("Slot"+Slot+"Puzzle"+i);
 				NewMember.Simplity = PlayerPrefs.GetInt("Slot"+Slot+"Simplity"+i);
 				NewMember.Story = PlayerPrefs.GetInt("Slot"+Slot+"Story"+i);
+
+				SetPrevActs(Slot, NewMember, i);
 				
 				for(int j=0; j<PlayerPrefs.GetInt("Slot"+Slot+"Members"); j++)
 				{
@@ -505,6 +507,99 @@ public class GameManager : MonoBehaviour
 			}
 
 			Var.NewMembers.Add (NewMember);
+		}
+	}
+
+	void SetPrevActs(int Slot, Character Mem, int i)
+	{
+		if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 0)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.None;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 1)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Plan;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 2)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Programming;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 3)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Draw;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 4)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Compose;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 5)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.BdGm;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 6)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Watch;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 7)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Game;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 8)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Book;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 9)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Cook;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 10)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Piano;
+		}
+		
+		if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 0)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.None;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 1)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Plan;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 2)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Programming;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 3)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Draw;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 4)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Compose;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 5)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.BdGm;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 6)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Watch;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 7)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Game;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 8)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Book;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 9)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Cook;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 10)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Piano;
 		}
 	}
 }

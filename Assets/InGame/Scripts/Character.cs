@@ -79,6 +79,9 @@ public class Character : MonoBehaviour
 	}
 	public ActionIndex CurrentAct;
 
+	public ActionIndex PrevAct1;
+	public ActionIndex PrevAct2;
+
 	public enum ProjectPositionIndex
 	{
 		None,

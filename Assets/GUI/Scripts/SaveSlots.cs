@@ -105,6 +105,9 @@ public class SaveSlots : MonoBehaviour
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"Sound"+Mem.MemberNumber, Mem.Sound);
 			PlayerPrefs.SetInt ("Slot"+SlotNumber+"Loyalty"+Mem.MemberNumber, Mem.Loyalty);
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"Number"+Mem.MemberNumber, Mem.MemberNumber);
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"PrevAct1"+Mem.MemberNumber, ActionToInt(Mem.PrevAct1));
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"PrevAct2"+Mem.MemberNumber, ActionToInt(Mem.PrevAct2));
 			
 			for(int i=0; i<Var.Mems.Count; i++)
 			{
@@ -189,5 +192,53 @@ public class SaveSlots : MonoBehaviour
 		Notice.NoticeType = NoticeMessage.NoticeTypes.SaveMessage;
 		
 		Destroy (Parent.gameObject);
+	}
+
+	int ActionToInt(Character.ActionIndex Act)
+	{
+		if(Act == Character.ActionIndex.None)
+		{
+			return 0;
+		}
+		else if(Act == Character.ActionIndex.Plan)
+		{
+			return 1;
+		}
+		else if(Act == Character.ActionIndex.Programming)
+		{
+			return 2;
+		}
+		else if(Act == Character.ActionIndex.Draw)
+		{
+			return 3;
+		}
+		else if(Act == Character.ActionIndex.Compose)
+		{
+			return 4;
+		}
+		else if(Act == Character.ActionIndex.BdGm)
+		{
+			return 5;
+		}
+		else if(Act == Character.ActionIndex.Watch)
+		{
+			return 6;
+		}
+		else if(Act == Character.ActionIndex.Game)
+		{
+			return 7;
+		}
+		else if(Act == Character.ActionIndex.Book)
+		{
+			return 8;
+		}
+		else if(Act == Character.ActionIndex.Cook)
+		{
+			return 9;
+		}
+		else
+		{
+			return 10;
+		}
 	}
 }

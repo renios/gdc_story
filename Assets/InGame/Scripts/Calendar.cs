@@ -291,6 +291,17 @@ public class Calendar : MonoBehaviour
 				Var.MenuActivated = true;
 			}
 		}
+
+		foreach(Character Mem in Var.Mems)
+		{
+			if(Mem.PrevAct2 == Mem.PrevAct1 && Mem.PrevAct1 == Mem.CurrentAct && Mem.CurrentAct != Character.ActionIndex.None)
+			{
+				Mem.Loyalty -= 2;
+			}
+
+			Mem.PrevAct2 = Mem.PrevAct1;
+			Mem.PrevAct1 = Mem.CurrentAct;
+		}
 	}
 
 	IEnumerator Blink()
