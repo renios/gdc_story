@@ -198,6 +198,7 @@ MonoBehaviour:
   Parent: {fileID: 11400004}
   NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
   NewAchPF: {fileID: 0}
+  SpecEffectPf: {fileID: 0}
   OX: 0
 --- !u!114 &11400002
 MonoBehaviour:
@@ -214,6 +215,7 @@ MonoBehaviour:
   Parent: {fileID: 11400004}
   NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
   NewAchPF: {fileID: 11400000, guid: 3325a9d022ab5584f947a42717dfa78b, type: 2}
+  SpecEffectPf: {fileID: 11400000, guid: c40d5502983e77644a69c93f7040ae68, type: 2}
   OX: 1
 --- !u!114 &11400004
 MonoBehaviour:

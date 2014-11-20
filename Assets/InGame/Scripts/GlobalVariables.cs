@@ -88,6 +88,8 @@ public class GlobalVariables
 	
 	public List <int> ProjectRanks = new List<int> ();
 	public int ProjectHighScore;
+
+	public List <int> AchFames = new List<int> ();
 	
 	public List <int> NewAchs = new List<int> ();
 	public List <string> NewSpecMems = new List<string> ();

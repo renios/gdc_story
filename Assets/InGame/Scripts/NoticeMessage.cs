@@ -26,6 +26,8 @@ public class NoticeMessage : MonoBehaviour
 
 	public NewAch NewAchPF;
 	NewAch NewAchIS;
+	public SpecAbil SpecEffectPf;
+	SpecAbil SpecEffect;
 
 	public Question QuePf;
 	Question QueIs;
@@ -419,6 +421,14 @@ public class NoticeMessage : MonoBehaviour
 				Notice = Instantiate(NoticePrefab) as NoticeMessage;
 				Notice.NoticeType = NoticeTypes.ProjectResult2;
 			}
+			else
+			{
+				CheckRelationEventsForPj();
+			}
+		}
+		else if(NoticeType == NoticeTypes.ProjectResult2)
+		{
+			CheckRelationEvents();
 		}
 		else if(NoticeType == NoticeTypes.MemberInfo)
 		{
@@ -546,7 +556,7 @@ public class NoticeMessage : MonoBehaviour
 		}
 	}
 
-	int GroupActivityLoyalty(GlobalVariables.GroupActivityTypes Type)
+	int GroupActivityLoyalty(GlobalVariables.GroupActivityTypes Type, string Name)
 	{
 		if(Type == GlobalVariables.GroupActivityTypes.Picnic)
 		{
@@ -554,15 +564,43 @@ public class NoticeMessage : MonoBehaviour
 		}
 		else if(Type == GlobalVariables.GroupActivityTypes.Drink)
 		{
-			return Var.DrinkLoyalty;
+			if(Name == "부렁봇")
+			{
+				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+				SpecEffect.Special = SpecAbil.SpecAbils.Burung;
+				return Var.DrinkLoyalty*3;
+			}
+			else
+			{
+				return Var.DrinkLoyalty;
+			}
 		}
 		else if(Type == GlobalVariables.GroupActivityTypes.Dinner)
 		{
-			return Var.DinnerLoyalty;
+			if(Name == "부렁봇")
+			{
+				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+				SpecEffect.Special = SpecAbil.SpecAbils.Burung;
+				return Var.DinnerLoyalty*2;
+			}
+			else
+			{
+				return Var.DinnerLoyalty;
+			}
 		}
 		else
 		{
-			return Var.MTLoyalty;
+			if(Name == "부렁봇")
+			{
+				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+				SpecEffect.Special = SpecAbil.SpecAbils.Burung;
+				return Var.MTLoyalty*2;
+			}
+			else
+			{
+				return Var.MTLoyalty;
+			}
+
 		}
 	}
 
@@ -1299,7 +1337,21 @@ public class NoticeMessage : MonoBehaviour
 		}
 	}
 
-	public void EndActionPhase()
+	public void CheckRelationEventsForPj()
+	{
+		if(Var.NewFriends.Count > 1)
+		{
+			SceneIS = Instantiate(ScenePF) as CutScene;
+			SceneIS.SceneType = CutScene.SceneTypes.NewFriendForPj;
+		}
+		else if(Var.NewLovers.Count > 1)
+		{
+			SceneIS = Instantiate(ScenePF) as CutScene;
+			SceneIS.SceneType = CutScene.SceneTypes.NewLoverForPj;
+		}
+	}
+
+	public void CheckRelationEvents()
 	{
 		if(Var.NewFriends.Count > 1)
 		{
@@ -1311,7 +1363,12 @@ public class NoticeMessage : MonoBehaviour
 			SceneIS = Instantiate(ScenePF) as CutScene;
 			SceneIS.SceneType = CutScene.SceneTypes.NewLover;
 		}
-		else
+	}
+
+	public void EndActionPhase()
+	{
+		CheckRelationEvents ();
+		if(Var.NewFriends.Count == 0 && Var.NewLovers.Count == 0)
 		{
 			foreach(Character Member in Var.Mems)
 			{
@@ -1392,6 +1449,76 @@ public class NoticeMessage : MonoBehaviour
 			else
 			{
 				Application.LoadLevel("NormalEnding");
+			}
+		}
+
+		foreach (Character Mem in Var.Mems)
+		{
+			if(Mem.Name == "김고니")
+			{
+				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+				SpecEffect.Special = SpecAbil.SpecAbils.Gon;
+
+				Mem.CancelCurrentAction();
+
+				List<Character.ActionIndex> AvailableActs = new List<Character.ActionIndex>();
+				List<RoomObj> AvailObj = new List<RoomObj>();
+
+				if(Var.PlanMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Plan);
+					AvailObj.Add(Var.Mng.Wb);
+				}
+				if(Var.ProgramMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Programming);
+					AvailObj.Add(Var.Mng.Cpu);
+				}
+				if(Var.DrawMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Draw);
+					AvailObj.Add(Var.Mng.Sb);
+				}
+				if(Var.ComposeMems.Count != 2)
+				{
+					AvailableActs.Add(Character.ActionIndex.Compose);
+					AvailObj.Add(Var.Mng.Cps);
+				}
+				if(Var.Mng.Bg.Level != 0 && Var.BdGmMems.Count != 2)
+				{
+					AvailableActs.Add(Character.ActionIndex.BdGm);
+					AvailObj.Add(Var.Mng.Bg);
+				}
+				if(Var.Mng.Tv.Level != 0 && Var.WatchMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Watch);
+					AvailObj.Add(Var.Mng.Tv);
+				}
+				if(Var.Mng.Gm.Level != 0 && Var.GameMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Game);
+					AvailObj.Add(Var.Mng.Gm);
+				}
+				if(Var.Mng.Bk.Level != 0 && Var.BookMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Book);
+					AvailObj.Add(Var.Mng.Bk);
+				}
+				if(Var.Mng.Ck.Level != 0 && Var.CookMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Cook);
+					AvailObj.Add(Var.Mng.Ck);
+				}
+				if(Var.Mng.Pia.Level != 0 && Var.PiaMems.Count != 2)
+				{
+					AvailableActs.Add (Character.ActionIndex.Piano);
+					AvailObj.Add(Var.Mng.Pia);
+				}
+
+				int RandomAct = UnityEngine.Random.Range (0, AvailableActs.Count);
+				Mem.CurrentAct = AvailableActs[RandomAct];
+				Mem.transform.position = new Vector3(AvailObj[RandomAct].transform.position.x, AvailObj[RandomAct].transform.position.y);
+				Mem.Balloon.enabled = true;
 			}
 		}
 	}
@@ -2177,12 +2304,12 @@ public class NoticeMessage : MonoBehaviour
 
 				foreach(Character Member in Var.Mems)
 				{
-					Member.Loyalty += GroupActivityLoyalty(Var.GroupActivityType);
+					Member.Loyalty += GroupActivityLoyalty(Var.GroupActivityType, Member.Name);
 				}
 				Var.Money -= GroupActivityCost(Var.GroupActivityType);
 				Text.text = "동아리 회원들은 "+GroupResult(Var.GroupActivityType);
 				Text.text += "\n총 "+GroupActivityCost(Var.GroupActivityType)+"만 원의 돈을 사용했다.";
-				Text.text += "\n모두의 충성도가 각각 "+GroupActivityLoyalty(Var.GroupActivityType)+"만큼 올랐다.";
+				Text.text += "\n모두의 충성도가 각각 "+GroupActivityLoyalty(Var.GroupActivityType, "")+"만큼 올랐다.";
 				Var.MoneyMonthLog.Add (Var.Month);
 				Var.MoneyDayLog.Add(Var.Day);
 				Var.MoneyChangeLog.Add (GroupActivityCost(Var.GroupActivityType)*(-1));

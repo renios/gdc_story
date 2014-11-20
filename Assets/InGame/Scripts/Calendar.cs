@@ -8,12 +8,32 @@ public class Calendar : MonoBehaviour
 	public NoticeMessage NoticePrefab;
 	NoticeMessage Notice;
 
+	public SpecAbil SpecEffectPf;
+	SpecAbil SpecEffect;
+
 	void OnMouseDown()
 	{
 		if(Var.OnTutorial == false || Var.Mng.Tutorial.Page == 36)
 		{
 			GoNextPeriod();
 			Var.Mng.AudioSources[2].Play();
+
+			foreach(Character Mem in Var.Mems)
+			{
+				if(Mem.Name == "쎈타")
+				{
+					int LOL = UnityEngine.Random.Range (0, 3);
+
+					if(LOL == 2)
+					{
+						SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+						SpecEffect.Special = SpecAbil.SpecAbils.Center;
+
+						Mem.CurrentAct = Character.ActionIndex.None;
+						Mem.Balloon.enabled = false;
+					}
+				}
+			}
 
 			if(Var.OnTutorial == true)
 			{
@@ -301,6 +321,29 @@ public class Calendar : MonoBehaviour
 
 			Mem.PrevAct2 = Mem.PrevAct1;
 			Mem.PrevAct1 = Mem.CurrentAct;
+
+			if(Mem.Name == "이유진")
+			{
+				if(Var.Day == "초")
+				{
+					if(Var.Month == 1 || Var.Month == 7)
+					{
+						SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+						SpecEffect.Special = SpecAbil.SpecAbils.Eugene;
+
+						Mem.Collider.enabled = false;
+						Mem.Renderer.enabled = false;
+						Mem.Balloon.enabled = false;
+						Mem.CurrentAct = Character.ActionIndex.None;
+					}
+					else if(Var.Month == 3 || Var.Month == 9)
+					{
+						Mem.Collider.enabled = true;
+						Mem.Renderer.enabled = true;
+						Mem.Balloon.enabled = true;
+					}
+				}
+			}
 		}
 	}
 

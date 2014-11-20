@@ -1529,6 +1529,7 @@ MonoBehaviour:
     PiaMems: []
     ProjectRanks: 
     ProjectHighScore: 0
+    AchFames: 
     NewAchs: 
     NewSpecMems: []
     MoneyReasonLog: []
@@ -2147,6 +2148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
+  SpecEffectPf: {fileID: 11400000, guid: c40d5502983e77644a69c93f7040ae68, type: 2}
 --- !u!114 &1488924358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,6 +3402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
+  SpecEffectPf: {fileID: 11400000, guid: c40d5502983e77644a69c93f7040ae68, type: 2}
 --- !u!61 &2037360288
 BoxCollider2D:
   m_ObjectHideFlags: 0

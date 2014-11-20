@@ -180,6 +180,14 @@ MonoBehaviour:
   PantsB: 0
   Special: 0
   Gender: 0
+  Violence: 0
+  Emotion: 0
+  Strategy: 0
+  Control: 0
+  Liberty: 0
+  Puzzle: 0
+  Simplity: 0
+  Story: 0
   Chief: 0
   Loaded: 0
   HairRenderer: {fileID: 21200000}
@@ -196,6 +204,8 @@ MonoBehaviour:
   SpecialName: 0
   Name: 
   CurrentAct: 0
+  PrevAct1: 0
+  PrevAct2: 0
   ProjectPosition: 0
   Tal: 0
   UnTal: 0
@@ -218,6 +228,7 @@ MonoBehaviour:
   Lovers: []
   MemberNumber: 0
   GenderMemberNumber: 0
+  Collider: {fileID: 6100000}
   Self: {fileID: 100006}
 --- !u!212 &21200000
 SpriteRenderer:

@@ -14,6 +14,8 @@ public class PopupOX : MonoBehaviour
 	NoticeMessage Notice;
 	public NewAch NewAchPF;
 	NewAch NewAchIS;
+	public SpecAbil SpecEffectPf;
+	SpecAbil SpecEffect;
 
 	public bool OX;
 
@@ -21,6 +23,16 @@ public class PopupOX : MonoBehaviour
 
 	void OnMouseDown()
 	{
+		float OreoMultiplier = 1;
+
+		foreach(Character Mem in Var.Mems)
+		{
+			if(Mem.Name == "오레오")
+			{
+				OreoMultiplier = 0.8f;
+			}
+		}
+
 		Var.Mng.AudioSources [2].Play ();
 		if(Parent.QuestionType == Question.QuestionTypes.ClbIntro)
 		{
@@ -72,10 +84,10 @@ public class PopupOX : MonoBehaviour
 			{
 				if(Var.Fame >= 120)
 				{
-					if(Var.Money >= 25)
+					if(Var.Money >= 25*OreoMultiplier)
 					{
-						Var.Money -= 25;
-						UsedMoney = 25;
+						Var.Money -= 25*OreoMultiplier;
+						UsedMoney = 25*OreoMultiplier;
 						Var.Mng.Room.Level = 2;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room2;
 
@@ -109,10 +121,10 @@ public class PopupOX : MonoBehaviour
 			{
 				if(Var.Fame >= 420)
 				{
-					if(Var.Money >= 40)
+					if(Var.Money >= 40*OreoMultiplier)
 					{
-						Var.Money -= 40;
-						UsedMoney = 40;
+						Var.Money -= 40*OreoMultiplier;
+						UsedMoney = 40*OreoMultiplier;
 						Var.Mng.Room.Level = 3;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room3;
 						
@@ -137,10 +149,10 @@ public class PopupOX : MonoBehaviour
 			{
 				if(Var.Fame >= 830)
 				{
-					if(Var.Money >= 55)
+					if(Var.Money >= 55*OreoMultiplier)
 					{
-						Var.Money -= 55;
-						UsedMoney = 55;
+						Var.Money -= 55*OreoMultiplier;
+						UsedMoney = 55*OreoMultiplier;
 						Var.Mng.Room.Level = 4;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room4;
 						
@@ -175,10 +187,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 100)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Var.Mng.Wb.Renderer.sprite = Var.Mng.Wb.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Wb.Level = 2;
@@ -204,10 +216,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 350)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Wb.Renderer.sprite = Var.Mng.Wb.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Wb.Level = 3;
@@ -241,10 +253,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 100)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Var.Mng.Cpu.Renderer.sprite = Var.Mng.Cpu.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Cpu.Level = 2;
@@ -270,10 +282,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 350)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Cpu.Renderer.sprite = Var.Mng.Cpu.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Cpu.Level = 3;
@@ -307,10 +319,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 100)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Var.Mng.Sb.Renderer.sprite = Var.Mng.Sb.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Sb.Level = 2;
@@ -336,10 +348,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 350)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Sb.Renderer.sprite = Var.Mng.Sb.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Sb.Level = 3;
@@ -375,10 +387,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 100)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Var.Mng.Cps.Renderer.sprite = Var.Mng.Cps.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Cps.Level = 2;
@@ -404,10 +416,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 350)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Cps.Renderer.sprite = Var.Mng.Cps.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Cps.Level = 3;
@@ -443,10 +455,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 150)
 					{
-						if(Var.Money >= 2)
+						if(Var.Money >= 2*OreoMultiplier)
 						{
-							Var.Money -= 2;
-							UsedMoney = 2;
+							Var.Money -= 2*OreoMultiplier;
+							UsedMoney = 2*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bg.Level = 1;
 							Var.Mng.Bg.Renderer.sprite = Var.Mng.Bg.Level1;
@@ -472,10 +484,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 400)
 					{
-						if(Var.Money >= 2)
+						if(Var.Money >= 2*OreoMultiplier)
 						{
-							Var.Money -= 2;
-							UsedMoney = 2;
+							Var.Money -= 2*OreoMultiplier;
+							UsedMoney = 2*OreoMultiplier;
 							Var.Mng.Bg.Renderer.sprite = Var.Mng.Bg.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bg.Level = 2;
@@ -501,10 +513,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 650)
 					{
-						if(Var.Money >= 2)
+						if(Var.Money >= 2*OreoMultiplier)
 						{
-							Var.Money -= 2;
-							UsedMoney = 2;
+							Var.Money -= 2*OreoMultiplier;
+							UsedMoney = 2*OreoMultiplier;
 							Var.Mng.Bg.Renderer.sprite = Var.Mng.Bg.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bg.Level = 3;
@@ -538,10 +550,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 150)
 					{
-						if(Var.Money >= 8)
+						if(Var.Money >= 8*OreoMultiplier)
 						{
-							Var.Money -= 8;
-							UsedMoney = 8;
+							Var.Money -= 8*OreoMultiplier;
+							UsedMoney = 8*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Tv.Level = 1;
 							Var.Mng.Tv.Renderer.sprite = Var.Mng.Tv.Level1;
@@ -567,10 +579,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 450)
 					{
-						if(Var.Money >= 1)
+						if(Var.Money >= 1*OreoMultiplier)
 						{
-							Var.Money -= 1;
-							UsedMoney = 1;
+							Var.Money -= 1*OreoMultiplier;
+							UsedMoney = 1*OreoMultiplier;
 							Var.Mng.Tv.Renderer.sprite = Var.Mng.Tv.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Tv.Level = 2;
@@ -596,10 +608,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 550)
 					{
-						if(Var.Money >= 10)
+						if(Var.Money >= 10*OreoMultiplier)
 						{
-							Var.Money -= 10;
-							UsedMoney = 10;
+							Var.Money -= 10*OreoMultiplier;
+							UsedMoney = 10*OreoMultiplier;
 							Var.Mng.Tv.Renderer.sprite = Var.Mng.Tv.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Tv.Level = 3;
@@ -633,10 +645,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 500)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Gm.Level = 1;
 							Var.Mng.Gm.Renderer.sprite = Var.Mng.Gm.Level1;
@@ -662,10 +674,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 600)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Gm.Renderer.sprite = Var.Mng.Gm.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Gm.Level = 2;
@@ -691,10 +703,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 700)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Gm.Renderer.sprite = Var.Mng.Gm.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Gm.Level = 3;
@@ -728,10 +740,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 400)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bk.Level = 1;
 							Var.Mng.Bk.Renderer.sprite = Var.Mng.Bk.Level1;
@@ -757,10 +769,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 500)
 					{
-						if(Var.Money >= 3.5f)
+						if(Var.Money >= 3.5f*OreoMultiplier)
 						{
-							Var.Money -= 3.5f;
-							UsedMoney = 3.5f;
+							Var.Money -= 3.5f*OreoMultiplier;
+							UsedMoney = 3.5f*OreoMultiplier;
 							Var.Mng.Bk.Renderer.sprite = Var.Mng.Bk.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bk.Level = 2;
@@ -786,10 +798,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 600)
 					{
-						if(Var.Money >= 3.5f)
+						if(Var.Money >= 3.5f*OreoMultiplier)
 						{
-							Var.Money -= 3.5f;
-							UsedMoney = 3.5f;
+							Var.Money -= 3.5f*OreoMultiplier;
+							UsedMoney = 3.5f*OreoMultiplier;
 							Var.Mng.Bk.Renderer.sprite = Var.Mng.Bk.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Bk.Level = 3;
@@ -823,10 +835,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 500)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Pia.Level = 1;
 							Var.Mng.Pia.Renderer.sprite = Var.Mng.Pia.Level1;
@@ -852,10 +864,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 600)
 					{
-						if(Var.Money >= 7)
+						if(Var.Money >= 7*OreoMultiplier)
 						{
-							Var.Money -= 7;
-							UsedMoney = 7;
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
 							Var.Mng.Pia.Renderer.sprite = Var.Mng.Pia.Level2;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Pia.Level = 2;
@@ -881,10 +893,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 700)
 					{
-						if(Var.Money >= 10)
+						if(Var.Money >= 10*OreoMultiplier)
 						{
-							Var.Money -= 10;
-							UsedMoney = 10;
+							Var.Money -= 10*OreoMultiplier;
+							UsedMoney = 10*OreoMultiplier;
 							Var.Mng.Pia.Renderer.sprite = Var.Mng.Pia.Level3;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Pia.Level = 3;
@@ -918,10 +930,10 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 500)
 					{
-						if(Var.Money >= 5)
+						if(Var.Money >= 5*OreoMultiplier)
 						{
-							Var.Money -= 5;
-							UsedMoney = 5;
+							Var.Money -= 5*OreoMultiplier;
+							UsedMoney = 5*OreoMultiplier;
 							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
 							Var.Mng.Ck.Level = 1;
 							Var.Mng.Ck.Renderer.sprite = Var.Mng.Ck.Level1;
@@ -947,11 +959,18 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 700)
 					{
-						Var.Money -= 7;
-						UsedMoney = 7;
-						Var.Mng.Ck.Renderer.sprite = Var.Mng.Ck.Level2;
-						Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
-						Var.Mng.Ck.Level = 2;	
+						if(Var.Money >= 7*OreoMultiplier)
+						{
+							Var.Money -= 7*OreoMultiplier;
+							UsedMoney = 7*OreoMultiplier;
+							Var.Mng.Ck.Renderer.sprite = Var.Mng.Ck.Level2;
+							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
+							Var.Mng.Ck.Level = 2;	
+						}
+						else
+						{
+							Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughMoney;
+						}
 					}
 					else
 					{
@@ -969,11 +988,14 @@ public class PopupOX : MonoBehaviour
 				{
 					if(Var.Fame >= 800)
 					{
-						Var.Money -= 10;
-						UsedMoney = 10;
-						Var.Mng.Ck.Renderer.sprite = Var.Mng.Ck.Level3;
-						Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
-						Var.Mng.Ck.Level = 3;
+						if(Var.Money >= 10*OreoMultiplier)
+						{
+							Var.Money -= 10*OreoMultiplier;
+							UsedMoney = 10*OreoMultiplier;
+							Var.Mng.Ck.Renderer.sprite = Var.Mng.Ck.Level3;
+							Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
+							Var.Mng.Ck.Level = 3;
+						}
 					}
 					else
 					{
@@ -991,6 +1013,11 @@ public class PopupOX : MonoBehaviour
 		}
 		if (UsedMoney != 0) 
 		{
+			if(OreoMultiplier == 0.8f)
+			{
+				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+				SpecEffect.Special = SpecAbil.SpecAbils.Oreo;
+			}
 			Var.Mng.RecordMoneyChange(UsedMoney*(-1), "업그레이드");
 		}
 

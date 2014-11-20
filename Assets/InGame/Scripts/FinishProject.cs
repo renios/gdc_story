@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FinishProject : MonoBehaviour 
 {
@@ -12,6 +13,8 @@ public class FinishProject : MonoBehaviour
 	ProjectResult Result;
 	public NoticeMessage NoticePrefab;
 	NoticeMessage Notice;
+	public SpecAbil SpecEffectPf;
+	SpecAbil SpecEffect;
 
 	int HighScore = 4;
 
@@ -37,7 +40,9 @@ public class FinishProject : MonoBehaviour
 				int DVScore;
 				int ArtScore;
 				int SoundScore;
-				
+						
+				CheckSpecMemAbility(PJ);
+
 				if(PJ.ProjectManager != null)
 				{
 					PMScore = ComputeScore(PJ.ProjectManager, 1, PJ.Type);
@@ -429,6 +434,104 @@ public class FinishProject : MonoBehaviour
 			else
 			{
 				return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Story+5)/10;
+			}
+		}
+	}
+
+	void CheckSpecMemAbility(Project Pj)
+	{
+		List<Character> PjMems = new List<Character> ();
+
+		if(Pj.ProjectManager != null && Pj.ProjectManager.Name == "오키드")
+		{
+			if(Pj.Programmer != null)
+			{
+				PjMems.Add(Pj.Programmer);
+			}
+			if(Pj.ArtDirecter != null)
+			{
+				PjMems.Add(Pj.ArtDirecter);
+			}
+			if(Pj.SoundDirecter != null)
+			{
+				PjMems.Add (Pj.SoundDirecter);
+			}
+		}
+		else if(Pj.Programmer != null && Pj.Programmer.Name == "오키드")
+		{
+			if(Pj.ProjectManager != null)
+			{
+				PjMems.Add(Pj.ProjectManager);
+			}
+			if(Pj.ArtDirecter != null)
+			{
+				PjMems.Add(Pj.ArtDirecter);
+			}
+			if(Pj.SoundDirecter != null)
+			{
+				PjMems.Add (Pj.SoundDirecter);
+			}
+		}
+		else if(Pj.ArtDirecter != null && Pj.ArtDirecter.Name == "오키드")
+		{
+			if(Pj.ProjectManager != null)
+			{
+				PjMems.Add(Pj.ProjectManager);
+			}
+			if(Pj.Programmer != null)
+			{
+				PjMems.Add(Pj.Programmer);
+			}
+			if(Pj.SoundDirecter != null)
+			{
+				PjMems.Add (Pj.SoundDirecter);
+			}
+		}
+		else if(Pj.SoundDirecter != null && Pj.SoundDirecter.Name == "오키드")
+		{
+			if(Pj.ProjectManager != null)
+			{
+				PjMems.Add(Pj.ProjectManager);
+			}
+			if(Pj.Programmer != null)
+			{
+				PjMems.Add(Pj.Programmer);
+			}
+			if(Pj.ArtDirecter != null)
+			{
+				PjMems.Add(Pj.ArtDirecter);
+			}
+		}
+
+		if(PjMems.Count > 1)
+		{
+			SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+			SpecEffect.Special = SpecAbil.SpecAbils.Orchid;
+
+			PjMems[0].Relationship[PjMems[1].MemberNumber] += 20;
+			PjMems[1].Relationship[PjMems[0].MemberNumber] += 20;
+			if(PjMems[0].Relationship[PjMems[1].MemberNumber] >= 20 && PjMems[0].Relationship[PjMems[1].MemberNumber] <= 35)
+			{
+				Var.NewFriends.Add(PjMems[0]);
+				Var.NewFriends.Add(PjMems[1]);
+			}
+		}
+		if(PjMems.Count > 2)
+		{
+			PjMems[0].Relationship[PjMems[2].MemberNumber] += 20;
+			PjMems[2].Relationship[PjMems[0].MemberNumber] += 20;
+			if(PjMems[0].Relationship[PjMems[2].MemberNumber] >= 20 && PjMems[0].Relationship[PjMems[2].MemberNumber] <= 35)
+			{
+				Var.NewFriends.Add(PjMems[0]);
+				Var.NewFriends.Add(PjMems[2]);
+			}
+
+			PjMems[2].Relationship[PjMems[1].MemberNumber] += 20;
+			PjMems[1].Relationship[PjMems[2].MemberNumber] += 20;
+			if(PjMems[2].Relationship[PjMems[1].MemberNumber] >= 20 && PjMems[2].Relationship[PjMems[1].MemberNumber] <= 35)
+			{
+				Var.NewFriends.Add(PjMems[2]);
+				Var.NewFriends.Add(PjMems[1]);
 			}
 		}
 	}

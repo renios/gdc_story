@@ -126,6 +126,8 @@ public class Character : MonoBehaviour
 
 	public int MemberNumber;
 	public int GenderMemberNumber;
+
+	public BoxCollider2D Collider;
 		
 	IEnumerator Start ()
 	{
@@ -228,6 +230,10 @@ public class Character : MonoBehaviour
 			}
 		}
 
+		if(Name == "김고니")
+		{
+			Collider.enabled = false;
+		}
 		transform.Translate (0, 0, -0.02f * MemberNumber);
 	}
 
@@ -760,7 +766,7 @@ public class Character : MonoBehaviour
 		PantsRenderer.color = new Color(0.1f*PantsR, 0.1f*PantsG, 0.1f*PantsB, 1f);
 	}
 
-	void CancelCurrentAction()
+	public void CancelCurrentAction()
 	{
 		if(CurrentAct == ActionIndex.Plan)
 		{
