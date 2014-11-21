@@ -46,15 +46,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(PlanMember.Tal == Character.Talents.Plan)
 					{
-						PlanMember.Plan += (int)(Var.TalentModifier*(float)(Var.Mng.Wb.Level*5));
+						PlanMember.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Wb.Level*5));
 					}
 					else if(PlanMember.UnTal == Character.Talents.Plan)
 					{
-						PlanMember.Plan += (int)(Var.UnTalentModifier*(float)(Var.Mng.Wb.Level*5));
+						PlanMember.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Wb.Level*5));
 					}
 					else
 					{
-						PlanMember.Plan += Var.Mng.Wb.Level*5;
+						PlanMember.Abilities[0] += Var.Mng.Wb.Level*5;
 					}
 					PlanMember.Loyalty -= Var.DecLoyalHard;
 				}
@@ -62,15 +62,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(ProgrammingMember.Tal == Character.Talents.Programming)
 					{
-						ProgrammingMember.Programming += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
+						ProgrammingMember.Abilities[1] += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
 					}
 					else if(ProgrammingMember.UnTal == Character.Talents.Programming)
 					{
-						ProgrammingMember.Programming += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
+						ProgrammingMember.Abilities[1] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
 					}
 					else
 					{
-						ProgrammingMember.Programming += Var.Mng.Cpu.Level*5;
+						ProgrammingMember.Abilities[1] += Var.Mng.Cpu.Level*5;
 					}
 					ProgrammingMember.Loyalty -= Var.DecLoyalHard;
 				}
@@ -78,15 +78,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(DrawMember.Tal == Character.Talents.Art)
 					{
-						DrawMember.Art += (int)(Var.TalentModifier*(float)(Var.Mng.Sb.Level*5));
+						DrawMember.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Sb.Level*5));
 					}
 					else if(DrawMember.UnTal == Character.Talents.Art)
 					{
-						DrawMember.Art += (int)(Var.UnTalentModifier*(float)(Var.Mng.Sb.Level*5));
+						DrawMember.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Sb.Level*5));
 					}
 					else
 					{
-						DrawMember.Art += Var.Mng.Sb.Level*5;
+						DrawMember.Abilities[2] += Var.Mng.Sb.Level*5;
 					}
 					DrawMember.Loyalty -= Var.DecLoyalHard;
 				}
@@ -94,15 +94,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(ComposeMember.Tal == Character.Talents.Sound)
 					{
-						ComposeMember.Sound += (int)(Var.TalentModifier*(float)(Var.Mng.Cps.Level*5));
+						ComposeMember.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Cps.Level*5));
 					}
 					else if(ComposeMember.UnTal == Character.Talents.Sound)
 					{
-						ComposeMember.Sound += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cps.Level*5));
+						ComposeMember.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cps.Level*5));
 					}
 					else
 					{
-						ComposeMember.Sound += Var.Mng.Cps.Level*5;
+						ComposeMember.Abilities[3] += Var.Mng.Cps.Level*5;
 					}
 					ComposeMember.Loyalty -= Var.DecLoyalHard;
 				}
@@ -110,27 +110,27 @@ public class Calendar : MonoBehaviour
 				{
 					if(BdGmMem.Tal == Character.Talents.Plan)
 					{
-						BdGmMem.Plan += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
+						BdGmMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
 					}
 					else if(BdGmMem.UnTal == Character.Talents.Plan)
 					{
-						BdGmMem.Plan += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
+						BdGmMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
 					}
 					else
 					{
-						BdGmMem.Plan += Var.Mng.Bg.Level*4-1;
+						BdGmMem.Abilities[0] += Var.Mng.Bg.Level*4-1;
 					}
 					if(BdGmMem.Tal == Character.Talents.Art)
 					{
-						BdGmMem.Art += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
+						BdGmMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
 					}
 					else if(BdGmMem.UnTal == Character.Talents.Art)
 					{
-						BdGmMem.Art += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
+						BdGmMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
 					}
 					else
 					{
-						BdGmMem.Art += Var.Mng.Bg.Level*4-1;
+						BdGmMem.Abilities[2] += Var.Mng.Bg.Level*4-1;
 					}
 					BdGmMem.Loyalty -= Var.DecLoyalEasy;
 				}
@@ -138,27 +138,27 @@ public class Calendar : MonoBehaviour
 				{
 					if(WatchMem.Tal == Character.Talents.Plan)
 					{
-						WatchMem.Sound += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
+						WatchMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
 					}
 					else if(WatchMem.UnTal == Character.Talents.Plan)
 					{
-						WatchMem.Sound += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
+						WatchMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
 					}
 					else
 					{
-						WatchMem.Sound += Var.Mng.Tv.Level*4-1;
+						WatchMem.Abilities[3] += Var.Mng.Tv.Level*4-1;
 					}
 					if(WatchMem.Tal == Character.Talents.Art)
 					{
-						WatchMem.Art += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
+						WatchMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
 					}
 					else if(WatchMem.UnTal == Character.Talents.Art)
 					{
-						WatchMem.Art += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
+						WatchMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
 					}
 					else
 					{
-						WatchMem.Art += Var.Mng.Tv.Level*4-1;
+						WatchMem.Abilities[2] += Var.Mng.Tv.Level*4-1;
 					}
 					WatchMem.Loyalty -= Var.DecLoyalEasy;
 				}
@@ -166,39 +166,39 @@ public class Calendar : MonoBehaviour
 				{
 					if(GameMem.Tal == Character.Talents.Sound)
 					{
-						GameMem.Sound += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else if(GameMem.UnTal == Character.Talents.Sound)
 					{
-						GameMem.Sound += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else
 					{
-						GameMem.Sound += Var.Mng.Gm.Level*4-2;
+						GameMem.Abilities[3] += Var.Mng.Gm.Level*4-2;
 					}
 					if(GameMem.Tal == Character.Talents.Plan)
 					{
-						GameMem.Plan += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else if(GameMem.UnTal == Character.Talents.Plan)
 					{
-						GameMem.Plan += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else
 					{
-						GameMem.Plan += Var.Mng.Gm.Level*4-2;
+						GameMem.Abilities[0] += Var.Mng.Gm.Level*4-2;
 					}
 					if(GameMem.Tal == Character.Talents.Art)
 					{
-						GameMem.Art += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else if(GameMem.UnTal == Character.Talents.Art)
 					{
-						GameMem.Art += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						GameMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else
 					{
-						GameMem.Art += Var.Mng.Gm.Level*4-2;
+						GameMem.Abilities[2] += Var.Mng.Gm.Level*4-2;
 					}
 					GameMem.Loyalty -= Var.DecLoyalEasy;
 				}
@@ -206,27 +206,27 @@ public class Calendar : MonoBehaviour
 				{
 					if(BookMem.Tal == Character.Talents.Plan)
 					{
-						BookMem.Plan += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						BookMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else if(BookMem.UnTal == Character.Talents.Plan)
 					{
-						BookMem.Plan += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
+						BookMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
 					}
 					else
 					{
-						BookMem.Plan += Var.Mng.Gm.Level*4-2;
+						BookMem.Abilities[0] += Var.Mng.Gm.Level*4-2;
 					}
 					if(BookMem.Tal == Character.Talents.Programming)
 					{
-						BookMem.Programming += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
+						BookMem.Abilities[1] += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
 					}
 					else if(BookMem.UnTal == Character.Talents.Programming)
 					{
-						BookMem.Programming += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
+						BookMem.Abilities[1] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
 					}
 					else
 					{
-						BookMem.Programming += Var.Mng.Cpu.Level*5;
+						BookMem.Abilities[1] += Var.Mng.Cpu.Level*5;
 					}
 					BookMem.Loyalty -= Var.DecLoyalEasy;
 				}
@@ -234,15 +234,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(CookMem.Tal == Character.Talents.Art)
 					{
-						CookMem.Art += (int)(Var.TalentModifier*(float)(Var.Mng.Ck.Level*4));
+						CookMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Ck.Level*4));
 					}
 					else if(CookMem.UnTal == Character.Talents.Art)
 					{
-						CookMem.Art += (int)(Var.UnTalentModifier*(float)(Var.Mng.Ck.Level*4));
+						CookMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Ck.Level*4));
 					}
 					else
 					{
-						CookMem.Art += Var.Mng.Ck.Level*4;
+						CookMem.Abilities[2] += Var.Mng.Ck.Level*4;
 					}
 					CookMem.Loyalty -= Var.DecLoyalEasy;
 				}
@@ -250,15 +250,15 @@ public class Calendar : MonoBehaviour
 				{
 					if(PiaMem.Tal == Character.Talents.Sound)
 					{
-						PiaMem.Sound += (int)(Var.TalentModifier*(float)(Var.Mng.Pia.Level*4));
+						PiaMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Pia.Level*4));
 					}
 					else if(PiaMem.UnTal == Character.Talents.Sound)
 					{
-						PiaMem.Sound += (int)(Var.UnTalentModifier*(float)(Var.Mng.Pia.Level*4));
+						PiaMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Pia.Level*4));
 					}
 					else
 					{
-						PiaMem.Sound += Var.Mng.Pia.Level*4;
+						PiaMem.Abilities[3] += Var.Mng.Pia.Level*4;
 					}
 					PiaMem.Loyalty += Var.DecLoyalEasy;
 				}

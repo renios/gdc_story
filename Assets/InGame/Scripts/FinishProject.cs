@@ -37,51 +37,15 @@ public class FinishProject : MonoBehaviour
 			foreach(Project PJ in Maker.Projects)
 			{
 				List<int> PjScores = new List<int>();
-				int PMScore;
-				int DVScore;
-				int ArtScore;
-				int SoundScore;
 						
 				CheckSpecMemAbility(PJ);
 
-				if(PJ.ProjectManager != null)
-				{
-					PMScore = ComputeScore(PJ.ProjectManager, 1, PJ.Type);
-					//PMScore = PJ.ProjectManager.Plan*2+PJ.ProjectManager.Programming+PJ.ProjectManager.Art+PJ.ProjectManager.Sound;
-				}
-				else
-				{
-					PMScore = 0;
-				}
-				if(PJ.Programmer != null)
-				{
-					DVScore = ComputeScore(PJ.Programmer, 2, PJ.Type);
-					//DVScore = PJ.Programmer.Plan + PJ.Programmer.Programming*2+PJ.Programmer.Art+PJ.Programmer.Sound;
-				}
-				else
-				{
-					DVScore = 0;
-				}
-				if(PJ.ArtDirecter != null)
-				{
-					ArtScore = ComputeScore(PJ.ArtDirecter, 3, PJ.Type);
-					//ArtScore = PJ.ArtDirecter.Plan+PJ.ArtDirecter.Programming+PJ.ArtDirecter.Art*2+PJ.ArtDirecter.Sound;
-				}
-				else
-				{
-					ArtScore = 0;
-				}
-				if(PJ.SoundDirecter != null)
-				{
-					SoundScore = ComputeScore(PJ.SoundDirecter, 4, PJ.Type);
-					//SoundScore = PJ.SoundDirecter.Plan+PJ.SoundDirecter.Programming+PJ.SoundDirecter.Art+PJ.SoundDirecter.Sound*2;
-				}
-				else
-				{
-					SoundScore = 0;
-				}
+				PjScores.Add (ComputeScore(PJ.PjMems[0], 0 ,PJ.Type)*2+ComputeScore(PJ.PjMems[1], 0, PJ.Type)+ComputeScore(PJ.PjMems[2], 0, PJ.Type)+ComputeScore(PJ.PjMems[3], 0, PJ.Type));
+				PjScores.Add (ComputeScore(PJ.PjMems[0], 1 ,PJ.Type)+ComputeScore(PJ.PjMems[1], 1, PJ.Type)*2+ComputeScore(PJ.PjMems[2], 1, PJ.Type)+ComputeScore(PJ.PjMems[3], 1, PJ.Type));
+				PjScores.Add (ComputeScore(PJ.PjMems[0], 2 ,PJ.Type)+ComputeScore(PJ.PjMems[1], 2, PJ.Type)+ComputeScore(PJ.PjMems[2], 2, PJ.Type)*2+ComputeScore(PJ.PjMems[3], 2, PJ.Type));
+				PjScores.Add (ComputeScore(PJ.PjMems[0], 3 ,PJ.Type)+ComputeScore(PJ.PjMems[1], 3, PJ.Type)+ComputeScore(PJ.PjMems[2], 3, PJ.Type)+ComputeScore(PJ.PjMems[3], 3, PJ.Type)*2);
 				
-				int TotalScore = PMScore+DVScore+ArtScore+SoundScore;
+				int TotalScore = PjScores[0]+PjScores[1]+PjScores[2]+PjScores[3];
 				
 				if(TotalScore>= Var.Stan1st)
 				{
@@ -113,6 +77,11 @@ public class FinishProject : MonoBehaviour
 					MoneyChange += 50.0f;
 
 					Var.Mng.GetAch(1, 60);
+
+					if(Var.AchTimesList[1] == 4 && Var.AchTimesList[0] == 0)
+					{
+						Var.Mng.GetAch(16, 100);
+					}
 				}
 				else if(TotalScore >= Var.Stan3rd)
 				{
@@ -147,48 +116,71 @@ public class FinishProject : MonoBehaviour
 					Var.ProjectRanks.Add (7);
 				}
 
-				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && PMScore*2 >= TotalScore)
+				int PjMemNum = 0;
+				foreach(Character PjMem in PJ.PjMems)
 				{
-					Var.Mng.GetAch(3, 40);
-
-					if(Var.AchTimesList[3] == 3)
+					if(PjMem != null)
 					{
-						Var.Mng.GetAch(9, 100);
+						PjMemNum += 1;
 					}
 				}
 
-				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && DVScore*2 >= TotalScore)
+				if(PjMemNum == 4)
 				{
-					Var.Mng.GetAch(4, 40);
-					
-					if(Var.AchTimesList[4] == 3)
+					if(PjScores[0]*2 > TotalScore)
 					{
-						Var.Mng.GetAch(10, 100);
+						Var.Mng.GetAch(3, 40);
+						CheckPalbangAch();
+						
+						if(Var.AchTimesList[3] == 3)
+						{
+							Var.Mng.GetAch(9, 100);
+							CheckSuperAch();
+						}
 					}
-				}
+					else if(PjScores[1]*2 > TotalScore)
+					{
+						Var.Mng.GetAch(4, 40);
+						CheckPalbangAch();
 
-				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && ArtScore*2 >= TotalScore)
-				{
-					Var.Mng.GetAch(5, 40);
-					
-					if(Var.AchTimesList[5] == 3)
-					{
-						Var.Mng.GetAch(11, 100);
-						Var.Mng.MakeNewSpecMem(false, Character.SpecialNameIndex.부렁봇, "부렁봇");
+						if(Var.AchTimesList[4] == 3)
+						{
+							Var.Mng.GetAch(10, 100);
+							CheckSuperAch();
+						}
 					}
-				}
-				if(PMScore != 0 && DVScore != 0 && ArtScore != 0 && SoundScore != 0 && SoundScore*2 >= TotalScore)
-				{
-					Var.Mng.GetAch(6, 40);
-					
-					if(Var.AchTimesList[6] == 3)
+					else if(PjScores[2]*2 > TotalScore)
 					{
-						Var.Mng.GetAch(12, 100);
-						Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.쎈타, "쎈타");
-					}
-				}
+						Var.Mng.GetAch(5, 40);
+						CheckPalbangAch();
 
-				int PjMems = 0;
+						if(Var.AchTimesList[5] == 3)
+						{
+							Var.Mng.GetAch(11, 100);
+							Var.Mng.MakeNewSpecMem(false, Character.SpecialNameIndex.부렁봇, "부렁봇");
+							CheckSuperAch();
+						}
+					}
+					else if(PjScores[3]*2 > TotalScore)
+					{
+						Var.Mng.GetAch(6, 40);
+						CheckPalbangAch();
+
+						if(Var.AchTimesList[6] == 3)
+						{
+							Var.Mng.GetAch(12, 100);
+							Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.쎈타, "쎈타");
+							CheckSuperAch();
+						}
+					}
+				}
+				else if(PjMemNum == 1)
+				{
+					if(PJ.Rank <= 3)
+					{
+						Var.Mng.GetAch(7, 50);
+					}
+				}
 				
 				Destroy(PJ.gameObject);
 			}
@@ -231,174 +223,39 @@ public class FinishProject : MonoBehaviour
 		{
 			if(Genre == Project.Types.None)
 			{
-				if(Role == 1)
-				{
-					return Mem.Plan*9/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*9/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*9/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*9/10;
-				}
+				return Mem.Abilities[Role]*9/10;
 			}
 			else if(Genre == Project.Types.Violence)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Violence+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Violence+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Violence+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Violence+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Violence+5)/10;
 			}
 			else if(Genre == Project.Types.Emotion)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Emotion+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Emotion+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Emotion+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Emotion+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Emotion+5)/10;
 			}
 			else if(Genre == Project.Types.Strategy)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Strategy+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Strategy+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Strategy+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Strategy+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Strategy+5)/10;
 			}
 			else if(Genre == Project.Types.Control)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Control+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Control+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Control+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Control+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Control+5)/10;
 			}
 			else if(Genre == Project.Types.Liberty)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Liberty+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Liberty+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Liberty+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Liberty+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Liberty+5)/10;
 			}
 			else if(Genre == Project.Types.Puzzle)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Puzzle+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Puzzle+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Puzzle+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Puzzle+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Puzzle+5)/10;
 			}
 			else if(Genre == Project.Types.Simplity)
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Simplity+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Simplity+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Simplity+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Simplity+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Simplity+5)/10;
 			}
 			else
 			{
-				if(Role == 1)
-				{
-					return (Mem.Plan*2+Mem.Programming+Mem.Art+Mem.Sound)*(Mem.Story+5)/10;
-				}
-				else if(Role == 2)
-				{
-					return (Mem.Plan+Mem.Programming*2+Mem.Art+Mem.Sound)*(Mem.Story+5)/10;
-				}
-				else if(Role == 3)
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art*2+Mem.Sound)*(Mem.Story+5)/10;
-				}
-				else
-				{
-					return (Mem.Plan+Mem.Programming+Mem.Art+Mem.Sound*2)*(Mem.Story+5)/10;
-				}
+				return Mem.Abilities[Role]*(Mem.Story+5)/10;
 			}
 		}
 	}
@@ -407,64 +264,64 @@ public class FinishProject : MonoBehaviour
 	{
 		List<Character> PjMems = new List<Character> ();
 
-		if(Pj.ProjectManager != null && Pj.ProjectManager.Name == "오키드")
+		if(Pj.PjMems[0] != null && Pj.PjMems[0].Name == "오키드")
 		{
-			if(Pj.Programmer != null)
+			if(Pj.PjMems[1] != null)
 			{
-				PjMems.Add(Pj.Programmer);
+				PjMems.Add(Pj.PjMems[1]);
 			}
-			if(Pj.ArtDirecter != null)
+			if(Pj.PjMems[2] != null)
 			{
-				PjMems.Add(Pj.ArtDirecter);
+				PjMems.Add(Pj.PjMems[2]);
 			}
-			if(Pj.SoundDirecter != null)
+			if(Pj.PjMems[3] != null)
 			{
-				PjMems.Add (Pj.SoundDirecter);
+				PjMems.Add (Pj.PjMems[3]);
 			}
 		}
-		else if(Pj.Programmer != null && Pj.Programmer.Name == "오키드")
+		else if(Pj.PjMems[1] != null && Pj.PjMems[1].Name == "오키드")
 		{
-			if(Pj.ProjectManager != null)
+			if(Pj.PjMems[0] != null)
 			{
-				PjMems.Add(Pj.ProjectManager);
+				PjMems.Add(Pj.PjMems[0]);
 			}
-			if(Pj.ArtDirecter != null)
+			if(Pj.PjMems[2] != null)
 			{
-				PjMems.Add(Pj.ArtDirecter);
+				PjMems.Add(Pj.PjMems[2]);
 			}
-			if(Pj.SoundDirecter != null)
+			if(Pj.PjMems[3] != null)
 			{
-				PjMems.Add (Pj.SoundDirecter);
+				PjMems.Add (Pj.PjMems[3]);
 			}
 		}
-		else if(Pj.ArtDirecter != null && Pj.ArtDirecter.Name == "오키드")
+		else if(Pj.PjMems[2] != null && Pj.PjMems[2].Name == "오키드")
 		{
-			if(Pj.ProjectManager != null)
+			if(Pj.PjMems[0] != null)
 			{
-				PjMems.Add(Pj.ProjectManager);
+				PjMems.Add(Pj.PjMems[0]);
 			}
-			if(Pj.Programmer != null)
+			if(Pj.PjMems[1] != null)
 			{
-				PjMems.Add(Pj.Programmer);
+				PjMems.Add(Pj.PjMems[1]);
 			}
-			if(Pj.SoundDirecter != null)
+			if(Pj.PjMems[3] != null)
 			{
-				PjMems.Add (Pj.SoundDirecter);
+				PjMems.Add (Pj.PjMems[3]);
 			}
 		}
-		else if(Pj.SoundDirecter != null && Pj.SoundDirecter.Name == "오키드")
+		else if(Pj.PjMems[3] != null && Pj.PjMems[3].Name == "오키드")
 		{
-			if(Pj.ProjectManager != null)
+			if(Pj.PjMems[0] != null)
 			{
-				PjMems.Add(Pj.ProjectManager);
+				PjMems.Add(Pj.PjMems[0]);
 			}
-			if(Pj.Programmer != null)
+			if(Pj.PjMems[1] != null)
 			{
-				PjMems.Add(Pj.Programmer);
+				PjMems.Add(Pj.PjMems[1]);
 			}
-			if(Pj.ArtDirecter != null)
+			if(Pj.PjMems[2] != null)
 			{
-				PjMems.Add(Pj.ArtDirecter);
+				PjMems.Add(Pj.PjMems[2]);
 			}
 		}
 
@@ -498,6 +355,22 @@ public class FinishProject : MonoBehaviour
 				Var.NewFriends.Add(PjMems[2]);
 				Var.NewFriends.Add(PjMems[1]);
 			}
+		}
+	}
+
+	void CheckPalbangAch()
+	{
+		if(Var.AchTimesList[3] != 0 && Var.AchTimesList[4] != 0 && Var.AchTimesList[5] != 0 && Var.AchTimesList[6] != 0)
+		{
+			Var.Mng.GetAch(8, 50);
+		}
+	}
+
+	void CheckSuperAch()
+	{
+		if(Var.AchTimesList[3] >= 3 && Var.AchTimesList[4] >= 3 && Var.AchTimesList[5] >= 3 && Var.AchTimesList[6] >= 3)
+		{
+			Var.Mng.GetAch(13, 200);
 		}
 	}
 }

@@ -537,7 +537,7 @@ public class CutScene : MonoBehaviour
 			Character PlanMaster = AfterShuffle[0];
 			foreach(Character Member in Var.Mems)
 			{
-				if(Member.Plan > PlanMaster.Plan)
+				if(Member.Abilities[0] > PlanMaster.Abilities[0])
 				{
 					PlanMaster = Member;
 				}
@@ -642,13 +642,13 @@ public class CutScene : MonoBehaviour
 				Character ProgrammingMaster = AfterShuffle[0];
 				foreach(Character Member in Var.Mems)
 				{
-					if(Member.Programming > ProgrammingMaster.Programming)
+					if(Member.Abilities[1] > ProgrammingMaster.Abilities[1])
 					{
 						ProgrammingMaster = Member;
 					}
 				}
 
-				if(ProgrammingMaster.Programming >= 30)
+				if(ProgrammingMaster.Abilities[1] >= 30)
 				{
 					Notice.SceneText += ProgrammingMaster.Name+Notice.CheckSubjectFinalConsonant1(ProgrammingMaster.Name)+" 프로그래밍 과목에서 A+를 받았다.";
 				}
@@ -1103,33 +1103,33 @@ public class CutScene : MonoBehaviour
 		{
 			foreach(Character Mem in Var.Mems)
 			{
-				Mem.Plan += 3;
+				Mem.Abilities[0] += 3;
 			}
 		}
 		else if(SceneType == SceneTypes.BoardGameJam)
 		{
 			foreach(Character Mem in Var.Mems)
 			{
-				Mem.Plan += 1;
-				Mem.Programming += 1;
-				Mem.Art += 1;
-				Mem.Sound += 1;
+				Mem.Abilities[0] += 1;
+				Mem.Abilities[1] += 1;
+				Mem.Abilities[2] += 1;
+				Mem.Abilities[3] += 1;
 
 				if(Mem.Tal == Character.Talents.Plan)
 				{
-					Mem.Plan += 1;
+					Mem.Abilities[0] += 1;
 				}
 				else if(Mem.Tal == Character.Talents.Programming)
 				{
-					Mem.Programming += 1;
+					Mem.Abilities[1] += 1;
 				}
 				else if(Mem.Tal == Character.Talents.Art)
 				{
-					Mem.Art += 1;
+					Mem.Abilities[2] += 1;
 				}
 				else if(Mem.Tal == Character.Talents.Sound)
 				{
-					Mem.Sound += 1;
+					Mem.Abilities[3] += 1;
 				}
 			}
 		}

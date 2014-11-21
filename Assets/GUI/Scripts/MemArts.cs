@@ -15,27 +15,27 @@ public class MemArts : MonoBehaviour
 	{
 		if(Var.Mems.Count >= Parent.Page*6-5)
 		{
-			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Art;
+			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Abilities[2];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-4)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Art;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Abilities[2];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-3)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Art;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Abilities[2];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-2)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Art;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Abilities[2];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-1)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Art;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Abilities[2];
 		}
 		if(Var.Mems.Count >= Parent.Page*6)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Art;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Abilities[2];
 		}
 	}
 }

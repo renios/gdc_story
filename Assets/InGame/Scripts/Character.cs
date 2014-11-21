@@ -113,13 +113,10 @@ public class Character : MonoBehaviour
 	public Sprite Burung;
 	public Sprite Center;
 	public Sprite Oreo;
-
-	public int Plan;
-	public int Programming;
-	public int Art;
-	public int Sound;
+	
 	public int Loyalty;
 
+	public List <int> Abilities = new List<int>();
 	public List <int> Relationship = new List<int>();
 	public List <Character> Friends = new List<Character> ();
 	public List <Character> Lovers = new List<Character>();
@@ -333,185 +330,185 @@ public class Character : MonoBehaviour
 		
 		if(RandomAbility1 == 0)
 		{
-			Plan = StanAbil*4;
+			Abilities[0] = StanAbil*4;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*2;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 		}
 		else if(RandomAbility1 == 1)
 		{
-			Plan = StanAbil*3;
+			Abilities[0] = StanAbil*3;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*2;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
 		else if(RandomAbility1 == 2)
 		{
-			Plan = StanAbil*2;
+			Abilities[0] = StanAbil*2;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*3;
 				}
 				else
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
 		else if(RandomAbility1 == 3)
 		{
-			Plan = StanAbil;
+			Abilities[0] = StanAbil;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*3;
 				}
 				else
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
@@ -635,8 +632,8 @@ public class Character : MonoBehaviour
 	{
 		if(Name == "변회장")
 		{
-			Plan = 70;
-			Art = 70;
+			Abilities[0] = 70;
+			Abilities[2] = 70;
 
 			Violence = 5;
 			Emotion = 5;
@@ -651,10 +648,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "이유진")
 		{
-			Plan = 250;
-			Programming = 10;
-			Art = 20;
-			Sound = 5;
+			Abilities[0] = 250;
+			Abilities[1] = 10;
+			Abilities[2] = 20;
+			Abilities[3] = 5;
 
 			Violence = 5;
 			Emotion = 5;
@@ -669,10 +666,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "부렁봇")
 		{
-			Plan = 50;
-			Programming = 10;
-			Art = 430;
-			Sound = 50;
+			Abilities[0] = 50;
+			Abilities[1] = 10;
+			Abilities[2] = 430;
+			Abilities[3] = 50;
 
 			Violence = 5;
 			Emotion = 5;
@@ -687,10 +684,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "쎈타")
 		{
-			Plan = 50;
-			Programming = 30;
-			Art = 5;
-			Sound = 430;
+			Abilities[0] = 50;
+			Abilities[1] = 30;
+			Abilities[2] = 5;
+			Abilities[3] = 430;
 
 			Violence = 5;
 			Emotion = 5;
@@ -705,10 +702,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "오레오")
 		{
-			Plan = 200;
-			Programming = 210;
-			Art = 5;
-			Sound = 210;
+			Abilities[0] = 200;
+			Abilities[1] = 210;
+			Abilities[2] = 5;
+			Abilities[3] = 210;
 
 			Violence = 5;
 			Emotion = 5;
@@ -723,10 +720,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "오키드")
 		{
-			Plan = 20;
-			Programming = 150;
-			Art = 5;
-			Sound = 150;
+			Abilities[0] = 20;
+			Abilities[1] = 150;
+			Abilities[2] = 5;
+			Abilities[3] = 150;
 
 			Violence = 5;
 			Emotion = 6;
@@ -741,10 +738,10 @@ public class Character : MonoBehaviour
 		}
 		else if(Name == "김고니")
 		{
-			Plan = 25;
-			Programming = 200;
-			Art = 200;
-			Sound = 10;
+			Abilities[0] = 25;
+			Abilities[1] = 200;
+			Abilities[2] = 200;
+			Abilities[3] = 10;
 
 			Violence = 5;
 			Emotion = 5;

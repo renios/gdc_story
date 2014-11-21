@@ -99,10 +99,10 @@ public class SaveSlots : MonoBehaviour
 			{
 				PlayerPrefs.SetInt("Slot"+SlotNumber+"Gender"+Mem.MemberNumber, 0);
 			}
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Plan"+Mem.MemberNumber, Mem.Plan);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Programming"+Mem.MemberNumber, Mem.Programming);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Art"+Mem.MemberNumber, Mem.Art);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Sound"+Mem.MemberNumber, Mem.Sound);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Plan"+Mem.MemberNumber, Mem.Abilities[0]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Programming"+Mem.MemberNumber, Mem.Abilities[1]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Art"+Mem.MemberNumber, Mem.Abilities[2]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Sound"+Mem.MemberNumber, Mem.Abilities[3]);
 			PlayerPrefs.SetInt ("Slot"+SlotNumber+"Loyalty"+Mem.MemberNumber, Mem.Loyalty);
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"Number"+Mem.MemberNumber, Mem.MemberNumber);
 

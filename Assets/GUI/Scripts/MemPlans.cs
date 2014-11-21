@@ -15,27 +15,27 @@ public class MemPlans : MonoBehaviour
 	{
 		if(Var.Mems.Count >= Parent.Page*6-5)
 		{
-			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Plan;
+			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Abilities[0];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-4)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Plan;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Abilities[0];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-3)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Plan;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Abilities[0];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-2)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Plan;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Abilities[0];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-1)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Plan;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Abilities[0];
 		}
 		if(Var.Mems.Count >= Parent.Page*6)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Plan;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Abilities[0];
 		}
 	}
 }

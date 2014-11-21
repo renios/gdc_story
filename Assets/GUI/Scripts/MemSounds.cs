@@ -15,27 +15,27 @@ public class MemSounds : MonoBehaviour
 	{
 		if(Var.Mems.Count >= Parent.Page*6-5)
 		{
-			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Sound;
+			Text.text = ""+Var.Mems [Parent.Page * 6 - 6].Abilities[3];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-4)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Sound;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 5].Abilities[3];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-3)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Sound;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 4].Abilities[3];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-2)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Sound;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 3].Abilities[3];
 		}
 		if(Var.Mems.Count >= Parent.Page*6-1)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Sound;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 2].Abilities[3];
 		}
 		if(Var.Mems.Count >= Parent.Page*6)
 		{
-			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Sound;
+			Text.text += "\n"+Var.Mems [Parent.Page * 6 - 1].Abilities[3];
 		}
 	}
 }

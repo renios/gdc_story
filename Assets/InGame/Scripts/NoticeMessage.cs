@@ -1610,6 +1610,26 @@ public class NoticeMessage : MonoBehaviour
 				Var.Fame -= 20;
 			}
 		}
+		if(Var.Fame >= 200)
+		{
+			if(Var.AchBoolList[21] == false)
+			{
+				Var.Mng.GetAch(21, 0);
+			}
+
+			if(Var.Fame >= 500)
+			{
+				if(Var.AchBoolList[22] == false)
+				{
+					Var.Mng.GetAch(22, 0);
+				}
+
+				if(Var.Fame >= 1000)
+				{
+					Var.Mng.GetAch(23, 0);
+				}
+			}
+		}
 
 		if(Var.NewAchs.Count != 0)
 		{
@@ -2117,7 +2137,7 @@ public class NoticeMessage : MonoBehaviour
 		{
 			if(InfoMember.Chief == false)
 			{
-				Text.text = InfoMember.Name+"\n\n\n\n\n"+InfoMember.Plan+"\n"+InfoMember.Programming+"\n"+InfoMember.Art+"\n"+InfoMember.Sound+"\n\n"+InfoMember.Loyalty;
+				Text.text = InfoMember.Name+"\n\n\n\n\n"+InfoMember.Abilities[0]+"\n"+InfoMember.Abilities[1]+"\n"+InfoMember.Abilities[2]+"\n"+InfoMember.Abilities[3]+"\n\n"+InfoMember.Loyalty;
 			}
 			else
 			{
