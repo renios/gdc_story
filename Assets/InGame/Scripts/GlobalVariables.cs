@@ -31,7 +31,7 @@ public class GlobalVariables
 	public int DecLoyalHard = 5;
 	public int DecLoyalEasy = 3;
 	
-	public int DinCnt;
+	public int DrkCnt;
 	public int MTCnt;
 	
 	public float TalentModifier = 1.3f;

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public Character Jiwon;
 	public Character Chief;
 	
-	public Character NewMemberPrefab;
+	public Character NewMemPf;
 	public Character NewMember;
 	
 	public NoticeMessage NoticePrefab;
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 			
 			for(int i = 0; i < PlayerPrefs.GetInt("Slot"+Slot+"Members"); i++)
 			{
-				NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+				NewMember = Instantiate(NewMemPf, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemPf.transform.position.z), Quaternion.identity) as Character;
 				NewMember.SetPosition();
 				NewMember.Loaded = true;
 				
@@ -234,11 +234,11 @@ public class GameManager : MonoBehaviour
 			CreateNormMem(2);
 			Var.NewMembers.Clear();
 			
-			for(int i=0; i<5; i++)
+			for(int i=0; i<7; i++)
 			{
 				Var.AchTimesList.Add(0);
 			}
-			for(int i=0; i<17; i++)
+			for(int i=0; i<24; i++)
 			{
 				Var.AchBoolList.Add (false);
 			}
@@ -260,11 +260,11 @@ public class GameManager : MonoBehaviour
 	{
 		int Slot = PlayerPrefs.GetInt ("LoadedSlot");
 		
-		for(int i=0; i<5; i++)
+		for(int i=0; i<7; i++)
 		{
 			Var.AchTimesList.Add (PlayerPrefs.GetInt("Slot"+Slot+"AchTimes"+i));
 		}
-		for(int i=0; i<17; i++)
+		for(int i=0; i<24; i++)
 		{
 			if(PlayerPrefs.GetInt("Slot"+Slot+"AchBool"+i) == 1)
 			{
@@ -436,7 +436,7 @@ public class GameManager : MonoBehaviour
 		
 		SetPositionAll ();
 		
-		Var.DinCnt = PlayerPrefs.GetInt ("Slot"+Slot+"DinCnt");
+		Var.DrkCnt = PlayerPrefs.GetInt ("Slot"+Slot+"DinCnt");
 		Var.MTCnt = PlayerPrefs.GetInt ("Slot"+Slot+"MTCnt");
 		if(PlayerPrefs.GetInt("Slot"+Slot+"TutorialPass") == 1)
 		{
@@ -494,7 +494,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < Count; i++)
 		{
-			NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+			NewMember = Instantiate(NewMemPf, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemPf.transform.position.z), Quaternion.identity) as Character;
 			
 			int NewMemberGender = UnityEngine.Random.Range(0, 2);
 			if(NewMemberGender == 0)
@@ -601,5 +601,30 @@ public class GameManager : MonoBehaviour
 		{
 			Mem.PrevAct2 = Character.ActionIndex.Piano;
 		}
+	}
+
+	public void GetAch(int Num, int FameChange)
+	{
+		if(Num <= 6)
+		{
+			Var.AchTimesList[Num] += 1;
+		}
+		else
+		{
+			Var.AchBoolList[Num-7] = true;
+		}
+
+		Var.NewAchs.Add (Num);
+		Var.Fame += FameChange;
+		PlayerPrefs.SetInt("Ach"+Num, 1);
+	}
+
+	public void MakeNewSpecMem(bool NewMemGender, Character.SpecialNameIndex EnumName, string StringName)
+	{
+		NewMember = Instantiate (NewMemPf) as Character;
+		NewMember.Special = true;
+		NewMember.Gender = NewMemGender;
+		NewMember.SpecialName = EnumName;
+		Var.NewSpecMems.Add (StringName);
 	}
 }

@@ -91,14 +91,14 @@ public class PopupOX : MonoBehaviour
 						Var.Mng.Room.Level = 2;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room2;
 
-						if(Var.AchBoolList[14] == false)
+						if(Var.AchBoolList[18] == false)
 						{
-							Var.AchBoolList[14] = true;
-							Var.NewAchs.Add (19);
-							PlayerPrefs.SetInt("Ach19", 1);
+							Var.AchBoolList[18] = true;
+							Var.NewAchs.Add (25);
+							PlayerPrefs.SetInt("Ach25", 1);
 							Var.Fame += 50;
 
-							Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
+							Var.Mng.NewMember = Instantiate(Var.Mng.NewMemPf) as Character;
 							Var.Mng.NewMember.Special = true;
 							Var.Mng.NewMember.Gender = false;
 							Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.이유진;
@@ -128,9 +128,9 @@ public class PopupOX : MonoBehaviour
 						Var.Mng.Room.Level = 3;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room3;
 						
-						Var.AchBoolList[15] = true;
-						Var.NewAchs.Add (20);
-						PlayerPrefs.SetInt("Ach20", 1);
+						Var.AchBoolList[19] = true;
+						Var.NewAchs.Add (26);
+						PlayerPrefs.SetInt("Ach26", 1);
 						Var.Fame += 100;
 
 						Notice.NoticeType = NoticeMessage.NoticeTypes.RoomUpgrade;
@@ -156,9 +156,9 @@ public class PopupOX : MonoBehaviour
 						Var.Mng.Room.Level = 4;
 						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room4;
 						
-						Var.AchBoolList[16] = true;
-						Var.NewAchs.Add (21);
-						PlayerPrefs.SetInt("Ach21", 1);
+						Var.AchBoolList[20] = true;
+						Var.NewAchs.Add (27);
+						PlayerPrefs.SetInt("Ach27", 1);
 
 						Var.Fame += 200;
 

@@ -97,13 +97,13 @@ public class CutScene : MonoBehaviour
 			Var.WinPic = true;
 		}
 
-		if(Var.AchBoolList[13] == false)
+		if(Var.AchBoolList[17] == false)
 		{
 			if(Var.SprPic == true && Var.SumPic == true && Var.AutPic == true && Var.WinPic == true)
 			{
-				Var.AchBoolList[13] = true;
-				Var.NewAchs.Add(18);
-				PlayerPrefs.SetInt("Ach18", 1);
+				Var.AchBoolList[17] = true;
+				Var.NewAchs.Add(24);
+				PlayerPrefs.SetInt("Ach24", 1);
 				Var.Fame += 50;
 			}
 		}

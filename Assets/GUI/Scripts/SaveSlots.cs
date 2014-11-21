@@ -59,11 +59,11 @@ public class SaveSlots : MonoBehaviour
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"CookLV", Var.Mng.Ck.Level);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"PiaLV", Var.Mng.Pia.Level);
 		
-		for(int i=0; i<5; i++)
+		for(int i=0; i<7; i++)
 		{
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"AchTimes"+i, Var.AchTimesList[i]);
 		}
-		for(int i=0; i<17; i++)
+		for(int i=0; i<24; i++)
 		{
 			if(Var.AchBoolList[i] == true)
 			{
@@ -176,7 +176,7 @@ public class SaveSlots : MonoBehaviour
 			}
 		}
 		
-		PlayerPrefs.SetInt("Slot"+SlotNumber+"DinCnt", Var.DinCnt);
+		PlayerPrefs.SetInt("Slot"+SlotNumber+"DinCnt", Var.DrkCnt);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"MTCnt", Var.MTCnt);
 		if(Var.TutorialPass == true)
 		{

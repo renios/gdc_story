@@ -1525,7 +1525,7 @@ public class NoticeMessage : MonoBehaviour
 
 	void CheckAchs()
 	{
-		if(Var.AchBoolList[6] == false)
+		if(Var.AchBoolList[10] == false)
 		{
 			int CpMem = 0;
 			foreach(Character Mem in Var.Mems)
@@ -1538,19 +1538,19 @@ public class NoticeMessage : MonoBehaviour
 
 			if(CpMem >= 8)
 			{
-				Var.AchBoolList[6] = true;
+				Var.AchBoolList[10] = true;
 				Var.Fame += 50;
-				Var.NewAchs.Add (11);
-				PlayerPrefs.SetInt("Ach11", 1);
+				Var.NewAchs.Add (17);
+				PlayerPrefs.SetInt("Ach17", 1);
 
-				Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab, new Vector3(0, 0, -2-(Var.Mems.Count*0.02f)), Quaternion.identity) as Character;
+				Var.Mng.NewMember = Instantiate(Var.Mng.NewMemPf, new Vector3(0, 0, -2-(Var.Mems.Count*0.02f)), Quaternion.identity) as Character;
 				Var.Mng.NewMember.Special = true;
 				Var.Mng.NewMember.Gender = true;
 				Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.오레오;
 				Var.NewSpecMems.Add ("오레오");
 			}
 		}
-		if(Var.AchBoolList[7] == false)
+		if(Var.AchBoolList[11] == false)
 		{
 			bool Clr = true;
 			foreach(Character Mem in Var.Mems)
@@ -1563,13 +1563,13 @@ public class NoticeMessage : MonoBehaviour
 
 			if(Clr == true)
 			{
-				Var.AchBoolList[7] = true;
-				Var.NewAchs.Add (12);
-				PlayerPrefs.SetInt("Ach12", 1);
+				Var.AchBoolList[11] = true;
+				Var.NewAchs.Add (18);
+				PlayerPrefs.SetInt("Ach18", 1);
 				Var.Fame += 30;
 			}
 		}
-		if(Var.AchBoolList[8] == false)
+		if(Var.AchBoolList[12] == false)
 		{
 			if(Var.Mems.Count >= 10)
 			{
@@ -1584,11 +1584,30 @@ public class NoticeMessage : MonoBehaviour
 
 				if(Clr == true)
 				{
-					Var.AchBoolList[8] = true;
-					Var.NewAchs.Add (13);
-					PlayerPrefs.SetInt("Ach13", 1);
+					Var.AchBoolList[12] = true;
+					Var.NewAchs.Add (19);
+					PlayerPrefs.SetInt("Ach19", 1);
 					Var.Fame += 70;
 				}
+			}
+		}
+		if(Var.AchBoolList[13] == false)
+		{
+			bool Clr = false;
+			foreach(Character Mem in Var.Mems)
+			{
+				if(Mem.Lovers.Count >= 2)
+				{
+					Clr = true;
+				}
+			}
+
+			if(Clr == true)
+			{
+				Var.AchBoolList[13] = true;
+				Var.NewAchs.Add (20);
+				PlayerPrefs.SetInt("Ach20", 1);
+				Var.Fame -= 20;
 			}
 		}
 
@@ -1677,28 +1696,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.PlanMems[1]);
 					Var.PlanMems[0].Lovers.Add (Var.PlanMems[1]);
 					Var.PlanMems[1].Lovers.Add (Var.PlanMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.PlanMems[0].Lovers.Count == 2 || Var.PlanMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
 
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.PlanMems[0].Gender == Var.PlanMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+					CheckAchDeepDark(Var.PlanMems[0], Var.PlanMems[1]);
 				}
 			}
 			foreach(Character PlanMember in Var.PlanMems)
@@ -1733,27 +1732,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.ProgramMems[1]);
 					Var.ProgramMems[0].Lovers.Add (Var.ProgramMems[1]);
 					Var.ProgramMems[1].Lovers.Add (Var.ProgramMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.ProgramMems[0].Lovers.Count == 2 || Var.ProgramMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.ProgramMems[0].Gender == Var.ProgramMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.ProgramMems[0], Var.ProgramMems[1]);
 				}
 			}
 			foreach(Character ProgrammingMember in Var.ProgramMems)
@@ -1788,27 +1768,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.DrawMems[1]);
 					Var.DrawMems[0].Lovers.Add (Var.DrawMems[1]);
 					Var.DrawMems[1].Lovers.Add (Var.DrawMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.DrawMems[0].Lovers.Count == 2 || Var.DrawMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.DrawMems[0].Gender == Var.DrawMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.DrawMems[0], Var.DrawMems[1]);
 				}
 			}
 			foreach(Character DrawMember in Var.DrawMems)
@@ -1843,27 +1804,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.ComposeMems[1]);
 					Var.ComposeMems[0].Lovers.Add (Var.ComposeMems[1]);
 					Var.ComposeMems[1].Lovers.Add (Var.ComposeMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.ComposeMems[0].Lovers.Count == 2 || Var.ComposeMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.ComposeMems[0].Gender == Var.ComposeMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.ComposeMems[0], Var.ComposeMems[1]);
 				}
 			}
 			foreach(Character ComposeMember in Var.ComposeMems)
@@ -1898,27 +1840,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.BdGmMems[1]);
 					Var.BdGmMems[0].Lovers.Add (Var.BdGmMems[1]);
 					Var.BdGmMems[1].Lovers.Add (Var.BdGmMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.BdGmMems[0].Lovers.Count == 2 || Var.BdGmMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.BdGmMems[0].Gender == Var.BdGmMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.BdGmMems[0], Var.BdGmMems[1]);
 				}
 			}
 			foreach(Character BdGmMem in Var.BdGmMems)
@@ -1953,27 +1876,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.WatchMems[1]);
 					Var.WatchMems[0].Lovers.Add (Var.WatchMems[1]);
 					Var.WatchMems[1].Lovers.Add (Var.WatchMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.WatchMems[0].Lovers.Count == 2 || Var.WatchMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.WatchMems[0].Gender == Var.WatchMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.WatchMems[0], Var.WatchMems[1]);
 				}
 			}
 			foreach(Character WatchMem in Var.WatchMems)
@@ -2011,27 +1915,8 @@ public class NoticeMessage : MonoBehaviour
 					Var.NewLovers.Add (Var.GameMems[1]);
 					Var.GameMems[0].Lovers.Add (Var.GameMems[1]);
 					Var.GameMems[1].Lovers.Add (Var.GameMems[0]);
-					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.GameMems[0].Lovers.Count == 2 || Var.GameMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.GameMems[0].Gender == Var.GameMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+
+					CheckAchDeepDark(Var.GameMems[0], Var.GameMems[1]);
 				}
 			}
 			foreach(Character GameMem in Var.GameMems)
@@ -2067,26 +1952,7 @@ public class NoticeMessage : MonoBehaviour
 					Var.BookMems[0].Lovers.Add (Var.BookMems[1]);
 					Var.BookMems[1].Lovers.Add (Var.BookMems[0]);
 					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.BookMems[0].Lovers.Count == 2 || Var.BookMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.BookMems[0].Gender == Var.BookMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+					CheckAchDeepDark(Var.BookMems[0], Var.BookMems[1]);
 				}
 			}
 			foreach(Character BookMem in Var.BookMems)
@@ -2122,26 +1988,7 @@ public class NoticeMessage : MonoBehaviour
 					Var.CookMems[0].Lovers.Add (Var.CookMems[1]);
 					Var.CookMems[1].Lovers.Add (Var.CookMems[0]);
 					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.CookMems[0].Lovers.Count == 2 || Var.CookMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.CookMems[0].Gender == Var.CookMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+					CheckAchDeepDark(Var.CookMems[0], Var.CookMems[1]);
 				}
 			}
 			foreach(Character CookMem in Var.CookMems)
@@ -2177,26 +2024,7 @@ public class NoticeMessage : MonoBehaviour
 					Var.PiaMems[0].Lovers.Add (Var.PiaMems[1]);
 					Var.PiaMems[1].Lovers.Add (Var.PiaMems[0]);
 					
-					if(Var.AchBoolList[9] == false)
-					{
-						if(Var.PiaMems[0].Lovers.Count == 2 || Var.PiaMems[1].Lovers.Count == 2)
-						{
-							Var.AchBoolList[9] = true;
-							Var.NewAchs.Add (14);
-							PlayerPrefs.SetInt("Ach14", 1);
-							Var.Fame -= 20;
-						}
-					}
-					if(Var.AchBoolList[10] == false)
-					{
-						if(Var.PiaMems[0].Gender == Var.PiaMems[1].Gender)
-						{
-							Var.AchBoolList[10] = true;
-							Var.NewAchs.Add (15);
-							PlayerPrefs.SetInt("Ach15", 1);
-							Var.Fame += 30;
-						}
-					}
+					CheckAchDeepDark(Var.PiaMems[0], Var.PiaMems[1]);
 				}
 			}
 			foreach(Character PiaMem in Var.PiaMems)
@@ -2436,6 +2264,20 @@ public class NoticeMessage : MonoBehaviour
 		else
 		{
 			return "<하스스톤>을";
+		}
+	}
+
+	void CheckAchDeepDark(Character MemA, Character MemB)
+	{
+		if(Var.AchBoolList[14] == false)
+		{
+			if(MemA.Gender == MemB.Gender)
+			{
+				Var.AchBoolList[14] = true;
+				Var.NewAchs.Add (21);
+				PlayerPrefs.SetInt("Ach21", 1);
+				Var.Fame += 30;
+			}
 		}
 	}
 }
