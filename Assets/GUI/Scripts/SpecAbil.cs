@@ -15,6 +15,14 @@ public class SpecAbil : MonoBehaviour
 		Eugene,
 		Center,
 		Oreo,
+		Worker,
+		Bridge,
+		M,
+		Yomi,
+		Tuna,
+		Soon,
+		PenPen,
+		Nemo,
 	}
 
 	public SpecAbils Special;
@@ -29,10 +37,6 @@ public class SpecAbil : MonoBehaviour
 		{
 			Text.text = "부렁봇의 충성도가 크게 증가합니다!";
 		}
-		else if(Special == SpecAbils.Gon)
-		{
-			Text.text = "김고니가 제멋대로 행동합니다!";
-		}
 		else if(Special == SpecAbils.Eugene)
 		{
 			Text.text = "이유진이 방학 동안 사라집니다!";
@@ -44,6 +48,22 @@ public class SpecAbil : MonoBehaviour
 		else if(Special == SpecAbils.Oreo)
 		{
 			Text.text = "오레오의 능력으로 더 저렴하게 구입합니다!";
+		}
+		else if(Special == SpecAbils.Worker)
+		{
+			Text.text = "??";
+		}
+		else if(Special == SpecAbils.Yomi)
+		{
+			Text.text = "요미가 일하다 말고 징징거리느라 능력치가 떨어집니다!";
+		}
+		else if(Special == SpecAbils.PenPen)
+		{
+			Text.text = "펜펜이 술을 마시고 한동안 각성 상태가 됩니다!";
+		}
+		else if(Special == SpecAbils.Nemo)
+		{
+			Text.text = "네모누리가 혼자 활동하며 편안함을 느낍니다.";
 		}
 		
 		yield return new WaitForSeconds(2.0f);

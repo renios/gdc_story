@@ -142,10 +142,11 @@ MonoBehaviour:
   ProgrammingAbility: 0
   ArtAbility: 0
   SoundAbility: 0
-  ProjectManager: {fileID: 0}
-  Programmer: {fileID: 0}
-  ArtDirecter: {fileID: 0}
-  SoundDirecter: {fileID: 0}
+  PjMems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Renderer: {fileID: 21200000}
   Project1: {fileID: 21300000, guid: b8e0ab6154f061e4997bbd08c0ba230c, type: 3}
   Project2: {fileID: 21300000, guid: 7d8bcaefc5eb5f04fa83647744ca7ae7, type: 3}

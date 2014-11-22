@@ -71,11 +71,6 @@ public class NoticeMessage : MonoBehaviour
 	void Start () 
 	{
 		SetMessageText ();
-
-		if(Var.NewAchs.Count != 0 && NoticeType != NoticeTypes.ProjectResult)
-		{
-			NewAchIS = Instantiate(NewAchPF) as NewAch;
-		}
 	}
 
 	void OnMouseDown()
@@ -1456,9 +1451,6 @@ public class NoticeMessage : MonoBehaviour
 		{
 			if(Mem.Name == "김고니")
 			{
-				SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
-				SpecEffect.Special = SpecAbil.SpecAbils.Gon;
-
 				Mem.CancelCurrentAction();
 
 				List<Character.ActionIndex> AvailableActs = new List<Character.ActionIndex>();
@@ -1701,12 +1693,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.PlanMems[0].Name+CheckSubjectFinalConsonant1(Var.PlanMems[0].Name)+" "+Var.PlanMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.PlanMems[1].Name)+" 함께 기획을 했다.\n";
-				Var.PlanMems[0].Relationship[Var.PlanMems[1].MemberNumber] += 5;
-				Var.PlanMems[1].Relationship[Var.PlanMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.PlanMems[0], Var.PlanMems[1], 5);
+				CheckSoonAbility(Var.PlanMems);
 
 				if(CheckLoversToBool(Var.PlanMems[0], Var.PlanMems[1]) == false)
 				{
-					if(RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[0].ReqRelationToLover && RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[0].ReqRelationToLover() && RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.PlanMems[0], Var.PlanMems[1]);
 						CheckAchDeepDark(Var.PlanMems[0], Var.PlanMems[1]);
@@ -1737,12 +1730,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.ProgramMems[0].Name+CheckSubjectFinalConsonant1(Var.ProgramMems[0].Name)+" "+Var.ProgramMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.ProgramMems[1].Name)+" 함께 프로그래밍 공부를 하였다.\n";
-				Var.ProgramMems[0].Relationship[Var.ProgramMems[1].MemberNumber] += 5;
-				Var.ProgramMems[1].Relationship[Var.ProgramMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.ProgramMems[0], Var.ProgramMems[1], 5);
+				CheckSoonAbility(Var.ProgramMems);
 
 				if(CheckLoversToBool(Var.ProgramMems[0], Var.ProgramMems[1]) == false)
 				{
-					if(RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[0].ReqRelationToLover && RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[0].ReqRelationToLover() && RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.ProgramMems[0], Var.ProgramMems[1]);
 						CheckAchDeepDark(Var.ProgramMems[0], Var.ProgramMems[1]);
@@ -1773,12 +1767,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.DrawMems[0].Name+CheckSubjectFinalConsonant1(Var.DrawMems[0].Name)+" "+Var.DrawMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.DrawMems[1].Name)+" 함께 그림을 그렸다.\n";
-				Var.DrawMems[0].Relationship[Var.DrawMems[1].MemberNumber] += 5;
-				Var.DrawMems[1].Relationship[Var.DrawMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.DrawMems[0], Var.DrawMems[1], 5);
+				CheckSoonAbility(Var.DrawMems);
 
 				if(CheckLoversToBool(Var.DrawMems[0], Var.DrawMems[1]) == false)
 				{
-					if(RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[0].ReqRelationToLover && RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[0].ReqRelationToLover() && RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.DrawMems[0], Var.DrawMems[1]);
 						CheckAchDeepDark(Var.DrawMems[0], Var.DrawMems[1]);
@@ -1809,12 +1804,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.ComposeMems[0].Name+CheckSubjectFinalConsonant1(Var.ComposeMems[0].Name)+" "+Var.ComposeMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.ComposeMems[1].Name)+" 함께 작곡을 했다.\n";
-				Var.ComposeMems[0].Relationship[Var.ComposeMems[1].MemberNumber] += 5;
-				Var.ComposeMems[1].Relationship[Var.ComposeMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.ComposeMems[0], Var.ComposeMems[1], 5);
+				CheckSoonAbility(Var.ComposeMems);
 
 				if(CheckLoversToBool(Var.ComposeMems[0], Var.ComposeMems[1]) == false)
 				{
-					if(RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[0].ReqRelationToLover && RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[0].ReqRelationToLover() && RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.ComposeMems[0], Var.ComposeMems[1]);
 						CheckAchDeepDark(Var.ComposeMems[0], Var.ComposeMems[1]);
@@ -1845,12 +1841,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.BdGmMems[0].Name+CheckSubjectFinalConsonant1(Var.BdGmMems[0].Name)+" "+Var.BdGmMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.BdGmMems[1].Name)+" 함께 보드게임을 했다.\n";
-				Var.BdGmMems[0].Relationship[Var.BdGmMems[1].MemberNumber] += 5;
-				Var.BdGmMems[1].Relationship[Var.BdGmMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.BdGmMems[0], Var.BdGmMems[1], 5);
+				CheckSoonAbility(Var.BdGmMems);
 
 				if(CheckLoversToBool(Var.BdGmMems[0], Var.BdGmMems[1]) == false)
 				{
-					if(RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[0].ReqRelationToLover && RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[0].ReqRelationToLover() && RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.BdGmMems[0], Var.BdGmMems[1]);
 						CheckAchDeepDark(Var.BdGmMems[0], Var.BdGmMems[1]);
@@ -1881,12 +1878,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.WatchMems[0].Name+CheckSubjectFinalConsonant1(Var.WatchMems[0].Name)+" "+Var.WatchMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.WatchMems[1].Name)+" 함께 TV를 봤다.\n";
-				Var.WatchMems[0].Relationship[Var.WatchMems[1].MemberNumber] += 5;
-				Var.WatchMems[1].Relationship[Var.WatchMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.WatchMems[0], Var.WatchMems[1], 5);
+				CheckSoonAbility(Var.PlanMems);
 
 				if(CheckLoversToBool(Var.WatchMems[0], Var.WatchMems[1]) == false)
 				{
-					if(RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[0].ReqRelationToLover && RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[0].ReqRelationToLover() && RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.WatchMems[0], Var.WatchMems[1]);
 						CheckAchDeepDark(Var.WatchMems[0], Var.WatchMems[1]);
@@ -1920,12 +1918,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.GameMems[0].Name+CheckSubjectFinalConsonant1(Var.GameMems[0].Name)+" "+Var.GameMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.GameMems[1].Name)+" 함께 "+RandomGameName(GameNumber)+" 했다.\n";
-				Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] += 5;
-				Var.GameMems[1].Relationship[Var.GameMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.GameMems[0], Var.GameMems[1], 5);
+				CheckSoonAbility(Var.GameMems);
 
 				if(CheckLoversToBool(Var.GameMems[0], Var.GameMems[1]) == false)
 				{
-					if(RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[0].ReqRelationToLover && RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[0].ReqRelationToLover() && RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.GameMems[0], Var.GameMems[1]);
 						CheckAchDeepDark(Var.GameMems[0], Var.GameMems[1]);
@@ -1956,12 +1955,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.BookMems[0].Name+CheckSubjectFinalConsonant1(Var.BookMems[0].Name)+" "+Var.BookMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.BookMems[1].Name)+" 함께 독서를 했다.\n";
-				Var.BookMems[0].Relationship[Var.BookMems[1].MemberNumber] += 5;
-				Var.BookMems[1].Relationship[Var.BookMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.BookMems[0], Var.BookMems[1], 5);
+				CheckSoonAbility(Var.BookMems);
 
 				if(CheckLoversToBool(Var.BookMems[0], Var.BookMems[1]) == false)
 				{
-					if(RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[0].ReqRelationToLover && RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[0].ReqRelationToLover() && RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.BookMems[0], Var.BookMems[1]);
 						CheckAchDeepDark(Var.BookMems[0], Var.BookMems[1]);
@@ -1992,12 +1992,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.CookMems[0].Name+CheckSubjectFinalConsonant1(Var.CookMems[0].Name)+" "+Var.CookMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.CookMems[1].Name)+" 함께 요리를 했다.\n";
-				Var.CookMems[0].Relationship[Var.CookMems[1].MemberNumber] += 5;
-				Var.CookMems[1].Relationship[Var.CookMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.CookMems[0], Var.CookMems[1], 5);
+				CheckSoonAbility(Var.CookMems);
 
 				if(CheckLoversToBool(Var.CookMems[0], Var.CookMems[1]) == false)
 				{
-					if(RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[0].ReqRelationToLover && RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[0].ReqRelationToLover() && RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.CookMems[0], Var.CookMems[1]);
 						CheckAchDeepDark(Var.CookMems[0], Var.CookMems[1]);
@@ -2028,12 +2029,13 @@ public class NoticeMessage : MonoBehaviour
 			{
 				Text.text += Var.PiaMems[0].Name+CheckSubjectFinalConsonant1(Var.PiaMems[0].Name)+" "+Var.PiaMems[1].Name;
 				Text.text += CheckTogetherFinalConsonant(Var.PiaMems[1].Name)+" 함께 피아노를 쳤다.\n";
-				Var.PiaMems[0].Relationship[Var.PiaMems[1].MemberNumber] += 5;
-				Var.PiaMems[1].Relationship[Var.PiaMems[0].MemberNumber] += 5;
+
+				RelationUp(Var.PiaMems[0], Var.PiaMems[1], 5);
+				CheckSoonAbility(Var.PiaMems);
 
 				if(CheckLoversToBool(Var.PiaMems[0], Var.PiaMems[1]) == false)
 				{
-					if(RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[0].ReqRelationToLover && RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[1].ReqRelationToLover)
+					if(RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[0].ReqRelationToLover() && RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[1].ReqRelationToLover())
 					{
 						AddNewLovers(Var.PiaMems[0], Var.PiaMems[1]);
 						CheckAchDeepDark(Var.PiaMems[0], Var.PiaMems[1]);
@@ -2154,6 +2156,10 @@ public class NoticeMessage : MonoBehaviour
 				foreach(Character Member in Var.Mems)
 				{
 					Member.Loyalty += GroupActivityLoyalty(Var.GroupActivityType, Member.Name);
+					if(Member.Name == "강참치")
+					{
+						Member.Controllable = false;
+					}
 				}
 				Var.Money -= GroupActivityCost(Var.GroupActivityType);
 				Text.text = "동아리 회원들은 "+GroupResult(Var.GroupActivityType);
@@ -2236,6 +2242,23 @@ public class NoticeMessage : MonoBehaviour
 		}
 	}
 
+	void RelationUp(Character A, Character B, int Change)
+	{
+		A.Relationship [B.MemberNumber] += Change;
+		B.Relationship [A.MemberNumber] += Change;
+	}
+
+	void CheckSoonAbility(List<Character> ActMemList)
+	{
+		foreach(Character Mem in ActMemList)
+		{
+			if(Mem.Name == "퐝순" && ActMemList[0].Gender == ActMemList[1].Gender)
+			{
+				RelationUp(ActMemList[0], ActMemList[1], 5);
+			}
+		}
+	}
+
 	int RelationBetween(Character A, Character B)
 	{
 		if(A.Relationship[B.MemberNumber] == B.Relationship[A.MemberNumber])
@@ -2245,6 +2268,7 @@ public class NoticeMessage : MonoBehaviour
 		else
 		{
 			Debug.LogError("Relation Between "+A.Name+" and "+B.Name+" don't correct.");
+			return 0;
 		}
 	}
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class Project : MonoBehaviour 
 {	
 	GlobalVariables Var = GlobalVariables.GetInstance ();
@@ -15,11 +14,6 @@ public class Project : MonoBehaviour
 	public int ProgrammingAbility;
 	public int ArtAbility;
 	public int SoundAbility;
-
-	//public Character PjMems[0];
-	//public Character PjMems[1];
-	//public Character PjMems[2];
-	//public Character PjMems[3];
 
 	public List<Character> PjMems = new List<Character> ();
 

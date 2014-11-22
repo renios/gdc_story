@@ -129,6 +129,7 @@ public class GroupActivityCollider : MonoBehaviour
 						Var.Mng.NewMember.Special = true;
 						Var.Mng.NewMember.Gender = true;
 						Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.김고니;
+						Var.Mng.NewMember.Controllable = false;
 						Var.NewSpecMems.Add ("김고니");
 					}
 				}

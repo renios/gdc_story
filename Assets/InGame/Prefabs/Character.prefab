@@ -180,6 +180,7 @@ MonoBehaviour:
   PantsB: 0
   Special: 0
   Gender: 0
+  Controllable: 1
   Violence: 0
   Emotion: 0
   Strategy: 0
@@ -219,6 +220,15 @@ MonoBehaviour:
   Center: {fileID: 21300000, guid: 9fd859169a3c13d4b8cfad727d92de56, type: 3}
   Oreo: {fileID: 21300000, guid: 41d1ab2e7f7a7fe4782a1e517aabbdc6, type: 3}
   Takuho: {fileID: 0}
+  Worker: {fileID: 0}
+  Bridge: {fileID: 0}
+  Moon: {fileID: 0}
+  Yomi: {fileID: 0}
+  Tuna: {fileID: 0}
+  Soon: {fileID: 0}
+  Penpen: {fileID: 0}
+  Nemo: {fileID: 0}
+  Troll: {fileID: 0}
   Loyalty: 0
   Abilities: 00000000000000000000000000000000
   Relationship: 

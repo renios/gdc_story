@@ -25,6 +25,9 @@ public class Character : MonoBehaviour
 	public bool Special;
 	public bool Gender;
 
+	public bool Controllable;
+	public int UnControllableDuration;
+
 	public int Violence;
 	public int Emotion;
 	public int Strategy;
@@ -68,6 +71,7 @@ public class Character : MonoBehaviour
 		퐝순,
 		펜펜,
 		네모누리,
+		트롤러,
 	}
 	public SpecialNameIndex SpecialName;
 	public string Name;
@@ -131,6 +135,7 @@ public class Character : MonoBehaviour
 	public Sprite Soon;
 	public Sprite Penpen;
 	public Sprite Nemo;
+	public Sprite Troll;
 	
 	public int Loyalty;
 	
@@ -250,10 +255,6 @@ public class Character : MonoBehaviour
 			}
 		}
 
-		if(Name == "김고니")
-		{
-			Collider.enabled = false;
-		}
 		transform.Translate (0, 0, -0.02f * MemberNumber);
 	}
 
@@ -308,35 +309,41 @@ public class Character : MonoBehaviour
 	}
 	void OnMouseDrag()
 	{
-		Vector3 WorldPoint = Input.mousePosition;
-		WorldPoint.z = 0;
-		WorldPoint = Camera.main.ScreenToWorldPoint(WorldPoint);    
-		
-		Vector3 PositionDifference = WorldPoint - InitMosPos;
-		PositionDifference.z = 0;
-		
-		InitMosPos = Input.mousePosition;
-		InitMosPos.z = 10;
-		InitMosPos = Camera.main.ScreenToWorldPoint(InitMosPos);
-		
-		Self.transform.position = new Vector3(Self.transform.position.x + PositionDifference.x, Self.transform.position.y + PositionDifference.y, Self.transform.position.z + PositionDifference.z);
-
-		RaycastHit2D[] HitObjects = Physics2D.RaycastAll (transform.position, transform.forward);
-		
-		foreach(RaycastHit2D HitObject in HitObjects)
+		if(Controllable == true)
 		{
-			if(HitObject.collider.gameObject.tag == "WhiteBoard" || HitObject.collider.gameObject.tag == "Computer" || HitObject.collider.gameObject.tag == "Easel" || HitObject.collider.gameObject.tag == "Composer" || HitObject.collider.gameObject.tag == "BoardGame" || HitObject.collider.gameObject.tag == "Book" || HitObject.collider.gameObject.tag == "TV" || HitObject.collider.gameObject.tag == "Game" || HitObject.collider.gameObject.tag == "Piano" || HitObject.collider.gameObject.tag == "Cook")
+			Vector3 WorldPoint = Input.mousePosition;
+			WorldPoint.z = 0;
+			WorldPoint = Camera.main.ScreenToWorldPoint(WorldPoint);    
+			
+			Vector3 PositionDifference = WorldPoint - InitMosPos;
+			PositionDifference.z = 0;
+			
+			InitMosPos = Input.mousePosition;
+			InitMosPos.z = 10;
+			InitMosPos = Camera.main.ScreenToWorldPoint(InitMosPos);
+			
+			Self.transform.position = new Vector3(Self.transform.position.x + PositionDifference.x, Self.transform.position.y + PositionDifference.y, Self.transform.position.z + PositionDifference.z);
+			
+			RaycastHit2D[] HitObjects = Physics2D.RaycastAll (transform.position, transform.forward);
+			
+			foreach(RaycastHit2D HitObject in HitObjects)
 			{
-				HitObject.collider.gameObject.SendMessage("BeTransParent");
+				if(HitObject.collider.gameObject.tag == "WhiteBoard" || HitObject.collider.gameObject.tag == "Computer" || HitObject.collider.gameObject.tag == "Easel" || HitObject.collider.gameObject.tag == "Composer" || HitObject.collider.gameObject.tag == "BoardGame" || HitObject.collider.gameObject.tag == "Book" || HitObject.collider.gameObject.tag == "TV" || HitObject.collider.gameObject.tag == "Game" || HitObject.collider.gameObject.tag == "Piano" || HitObject.collider.gameObject.tag == "Cook")
+				{
+					HitObject.collider.gameObject.SendMessage("BeTransParent");
+				}
 			}
 		}
 	}
 
 	void OnMouseUp()
 	{
-		Var.DraggingMem = null;
-		CancelCurrentAction();
-		SetCurrentAction();
+		if(Controllable == true)
+		{
+			Var.DraggingMem = null;
+			CancelCurrentAction();
+			SetCurrentAction();
+		}
 	}
 
 	void SetRandomAbility()
@@ -697,6 +704,18 @@ public class Character : MonoBehaviour
 			Tal = Talents.Programming;
 			UnTal = Talents.Plan;
 		}
+		else if(Name == "네모누리")
+		{
+			Renderer.sprite = Nemo;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "트롤러")
+		{
+			Renderer.sprite = Troll;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
 	}
 
 	public void SetSpecMemAbil()
@@ -824,6 +843,8 @@ public class Character : MonoBehaviour
 			Story = 5;
 
 			Loyalty = 20;
+
+			Controllable = false;
 		}
 		else if(Name == "타쿠호")
 		{
@@ -841,6 +862,168 @@ public class Character : MonoBehaviour
 			Simplity = 5;
 			Story = 5;
 
+			Loyalty = 20;
+		}
+		else if(Name == "코딩형근로자")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "다리")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "M")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "요미")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "강참치")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "퐝순")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "펜펜")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "네모누리")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "트롤러")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
 			Loyalty = 20;
 		}
 	}

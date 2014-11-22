@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Calendar : MonoBehaviour 
 {
@@ -44,223 +45,89 @@ public class Calendar : MonoBehaviour
 			{
 				foreach(Character PlanMember in Var.PlanMems)
 				{
-					if(PlanMember.Tal == Character.Talents.Plan)
-					{
-						PlanMember.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Wb.Level*5));
-					}
-					else if(PlanMember.UnTal == Character.Talents.Plan)
-					{
-						PlanMember.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Wb.Level*5));
-					}
-					else
-					{
-						PlanMember.Abilities[0] += Var.Mng.Wb.Level*5;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(PlanMember);
+					AbilityUp(PlanMember, Character.Talents.Plan, 0, SpecialMultiplier, Var.Mng.Sb.Level*5);
+
 					PlanMember.Loyalty -= Var.DecLoyalHard;
+					CheckSpecialAbilityForLoyalty(Var.PlanMems, true);
+
 				}
 				foreach(Character ProgrammingMember in Var.ProgramMems)
 				{
-					if(ProgrammingMember.Tal == Character.Talents.Programming)
-					{
-						ProgrammingMember.Abilities[1] += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
-					}
-					else if(ProgrammingMember.UnTal == Character.Talents.Programming)
-					{
-						ProgrammingMember.Abilities[1] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
-					}
-					else
-					{
-						ProgrammingMember.Abilities[1] += Var.Mng.Cpu.Level*5;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(ProgrammingMember);
+					AbilityUp(ProgrammingMember, Character.Talents.Programming, 1, SpecialMultiplier, Var.Mng.Cpu.Level*5);
+
 					ProgrammingMember.Loyalty -= Var.DecLoyalHard;
+					CheckSpecialAbilityForLoyalty(Var.ProgramMems, true);
 				}
 				foreach(Character DrawMember in Var.DrawMems)
 				{
-					if(DrawMember.Tal == Character.Talents.Art)
-					{
-						DrawMember.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Sb.Level*5));
-					}
-					else if(DrawMember.UnTal == Character.Talents.Art)
-					{
-						DrawMember.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Sb.Level*5));
-					}
-					else
-					{
-						DrawMember.Abilities[2] += Var.Mng.Sb.Level*5;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(DrawMember);
+					AbilityUp(DrawMember, Character.Talents.Art, 2, SpecialMultiplier, Var.Mng.Sb.Level*5);
+
 					DrawMember.Loyalty -= Var.DecLoyalHard;
+					CheckSpecialAbilityForLoyalty(Var.DrawMems, true);
 				}
 				foreach(Character ComposeMember in Var.ComposeMems)
 				{
-					if(ComposeMember.Tal == Character.Talents.Sound)
-					{
-						ComposeMember.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Cps.Level*5));
-					}
-					else if(ComposeMember.UnTal == Character.Talents.Sound)
-					{
-						ComposeMember.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cps.Level*5));
-					}
-					else
-					{
-						ComposeMember.Abilities[3] += Var.Mng.Cps.Level*5;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(ComposeMember);
+					AbilityUp(ComposeMember, Character.Talents.Sound, 3, SpecialMultiplier, Var.Mng.Cps.Level*5);
+
 					ComposeMember.Loyalty -= Var.DecLoyalHard;
+					CheckSpecialAbilityForLoyalty(Var.ComposeMems, true);
 				}
 				foreach(Character BdGmMem in Var.BdGmMems)
 				{
-					if(BdGmMem.Tal == Character.Talents.Plan)
-					{
-						BdGmMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
-					}
-					else if(BdGmMem.UnTal == Character.Talents.Plan)
-					{
-						BdGmMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
-					}
-					else
-					{
-						BdGmMem.Abilities[0] += Var.Mng.Bg.Level*4-1;
-					}
-					if(BdGmMem.Tal == Character.Talents.Art)
-					{
-						BdGmMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Bg.Level*4-1));
-					}
-					else if(BdGmMem.UnTal == Character.Talents.Art)
-					{
-						BdGmMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Bg.Level*4-1));
-					}
-					else
-					{
-						BdGmMem.Abilities[2] += Var.Mng.Bg.Level*4-1;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(BdGmMem);
+					AbilityUp(BdGmMem, Character.Talents.Plan, 0, SpecialMultiplier, Var.Mng.Bg.Level*4-1);
+					AbilityUp(BdGmMem, Character.Talents.Art, 2, SpecialMultiplier, Var.Mng.Bg.Level*4-1);
+
 					BdGmMem.Loyalty -= Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.BdGmMems, false);
 				}
 				foreach(Character WatchMem in Var.WatchMems)
 				{
-					if(WatchMem.Tal == Character.Talents.Plan)
-					{
-						WatchMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
-					}
-					else if(WatchMem.UnTal == Character.Talents.Plan)
-					{
-						WatchMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
-					}
-					else
-					{
-						WatchMem.Abilities[3] += Var.Mng.Tv.Level*4-1;
-					}
-					if(WatchMem.Tal == Character.Talents.Art)
-					{
-						WatchMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Tv.Level*4-1));
-					}
-					else if(WatchMem.UnTal == Character.Talents.Art)
-					{
-						WatchMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Tv.Level*4-1));
-					}
-					else
-					{
-						WatchMem.Abilities[2] += Var.Mng.Tv.Level*4-1;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(WatchMem);
+					AbilityUp(WatchMem, Character.Talents.Sound, 3, SpecialMultiplier, Var.Mng.Tv.Level*4-1);
+					AbilityUp(WatchMem, Character.Talents.Art, 2, SpecialMultiplier, Var.Mng.Tv.Level*4-1);
+
 					WatchMem.Loyalty -= Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.WatchMems, false);
 				}
 				foreach(Character GameMem in Var.GameMems)
 				{
-					if(GameMem.Tal == Character.Talents.Sound)
-					{
-						GameMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else if(GameMem.UnTal == Character.Talents.Sound)
-					{
-						GameMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else
-					{
-						GameMem.Abilities[3] += Var.Mng.Gm.Level*4-2;
-					}
-					if(GameMem.Tal == Character.Talents.Plan)
-					{
-						GameMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else if(GameMem.UnTal == Character.Talents.Plan)
-					{
-						GameMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else
-					{
-						GameMem.Abilities[0] += Var.Mng.Gm.Level*4-2;
-					}
-					if(GameMem.Tal == Character.Talents.Art)
-					{
-						GameMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else if(GameMem.UnTal == Character.Talents.Art)
-					{
-						GameMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else
-					{
-						GameMem.Abilities[2] += Var.Mng.Gm.Level*4-2;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(GameMem);
+					AbilityUp(GameMem, Character.Talents.Sound, 3, SpecialMultiplier, Var.Mng.Gm.Level*4-2);
+					AbilityUp(GameMem, Character.Talents.Plan, 0, SpecialMultiplier, Var.Mng.Gm.Level*4-2);
+					AbilityUp(GameMem, Character.Talents.Art, 2, SpecialMultiplier, Var.Mng.Gm.Level*4-2);
+
 					GameMem.Loyalty -= Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.GameMems, false);
 				}
 				foreach(Character BookMem in Var.BookMems)
 				{
-					if(BookMem.Tal == Character.Talents.Plan)
-					{
-						BookMem.Abilities[0] += (int)(Var.TalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else if(BookMem.UnTal == Character.Talents.Plan)
-					{
-						BookMem.Abilities[0] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Gm.Level*4-2));
-					}
-					else
-					{
-						BookMem.Abilities[0] += Var.Mng.Gm.Level*4-2;
-					}
-					if(BookMem.Tal == Character.Talents.Programming)
-					{
-						BookMem.Abilities[1] += (int)(Var.TalentModifier*(float)(Var.Mng.Cpu.Level*5));
-					}
-					else if(BookMem.UnTal == Character.Talents.Programming)
-					{
-						BookMem.Abilities[1] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Cpu.Level*5));
-					}
-					else
-					{
-						BookMem.Abilities[1] += Var.Mng.Cpu.Level*5;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(BookMem);
+					AbilityUp(BookMem, Character.Talents.Plan, 0, SpecialMultiplier, Var.Mng.Bk.Level*4-2);
+					AbilityUp(BookMem, Character.Talents.Programming, 1, SpecialMultiplier, Var.Mng.Bk.Level*4-2);
+
 					BookMem.Loyalty -= Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.GameMems, false);
 				}
 				foreach(Character CookMem in Var.CookMems)
 				{
-					if(CookMem.Tal == Character.Talents.Art)
-					{
-						CookMem.Abilities[2] += (int)(Var.TalentModifier*(float)(Var.Mng.Ck.Level*4));
-					}
-					else if(CookMem.UnTal == Character.Talents.Art)
-					{
-						CookMem.Abilities[2] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Ck.Level*4));
-					}
-					else
-					{
-						CookMem.Abilities[2] += Var.Mng.Ck.Level*4;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(CookMem);
+					AbilityUp(CookMem, Character.Talents.Art, 2, SpecialMultiplier, Var.Mng.Ck.Level*4);
+
 					CookMem.Loyalty -= Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.CookMems, false);
 				}
 				foreach(Character PiaMem in Var.PiaMems)
 				{
-					if(PiaMem.Tal == Character.Talents.Sound)
-					{
-						PiaMem.Abilities[3] += (int)(Var.TalentModifier*(float)(Var.Mng.Pia.Level*4));
-					}
-					else if(PiaMem.UnTal == Character.Talents.Sound)
-					{
-						PiaMem.Abilities[3] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Pia.Level*4));
-					}
-					else
-					{
-						PiaMem.Abilities[3] += Var.Mng.Pia.Level*4;
-					}
+					float SpecialMultiplier = ReturnSpecialMultiplier(PiaMem);
+					AbilityUp(PiaMem, Character.Talents.Sound, 3, SpecialMultiplier, Var.Mng.Pia.Level*4);
+					
 					PiaMem.Loyalty += Var.DecLoyalEasy;
+					CheckSpecialAbilityForLoyalty(Var.PiaMems, false);
 				}
 				
 				Notice = Instantiate (NoticePrefab) as NoticeMessage;
@@ -347,6 +214,61 @@ public class Calendar : MonoBehaviour
 		}
 	}
 
+	void CheckYomiAbilityActivated(float SpecialMultiplier)
+	{
+		if(SpecialMultiplier == -1)
+		{
+			SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+			SpecEffect.Special = SpecAbil.SpecAbils.Yomi;
+		}
+	}
+
+	void AbilityUp(Character Mem, Character.Talents TalentForCheck, int AbilityNumber, float SpecialMultiplier, int Default)
+	{
+		if(Mem.Tal == TalentForCheck)
+		{
+			Mem.Abilities[AbilityNumber] += (int)(Var.TalentModifier*(float)(Var.Mng.Wb.Level*5)*SpecialMultiplier);
+		}
+		else if(Mem.UnTal == TalentForCheck)
+		{
+			Mem.Abilities[AbilityNumber] += (int)(Var.UnTalentModifier*(float)(Var.Mng.Wb.Level*5)*SpecialMultiplier);
+		}
+		else
+		{
+			Mem.Abilities[AbilityNumber] += (int)((float)(Var.Mng.Wb.Level*5)*SpecialMultiplier);
+		}
+	}
+
+	float ReturnSpecialMultiplier(Character Mem)
+	{
+		if(Mem.Name == "M")
+		{
+			return 1+(0.1f*Var.FemaleMems.Count);
+		}
+		else if(Mem.Name == "요미")
+		{
+			int JingJing = UnityEngine.Random.Range(0, 3);
+			{
+				if(JingJing == 2)
+				{
+					return -1;
+				}
+				else
+				{
+					return 1;
+				}
+			}
+		}
+		else if(Mem.Name == "강참치" && Mem.CurrentAct == Character.ActionIndex.Game)
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+
 	IEnumerator Blink()
 	{
 		renderer.enabled = false;
@@ -387,6 +309,47 @@ public class Calendar : MonoBehaviour
 			{
 				Var.Month = 1;
 				Var.Year += 1;
+			}
+		}
+	}
+
+	void CheckSpecialAbilityForLoyalty(List<Character> ActMemList, bool Hard)
+	{
+		foreach(Character Mem in ActMemList)
+		{
+			if(Mem.Name == "퐝순" && ActMemList[0].Gender == ActMemList[1].Gender)
+			{
+				if(Hard == true)
+				{
+					Mem.Loyalty += Var.DecLoyalHard;
+				}
+				else
+				{
+					Mem.Loyalty += Var.DecLoyalEasy;
+				}
+			}
+			else if(Mem.Name == "다리")
+			{
+				int CoupleCount = 0;
+				foreach(Character Member in Var.Mems)
+				{
+					if(Member.Lovers.Count != 0)
+					{
+						CoupleCount += 1;
+					}
+				}
+
+				if(CoupleCount != 0)
+				{
+					if(Hard == true)
+					{
+						Mem.Loyalty -= Var.DecLoyalHard*CoupleCount/10;
+					}
+					else
+					{
+						Mem.Loyalty -= Var.DecLoyalEasy*CoupleCount/10;
+					}
+				}
 			}
 		}
 	}
