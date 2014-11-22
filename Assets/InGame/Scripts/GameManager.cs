@@ -134,10 +134,10 @@ public class GameManager : MonoBehaviour
 				
 				NewMember.Name = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(PlayerPrefs.GetString("Slot"+Slot+"Name"+i)));
 				
-				NewMember.Abilities.Add (PlayerPrefs.GetInt("Slot"+Slot+"Plan"+i));
-				NewMember.Abilities.Add (PlayerPrefs.GetInt("Slot"+Slot+"Programming"+i));
-				NewMember.Abilities.Add (PlayerPrefs.GetInt("Slot"+Slot+"Art"+i));
-				NewMember.Abilities.Add (PlayerPrefs.GetInt("Slot"+Slot+"Sound"+i));
+				NewMember.Abilities[0] = (PlayerPrefs.GetInt("Slot"+Slot+"Plan"+i));
+				NewMember.Abilities[1] = (PlayerPrefs.GetInt("Slot"+Slot+"Programming"+i));
+				NewMember.Abilities[2] = (PlayerPrefs.GetInt("Slot"+Slot+"Art"+i));
+				NewMember.Abilities[3] = (PlayerPrefs.GetInt("Slot"+Slot+"Sound"+i));
 				NewMember.Loyalty = PlayerPrefs.GetInt("Slot"+Slot+"Loyalty"+i);
 				NewMember.MemberNumber = PlayerPrefs.GetInt("Slot"+Slot+"Number"+i);
 

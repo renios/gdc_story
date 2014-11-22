@@ -1228,7 +1228,7 @@ public class NoticeMessage : MonoBehaviour
 			}
 			else if(Member.Control<=2)
 			{
-				Text.text += "컨트롤무능력자는 웁니다...\n";
+				Text.text += "컨트롤 무능력자는 웁니다...\n";
 			}
 			else if(Member.Tal == Character.Talents.Plan)
 			{
@@ -1293,7 +1293,7 @@ public class NoticeMessage : MonoBehaviour
 		{
 			if(Member.Strategy >= 7)
 			{
-				Text.text += "내가 탱커! 넌 딜러! 네가 힐러 해! 가자!\n";
+				Text.text += "이 보스의 패턴을 분석해보면, 이 방법이 가장 효율적이야.\n";
 			}
 			else if(Member.Violence >= 8)
 			{
@@ -1320,7 +1320,7 @@ public class NoticeMessage : MonoBehaviour
 			}
 			else if(Member.Simplity >= 8)
 			{
-				Text.text += "체력과 공격력밖에 없는 게 간결해서 좋네.\n";
+				Text.text += "체력과 공격력만 있으니 간결해서 좋네.\n";
 			}
 			else if(Member.Tal == Character.Talents.Programming)
 			{
@@ -1615,6 +1615,7 @@ public class NoticeMessage : MonoBehaviour
 			if(Var.AchBoolList[21] == false)
 			{
 				Var.Mng.GetAch(21, 0);
+				Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.타쿠호, "타쿠호");
 			}
 
 			if(Var.Fame >= 500)
@@ -1702,22 +1703,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.PlanMems[1].Name)+" 함께 기획을 했다.\n";
 				Var.PlanMems[0].Relationship[Var.PlanMems[1].MemberNumber] += 5;
 				Var.PlanMems[1].Relationship[Var.PlanMems[0].MemberNumber] += 5;
-				
-				if(Var.PlanMems[0].Relationship[Var.PlanMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.PlanMems[0]);
-					Var.NewFriends.Add (Var.PlanMems[1]);
-					Var.PlanMems[0].Friends.Add (Var.PlanMems[1]);
-					Var.PlanMems[1].Friends.Add (Var.PlanMems[0]);
-				}
-				else if(Var.PlanMems[0].Relationship[Var.PlanMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.PlanMems[0]);
-					Var.NewLovers.Add (Var.PlanMems[1]);
-					Var.PlanMems[0].Lovers.Add (Var.PlanMems[1]);
-					Var.PlanMems[1].Lovers.Add (Var.PlanMems[0]);
 
-					CheckAchDeepDark(Var.PlanMems[0], Var.PlanMems[1]);
+				if(CheckLoversToBool(Var.PlanMems[0], Var.PlanMems[1]) == false)
+				{
+					if(RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[0].ReqRelationToLover && RelationBetween(Var.PlanMems[0], Var.PlanMems[1]) >= Var.PlanMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.PlanMems[0], Var.PlanMems[1]);
+						CheckAchDeepDark(Var.PlanMems[0], Var.PlanMems[1]);
+					}
+
+					if(CheckFriendsToBool(Var.PlanMems[0], Var.PlanMems[1]) == false)
+					{
+						if(Var.PlanMems[0].Relationship[Var.PlanMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.PlanMems[0], Var.PlanMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character PlanMember in Var.PlanMems)
@@ -1738,22 +1739,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.ProgramMems[1].Name)+" 함께 프로그래밍 공부를 하였다.\n";
 				Var.ProgramMems[0].Relationship[Var.ProgramMems[1].MemberNumber] += 5;
 				Var.ProgramMems[1].Relationship[Var.ProgramMems[0].MemberNumber] += 5;
-				
-				if(Var.ProgramMems[0].Relationship[Var.ProgramMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.ProgramMems[0]);
-					Var.NewFriends.Add (Var.ProgramMems[1]);
-					Var.ProgramMems[0].Friends.Add (Var.ProgramMems[1]);
-					Var.ProgramMems[1].Friends.Add (Var.ProgramMems[0]);
-				}
-				else if(Var.ProgramMems[0].Relationship[Var.ProgramMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.ProgramMems[0]);
-					Var.NewLovers.Add (Var.ProgramMems[1]);
-					Var.ProgramMems[0].Lovers.Add (Var.ProgramMems[1]);
-					Var.ProgramMems[1].Lovers.Add (Var.ProgramMems[0]);
 
-					CheckAchDeepDark(Var.ProgramMems[0], Var.ProgramMems[1]);
+				if(CheckLoversToBool(Var.ProgramMems[0], Var.ProgramMems[1]) == false)
+				{
+					if(RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[0].ReqRelationToLover && RelationBetween(Var.ProgramMems[0], Var.ProgramMems[1]) >= Var.ProgramMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.ProgramMems[0], Var.ProgramMems[1]);
+						CheckAchDeepDark(Var.ProgramMems[0], Var.ProgramMems[1]);
+					}
+					
+					if(CheckFriendsToBool(Var.ProgramMems[0], Var.ProgramMems[1]) == false)
+					{
+						if(Var.ProgramMems[0].Relationship[Var.ProgramMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.ProgramMems[0], Var.ProgramMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character ProgrammingMember in Var.ProgramMems)
@@ -1774,22 +1775,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.DrawMems[1].Name)+" 함께 그림을 그렸다.\n";
 				Var.DrawMems[0].Relationship[Var.DrawMems[1].MemberNumber] += 5;
 				Var.DrawMems[1].Relationship[Var.DrawMems[0].MemberNumber] += 5;
-				
-				if(Var.DrawMems[0].Relationship[Var.DrawMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.DrawMems[0]);
-					Var.NewFriends.Add (Var.DrawMems[1]);
-					Var.DrawMems[0].Friends.Add (Var.DrawMems[1]);
-					Var.DrawMems[1].Friends.Add (Var.DrawMems[0]);
-				}
-				else if(Var.DrawMems[0].Relationship[Var.DrawMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.DrawMems[0]);
-					Var.NewLovers.Add (Var.DrawMems[1]);
-					Var.DrawMems[0].Lovers.Add (Var.DrawMems[1]);
-					Var.DrawMems[1].Lovers.Add (Var.DrawMems[0]);
 
-					CheckAchDeepDark(Var.DrawMems[0], Var.DrawMems[1]);
+				if(CheckLoversToBool(Var.DrawMems[0], Var.DrawMems[1]) == false)
+				{
+					if(RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[0].ReqRelationToLover && RelationBetween(Var.DrawMems[0], Var.DrawMems[1]) >= Var.DrawMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.DrawMems[0], Var.DrawMems[1]);
+						CheckAchDeepDark(Var.DrawMems[0], Var.DrawMems[1]);
+					}
+					
+					if(CheckFriendsToBool(Var.DrawMems[0], Var.DrawMems[1]) == false)
+					{
+						if(Var.DrawMems[0].Relationship[Var.DrawMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.DrawMems[0], Var.DrawMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character DrawMember in Var.DrawMems)
@@ -1810,22 +1811,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.ComposeMems[1].Name)+" 함께 작곡을 했다.\n";
 				Var.ComposeMems[0].Relationship[Var.ComposeMems[1].MemberNumber] += 5;
 				Var.ComposeMems[1].Relationship[Var.ComposeMems[0].MemberNumber] += 5;
-				
-				if(Var.ComposeMems[0].Relationship[Var.ComposeMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.ComposeMems[0]);
-					Var.NewFriends.Add (Var.ComposeMems[1]);
-					Var.ComposeMems[0].Friends.Add (Var.ComposeMems[1]);
-					Var.ComposeMems[1].Friends.Add (Var.ComposeMems[0]);
-				}
-				else if(Var.ComposeMems[0].Relationship[Var.ComposeMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.ComposeMems[0]);
-					Var.NewLovers.Add (Var.ComposeMems[1]);
-					Var.ComposeMems[0].Lovers.Add (Var.ComposeMems[1]);
-					Var.ComposeMems[1].Lovers.Add (Var.ComposeMems[0]);
 
-					CheckAchDeepDark(Var.ComposeMems[0], Var.ComposeMems[1]);
+				if(CheckLoversToBool(Var.ComposeMems[0], Var.ComposeMems[1]) == false)
+				{
+					if(RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[0].ReqRelationToLover && RelationBetween(Var.ComposeMems[0], Var.ComposeMems[1]) >= Var.ComposeMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.ComposeMems[0], Var.ComposeMems[1]);
+						CheckAchDeepDark(Var.ComposeMems[0], Var.ComposeMems[1]);
+					}
+
+					if(CheckFriendsToBool(Var.ComposeMems[0], Var.ComposeMems[1]) == false)
+					{
+						if(Var.ComposeMems[0].Relationship[Var.ComposeMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.ComposeMems[0], Var.ComposeMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character ComposeMember in Var.ComposeMems)
@@ -1846,22 +1847,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.BdGmMems[1].Name)+" 함께 보드게임을 했다.\n";
 				Var.BdGmMems[0].Relationship[Var.BdGmMems[1].MemberNumber] += 5;
 				Var.BdGmMems[1].Relationship[Var.BdGmMems[0].MemberNumber] += 5;
-				
-				if(Var.BdGmMems[0].Relationship[Var.BdGmMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.BdGmMems[0]);
-					Var.NewFriends.Add (Var.BdGmMems[1]);
-					Var.BdGmMems[0].Friends.Add (Var.BdGmMems[1]);
-					Var.BdGmMems[1].Friends.Add (Var.BdGmMems[0]);
-				}
-				else if(Var.BdGmMems[0].Relationship[Var.BdGmMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.BdGmMems[0]);
-					Var.NewLovers.Add (Var.BdGmMems[1]);
-					Var.BdGmMems[0].Lovers.Add (Var.BdGmMems[1]);
-					Var.BdGmMems[1].Lovers.Add (Var.BdGmMems[0]);
 
-					CheckAchDeepDark(Var.BdGmMems[0], Var.BdGmMems[1]);
+				if(CheckLoversToBool(Var.BdGmMems[0], Var.BdGmMems[1]) == false)
+				{
+					if(RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[0].ReqRelationToLover && RelationBetween(Var.BdGmMems[0], Var.BdGmMems[1]) >= Var.BdGmMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.BdGmMems[0], Var.BdGmMems[1]);
+						CheckAchDeepDark(Var.BdGmMems[0], Var.BdGmMems[1]);
+					}
+					
+					if(CheckFriendsToBool(Var.BdGmMems[0], Var.BdGmMems[1]) == false)
+					{
+						if(Var.BdGmMems[0].Relationship[Var.BdGmMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.BdGmMems[0], Var.BdGmMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character BdGmMem in Var.BdGmMems)
@@ -1882,22 +1883,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.WatchMems[1].Name)+" 함께 TV를 봤다.\n";
 				Var.WatchMems[0].Relationship[Var.WatchMems[1].MemberNumber] += 5;
 				Var.WatchMems[1].Relationship[Var.WatchMems[0].MemberNumber] += 5;
-				
-				if(Var.WatchMems[0].Relationship[Var.WatchMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.WatchMems[0]);
-					Var.NewFriends.Add (Var.WatchMems[1]);
-					Var.WatchMems[0].Friends.Add (Var.WatchMems[1]);
-					Var.WatchMems[1].Friends.Add (Var.WatchMems[0]);
-				}
-				else if(Var.WatchMems[0].Relationship[Var.WatchMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.WatchMems[0]);
-					Var.NewLovers.Add (Var.WatchMems[1]);
-					Var.WatchMems[0].Lovers.Add (Var.WatchMems[1]);
-					Var.WatchMems[1].Lovers.Add (Var.WatchMems[0]);
 
-					CheckAchDeepDark(Var.WatchMems[0], Var.WatchMems[1]);
+				if(CheckLoversToBool(Var.WatchMems[0], Var.WatchMems[1]) == false)
+				{
+					if(RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[0].ReqRelationToLover && RelationBetween(Var.WatchMems[0], Var.WatchMems[1]) >= Var.WatchMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.WatchMems[0], Var.WatchMems[1]);
+						CheckAchDeepDark(Var.WatchMems[0], Var.WatchMems[1]);
+					}
+					
+					if(CheckFriendsToBool(Var.WatchMems[0], Var.WatchMems[1]) == false)
+					{
+						if(Var.WatchMems[0].Relationship[Var.WatchMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.WatchMems[0], Var.WatchMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character WatchMem in Var.WatchMems)
@@ -1921,22 +1922,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.GameMems[1].Name)+" 함께 "+RandomGameName(GameNumber)+" 했다.\n";
 				Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] += 5;
 				Var.GameMems[1].Relationship[Var.GameMems[0].MemberNumber] += 5;
-				
-				if(Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] == 20)
-				{
-					Var.NewFriends.Add (Var.GameMems[0]);
-					Var.NewFriends.Add (Var.GameMems[1]);
-					Var.GameMems[0].Friends.Add (Var.GameMems[1]);
-					Var.GameMems[1].Friends.Add (Var.GameMems[0]);
-				}
-				else if(Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.GameMems[0]);
-					Var.NewLovers.Add (Var.GameMems[1]);
-					Var.GameMems[0].Lovers.Add (Var.GameMems[1]);
-					Var.GameMems[1].Lovers.Add (Var.GameMems[0]);
 
-					CheckAchDeepDark(Var.GameMems[0], Var.GameMems[1]);
+				if(CheckLoversToBool(Var.GameMems[0], Var.GameMems[1]) == false)
+				{
+					if(RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[0].ReqRelationToLover && RelationBetween(Var.GameMems[0], Var.GameMems[1]) >= Var.GameMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.GameMems[0], Var.GameMems[1]);
+						CheckAchDeepDark(Var.GameMems[0], Var.GameMems[1]);
+					}
+					
+					if(CheckFriendsToBool(Var.GameMems[0], Var.GameMems[1]) == false)
+					{
+						if(Var.GameMems[0].Relationship[Var.GameMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.GameMems[0], Var.GameMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character GameMem in Var.GameMems)
@@ -1957,22 +1958,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.BookMems[1].Name)+" 함께 독서를 했다.\n";
 				Var.BookMems[0].Relationship[Var.BookMems[1].MemberNumber] += 5;
 				Var.BookMems[1].Relationship[Var.BookMems[0].MemberNumber] += 5;
-				
-				if(Var.BookMems[0].Relationship[Var.BookMems[1].MemberNumber] == 20)
+
+				if(CheckLoversToBool(Var.BookMems[0], Var.BookMems[1]) == false)
 				{
-					Var.NewFriends.Add (Var.BookMems[0]);
-					Var.NewFriends.Add (Var.BookMems[1]);
-					Var.BookMems[0].Friends.Add (Var.BookMems[1]);
-					Var.BookMems[1].Friends.Add (Var.BookMems[0]);
-				}
-				else if(Var.BookMems[0].Relationship[Var.BookMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.BookMems[0]);
-					Var.NewLovers.Add (Var.BookMems[1]);
-					Var.BookMems[0].Lovers.Add (Var.BookMems[1]);
-					Var.BookMems[1].Lovers.Add (Var.BookMems[0]);
+					if(RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[0].ReqRelationToLover && RelationBetween(Var.BookMems[0], Var.BookMems[1]) >= Var.BookMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.BookMems[0], Var.BookMems[1]);
+						CheckAchDeepDark(Var.BookMems[0], Var.BookMems[1]);
+					}
 					
-					CheckAchDeepDark(Var.BookMems[0], Var.BookMems[1]);
+					if(CheckFriendsToBool(Var.BookMems[0], Var.BookMems[1]) == false)
+					{
+						if(Var.BookMems[0].Relationship[Var.BookMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.BookMems[0], Var.BookMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character BookMem in Var.BookMems)
@@ -1993,22 +1994,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.CookMems[1].Name)+" 함께 요리를 했다.\n";
 				Var.CookMems[0].Relationship[Var.CookMems[1].MemberNumber] += 5;
 				Var.CookMems[1].Relationship[Var.CookMems[0].MemberNumber] += 5;
-				
-				if(Var.CookMems[0].Relationship[Var.CookMems[1].MemberNumber] == 20)
+
+				if(CheckLoversToBool(Var.CookMems[0], Var.CookMems[1]) == false)
 				{
-					Var.NewFriends.Add (Var.CookMems[0]);
-					Var.NewFriends.Add (Var.CookMems[1]);
-					Var.CookMems[0].Friends.Add (Var.CookMems[1]);
-					Var.CookMems[1].Friends.Add (Var.CookMems[0]);
-				}
-				else if(Var.CookMems[0].Relationship[Var.CookMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.CookMems[0]);
-					Var.NewLovers.Add (Var.CookMems[1]);
-					Var.CookMems[0].Lovers.Add (Var.CookMems[1]);
-					Var.CookMems[1].Lovers.Add (Var.CookMems[0]);
+					if(RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[0].ReqRelationToLover && RelationBetween(Var.CookMems[0], Var.CookMems[1]) >= Var.CookMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.CookMems[0], Var.CookMems[1]);
+						CheckAchDeepDark(Var.CookMems[0], Var.CookMems[1]);
+					}
 					
-					CheckAchDeepDark(Var.CookMems[0], Var.CookMems[1]);
+					if(CheckFriendsToBool(Var.CookMems[0], Var.CookMems[1]) == false)
+					{
+						if(Var.CookMems[0].Relationship[Var.CookMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.CookMems[0], Var.CookMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character CookMem in Var.CookMems)
@@ -2029,22 +2030,22 @@ public class NoticeMessage : MonoBehaviour
 				Text.text += CheckTogetherFinalConsonant(Var.PiaMems[1].Name)+" 함께 피아노를 쳤다.\n";
 				Var.PiaMems[0].Relationship[Var.PiaMems[1].MemberNumber] += 5;
 				Var.PiaMems[1].Relationship[Var.PiaMems[0].MemberNumber] += 5;
-				
-				if(Var.PiaMems[0].Relationship[Var.PiaMems[1].MemberNumber] == 20)
+
+				if(CheckLoversToBool(Var.PiaMems[0], Var.PiaMems[1]) == false)
 				{
-					Var.NewFriends.Add (Var.PiaMems[0]);
-					Var.NewFriends.Add (Var.PiaMems[1]);
-					Var.PiaMems[0].Friends.Add (Var.PiaMems[1]);
-					Var.PiaMems[1].Friends.Add (Var.PiaMems[0]);
-				}
-				else if(Var.PiaMems[0].Relationship[Var.PiaMems[1].MemberNumber] == 70)
-				{
-					Var.NewLovers.Add (Var.PiaMems[0]);
-					Var.NewLovers.Add (Var.PiaMems[1]);
-					Var.PiaMems[0].Lovers.Add (Var.PiaMems[1]);
-					Var.PiaMems[1].Lovers.Add (Var.PiaMems[0]);
+					if(RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[0].ReqRelationToLover && RelationBetween(Var.PiaMems[0], Var.PiaMems[1]) >= Var.PiaMems[1].ReqRelationToLover)
+					{
+						AddNewLovers(Var.PiaMems[0], Var.PiaMems[1]);
+						CheckAchDeepDark(Var.PiaMems[0], Var.PiaMems[1]);
+					}
 					
-					CheckAchDeepDark(Var.PiaMems[0], Var.PiaMems[1]);
+					if(CheckFriendsToBool(Var.PiaMems[0], Var.PiaMems[1]) == false)
+					{
+						if(Var.PiaMems[0].Relationship[Var.PiaMems[1].MemberNumber] >= 20)
+						{
+							AddNewFriends(Var.PiaMems[0], Var.PiaMems[1]);
+						}
+					}
 				}
 			}
 			foreach(Character PiaMem in Var.PiaMems)
@@ -2235,6 +2236,34 @@ public class NoticeMessage : MonoBehaviour
 		}
 	}
 
+	int RelationBetween(Character A, Character B)
+	{
+		if(A.Relationship[B.MemberNumber] == B.Relationship[A.MemberNumber])
+		{
+			return A.Relationship[B.MemberNumber];
+		}
+		else
+		{
+			Debug.LogError("Relation Between "+A.Name+" and "+B.Name+" don't correct.");
+		}
+	}
+
+	void AddNewLovers(Character A, Character B)
+	{
+		Var.NewLovers.Add (A);
+		Var.NewLovers.Add (B);
+		A.Lovers.Add (B);
+		B.Lovers.Add (A);
+	}
+
+	void AddNewFriends(Character A, Character B)
+	{
+		Var.NewFriends.Add (A);
+		Var.NewFriends.Add (B);
+		A.Friends.Add (B);
+		B.Friends.Add (A);
+	}
+
 	string RandomGameName(int GameNumber)
 	{
 		if(GameNumber == 1)
@@ -2299,5 +2328,33 @@ public class NoticeMessage : MonoBehaviour
 				Var.Fame += 30;
 			}
 		}
+	}
+
+	bool CheckFriendsToBool(Character A, Character B)
+	{
+		bool Result = false;
+		foreach(Character Friend in A.Friends)
+		{
+			if(Friend == B)
+			{
+				Result = true;
+			}
+		}
+
+		return Result;
+	}
+
+	bool CheckLoversToBool(Character A, Character B)
+	{
+		bool Result = false;
+		foreach(Character Lover in A.Friends)
+		{
+			if(Lover == B)
+			{
+				Result = true;
+			}
+		}
+
+		return Result;
 	}
 }

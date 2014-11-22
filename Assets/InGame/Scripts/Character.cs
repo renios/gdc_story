@@ -59,6 +59,15 @@ public class Character : MonoBehaviour
 		오레오,
 		부렁봇,
 		쎈타,
+		타쿠호,
+		코딩형근로자,
+		다리,
+		M,
+		요미,
+		강참치,
+		퐝순,
+		펜펜,
+		네모누리,
 	}
 	public SpecialNameIndex SpecialName;
 	public string Name;
@@ -113,9 +122,18 @@ public class Character : MonoBehaviour
 	public Sprite Burung;
 	public Sprite Center;
 	public Sprite Oreo;
+	public Sprite Takuho;
+	public Sprite Worker;
+	public Sprite Bridge;
+	public Sprite Moon;
+	public Sprite Yomi;
+	public Sprite Tuna;
+	public Sprite Soon;
+	public Sprite Penpen;
+	public Sprite Nemo;
 	
 	public int Loyalty;
-
+	
 	public List <int> Abilities = new List<int>();
 	public List <int> Relationship = new List<int>();
 	public List <Character> Friends = new List<Character> ();
@@ -125,7 +143,12 @@ public class Character : MonoBehaviour
 	public int GenderMemberNumber;
 
 	public BoxCollider2D Collider;
-		
+
+	public int ReqRelationToLover()
+	{
+		return 35 * (Lovers.Count + 2);
+	}
+
 	IEnumerator Start ()
 	{
 		if(Chief == true)
@@ -626,6 +649,54 @@ public class Character : MonoBehaviour
 			Tal = Talents.Art;
 			UnTal = Talents.Sound;
 		}
+		else if(Name == "타쿠호")
+		{
+			Renderer.sprite = Takuho;
+			Tal = Talents.Plan;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "코딩형근로자")
+		{
+			Renderer.sprite = Worker;
+			Tal = Talents.Programming;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "다리")
+		{
+			Renderer.sprite = Bridge;
+			Tal = Talents.Programming;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "M")
+		{
+			Renderer.sprite = Moon;
+			Tal = Talents.Plan;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "요미")
+		{
+			Renderer.sprite = Yomi;
+			Tal = Talents.Art;
+			UnTal = Talents.Plan;
+		}
+		else if(Name == "강참치")
+		{
+			Renderer.sprite = Tuna;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "퐝순")
+		{
+			Renderer.sprite = Soon;
+			Tal = Talents.Plan;
+			UnTal = Talents.Programming;
+		}
+		else if(Name == "펜펜")
+		{
+			Renderer.sprite = Penpen;
+			Tal = Talents.Programming;
+			UnTal = Talents.Plan;
+		}
 	}
 
 	public void SetSpecMemAbil()
@@ -742,6 +813,24 @@ public class Character : MonoBehaviour
 			Abilities[1] = 200;
 			Abilities[2] = 200;
 			Abilities[3] = 10;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
+			Loyalty = 20;
+		}
+		else if(Name == "타쿠호")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
 
 			Violence = 5;
 			Emotion = 5;

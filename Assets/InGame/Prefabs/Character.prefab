@@ -218,11 +218,9 @@ MonoBehaviour:
   Burung: {fileID: 21300000, guid: 4777aa1315eec1b4faba9c0cbab431bf, type: 3}
   Center: {fileID: 21300000, guid: 9fd859169a3c13d4b8cfad727d92de56, type: 3}
   Oreo: {fileID: 21300000, guid: 41d1ab2e7f7a7fe4782a1e517aabbdc6, type: 3}
-  Plan: 0
-  Programming: 0
-  Art: 0
-  Sound: 0
+  Takuho: {fileID: 0}
   Loyalty: 0
+  Abilities: 00000000000000000000000000000000
   Relationship: 
   Friends: []
   Lovers: []
