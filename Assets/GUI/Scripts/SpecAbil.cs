@@ -23,9 +23,12 @@ public class SpecAbil : MonoBehaviour
 		Soon,
 		PenPen,
 		Nemo,
+		Troll,
 	}
 
 	public SpecAbils Special;
+
+	public int BrokenPjNum;
 
 	IEnumerator Start()
 	{
@@ -61,9 +64,9 @@ public class SpecAbil : MonoBehaviour
 		{
 			Text.text = "펜펜이 술을 마시고 한동안 각성 상태가 됩니다!";
 		}
-		else if(Special == SpecAbils.Nemo)
+		else if(Special == SpecAbils.Troll)
 		{
-			Text.text = "네모누리가 혼자 활동하며 편안함을 느낍니다.";
+			Text.text = "트롤러가 "+BrokenPjNum+"번째 프로젝트를 폭파시킵니다!";
 		}
 		
 		yield return new WaitForSeconds(2.0f);

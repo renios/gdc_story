@@ -1144,7 +1144,7 @@ public class NoticeMessage : MonoBehaviour
 			}
 			else if(Member.Story >= 8)
 			{
-				Text.text += "내가 왜 죽여야 하는지 납득할만한 이유가 없잖아. 무슨 재미로 하는 거지?\n";
+				Text.text += "내가 왜 죽여야 하는지 납득할 만한 이유가 없잖아. 무슨 재미로 하는 거지?\n";
 			}
 			else
 			{
@@ -1452,67 +1452,71 @@ public class NoticeMessage : MonoBehaviour
 			if(Mem.Name == "김고니")
 			{
 				Mem.CancelCurrentAction();
-
-				List<Character.ActionIndex> AvailableActs = new List<Character.ActionIndex>();
-				List<RoomObj> AvailObj = new List<RoomObj>();
-
-				if(Var.PlanMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Plan);
-					AvailObj.Add(Var.Mng.Wb);
-				}
-				if(Var.ProgramMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Programming);
-					AvailObj.Add(Var.Mng.Cpu);
-				}
-				if(Var.DrawMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Draw);
-					AvailObj.Add(Var.Mng.Sb);
-				}
-				if(Var.ComposeMems.Count != 2)
-				{
-					AvailableActs.Add(Character.ActionIndex.Compose);
-					AvailObj.Add(Var.Mng.Cps);
-				}
-				if(Var.Mng.Bg.Level != 0 && Var.BdGmMems.Count != 2)
-				{
-					AvailableActs.Add(Character.ActionIndex.BdGm);
-					AvailObj.Add(Var.Mng.Bg);
-				}
-				if(Var.Mng.Tv.Level != 0 && Var.WatchMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Watch);
-					AvailObj.Add(Var.Mng.Tv);
-				}
-				if(Var.Mng.Gm.Level != 0 && Var.GameMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Game);
-					AvailObj.Add(Var.Mng.Gm);
-				}
-				if(Var.Mng.Bk.Level != 0 && Var.BookMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Book);
-					AvailObj.Add(Var.Mng.Bk);
-				}
-				if(Var.Mng.Ck.Level != 0 && Var.CookMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Cook);
-					AvailObj.Add(Var.Mng.Ck);
-				}
-				if(Var.Mng.Pia.Level != 0 && Var.PiaMems.Count != 2)
-				{
-					AvailableActs.Add (Character.ActionIndex.Piano);
-					AvailObj.Add(Var.Mng.Pia);
-				}
-
-				int RandomAct = UnityEngine.Random.Range (0, AvailableActs.Count);
-				Mem.CurrentAct = AvailableActs[RandomAct];
-				Mem.transform.position = new Vector3(AvailObj[RandomAct].transform.position.x, AvailObj[RandomAct].transform.position.y);
-				Mem.Balloon.enabled = true;
+				SetRandomAction(Mem);
 			}
 		}
+	}
+
+	void SetRandomAction(Character Mem)
+	{
+		List<Character.ActionIndex> AvailableActs = new List<Character.ActionIndex>();
+		List<RoomObj> AvailObj = new List<RoomObj>();
+		
+		if(Var.PlanMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Plan);
+			AvailObj.Add(Var.Mng.Wb);
+		}
+		if(Var.ProgramMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Programming);
+			AvailObj.Add(Var.Mng.Cpu);
+		}
+		if(Var.DrawMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Draw);
+			AvailObj.Add(Var.Mng.Sb);
+		}
+		if(Var.ComposeMems.Count != 2)
+		{
+			AvailableActs.Add(Character.ActionIndex.Compose);
+			AvailObj.Add(Var.Mng.Cps);
+		}
+		if(Var.Mng.Bg.Level != 0 && Var.BdGmMems.Count != 2)
+		{
+			AvailableActs.Add(Character.ActionIndex.BdGm);
+			AvailObj.Add(Var.Mng.Bg);
+		}
+		if(Var.Mng.Tv.Level != 0 && Var.WatchMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Watch);
+			AvailObj.Add(Var.Mng.Tv);
+		}
+		if(Var.Mng.Gm.Level != 0 && Var.GameMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Game);
+			AvailObj.Add(Var.Mng.Gm);
+		}
+		if(Var.Mng.Bk.Level != 0 && Var.BookMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Book);
+			AvailObj.Add(Var.Mng.Bk);
+		}
+		if(Var.Mng.Ck.Level != 0 && Var.CookMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Cook);
+			AvailObj.Add(Var.Mng.Ck);
+		}
+		if(Var.Mng.Pia.Level != 0 && Var.PiaMems.Count != 2)
+		{
+			AvailableActs.Add (Character.ActionIndex.Piano);
+			AvailObj.Add(Var.Mng.Pia);
+		}
+		
+		int RandomAct = UnityEngine.Random.Range (0, AvailableActs.Count);
+		Mem.CurrentAct = AvailableActs[RandomAct];
+		Mem.transform.position = new Vector3(AvailObj[RandomAct].transform.position.x, AvailObj[RandomAct].transform.position.y);
+		Mem.Balloon.enabled = true;
 	}
 
 	void CheckAchs()
@@ -1530,16 +1534,8 @@ public class NoticeMessage : MonoBehaviour
 
 			if(CpMem >= 8)
 			{
-				Var.AchBoolList[10] = true;
-				Var.Fame += 50;
-				Var.NewAchs.Add (17);
-				PlayerPrefs.SetInt("Ach17", 1);
-
-				Var.Mng.NewMember = Instantiate(Var.Mng.NewMemPf, new Vector3(0, 0, -2-(Var.Mems.Count*0.02f)), Quaternion.identity) as Character;
-				Var.Mng.NewMember.Special = true;
-				Var.Mng.NewMember.Gender = true;
-				Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.오레오;
-				Var.NewSpecMems.Add ("오레오");
+				Var.Mng.GetAch(17, 50);
+				Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.오레오, "오레오");
 			}
 		}
 		if(Var.AchBoolList[11] == false)
@@ -1555,9 +1551,7 @@ public class NoticeMessage : MonoBehaviour
 
 			if(Clr == true)
 			{
-				Var.AchBoolList[11] = true;
-				Var.NewAchs.Add (18);
-				PlayerPrefs.SetInt("Ach18", 1);
+				Var.Mng.GetAch(18, 30);
 				Var.Fame += 30;
 			}
 		}
@@ -1576,10 +1570,7 @@ public class NoticeMessage : MonoBehaviour
 
 				if(Clr == true)
 				{
-					Var.AchBoolList[12] = true;
-					Var.NewAchs.Add (19);
-					PlayerPrefs.SetInt("Ach19", 1);
-					Var.Fame += 70;
+					Var.Mng.GetAch(19, 70);
 				}
 			}
 		}
@@ -1606,7 +1597,7 @@ public class NoticeMessage : MonoBehaviour
 		{
 			if(Var.AchBoolList[21] == false)
 			{
-				Var.Mng.GetAch(21, 0);
+				Var.Mng.GetAch(28, 0);
 				Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.타쿠호, "타쿠호");
 			}
 
@@ -1614,12 +1605,17 @@ public class NoticeMessage : MonoBehaviour
 			{
 				if(Var.AchBoolList[22] == false)
 				{
-					Var.Mng.GetAch(22, 0);
+					Var.Mng.GetAch(29, 0);
+					Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.펜펜, "펜펜");
 				}
 
 				if(Var.Fame >= 1000)
 				{
-					Var.Mng.GetAch(23, 0);
+					if(Var.AchBoolList[23] == false)
+					{
+						Var.Mng.GetAch(30, 0);
+						Var.Mng.MakeNewSpecMem(false, Character.SpecialNameIndex.요미, "요미");
+					}
 				}
 			}
 		}
@@ -2156,9 +2152,26 @@ public class NoticeMessage : MonoBehaviour
 				foreach(Character Member in Var.Mems)
 				{
 					Member.Loyalty += GroupActivityLoyalty(Var.GroupActivityType, Member.Name);
-					if(Member.Name == "강참치")
+					if(Member.Name == "강참치" && Var.GroupActivityType == GlobalVariables.GroupActivityTypes.Drink)
 					{
 						Member.Controllable = false;
+						Member.UnControllableDuration = 2;
+						Member.Balloon.enabled = false;
+						Member.CurrentAct = Character.ActionIndex.None;
+						Member.CancelCurrentAction();
+					}
+					else if(Member.Name == "펜펜")
+					{
+						if(Var.GroupActivityType == GlobalVariables.GroupActivityTypes.Drink)
+						{
+							Member.DoubleBuff = true;
+							Member.BuffDuration = 2;
+						}
+						else if(Var.GroupActivityType == GlobalVariables.GroupActivityTypes.Dinner)
+						{
+							Member.DoubleBuff = true;
+							Member.BuffDuration = 1;
+						}
 					}
 				}
 				Var.Money -= GroupActivityCost(Var.GroupActivityType);
@@ -2346,10 +2359,8 @@ public class NoticeMessage : MonoBehaviour
 		{
 			if(MemA.Gender == MemB.Gender)
 			{
-				Var.AchBoolList[14] = true;
-				Var.NewAchs.Add (21);
-				PlayerPrefs.SetInt("Ach21", 1);
-				Var.Fame += 30;
+				Var.Mng.GetAch(21, 30);
+				Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.퐝순, "퐝순");
 			}
 		}
 	}

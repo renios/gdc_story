@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
 
 	public bool Controllable;
 	public int UnControllableDuration;
+	public bool DoubleBuff;
+	public int BuffDuration;
 
 	public int Violence;
 	public int Emotion;
@@ -309,29 +311,26 @@ public class Character : MonoBehaviour
 	}
 	void OnMouseDrag()
 	{
-		if(Controllable == true)
+		Vector3 WorldPoint = Input.mousePosition;
+		WorldPoint.z = 0;
+		WorldPoint = Camera.main.ScreenToWorldPoint(WorldPoint);    
+		
+		Vector3 PositionDifference = WorldPoint - InitMosPos;
+		PositionDifference.z = 0;
+		
+		InitMosPos = Input.mousePosition;
+		InitMosPos.z = 10;
+		InitMosPos = Camera.main.ScreenToWorldPoint(InitMosPos);
+		
+		Self.transform.position = new Vector3(Self.transform.position.x + PositionDifference.x, Self.transform.position.y + PositionDifference.y, Self.transform.position.z + PositionDifference.z);
+		
+		RaycastHit2D[] HitObjects = Physics2D.RaycastAll (transform.position, transform.forward);
+		
+		foreach(RaycastHit2D HitObject in HitObjects)
 		{
-			Vector3 WorldPoint = Input.mousePosition;
-			WorldPoint.z = 0;
-			WorldPoint = Camera.main.ScreenToWorldPoint(WorldPoint);    
-			
-			Vector3 PositionDifference = WorldPoint - InitMosPos;
-			PositionDifference.z = 0;
-			
-			InitMosPos = Input.mousePosition;
-			InitMosPos.z = 10;
-			InitMosPos = Camera.main.ScreenToWorldPoint(InitMosPos);
-			
-			Self.transform.position = new Vector3(Self.transform.position.x + PositionDifference.x, Self.transform.position.y + PositionDifference.y, Self.transform.position.z + PositionDifference.z);
-			
-			RaycastHit2D[] HitObjects = Physics2D.RaycastAll (transform.position, transform.forward);
-			
-			foreach(RaycastHit2D HitObject in HitObjects)
+			if(HitObject.collider.gameObject.tag == "WhiteBoard" || HitObject.collider.gameObject.tag == "Computer" || HitObject.collider.gameObject.tag == "Easel" || HitObject.collider.gameObject.tag == "Composer" || HitObject.collider.gameObject.tag == "BoardGame" || HitObject.collider.gameObject.tag == "Book" || HitObject.collider.gameObject.tag == "TV" || HitObject.collider.gameObject.tag == "Game" || HitObject.collider.gameObject.tag == "Piano" || HitObject.collider.gameObject.tag == "Cook")
 			{
-				if(HitObject.collider.gameObject.tag == "WhiteBoard" || HitObject.collider.gameObject.tag == "Computer" || HitObject.collider.gameObject.tag == "Easel" || HitObject.collider.gameObject.tag == "Composer" || HitObject.collider.gameObject.tag == "BoardGame" || HitObject.collider.gameObject.tag == "Book" || HitObject.collider.gameObject.tag == "TV" || HitObject.collider.gameObject.tag == "Game" || HitObject.collider.gameObject.tag == "Piano" || HitObject.collider.gameObject.tag == "Cook")
-				{
-					HitObject.collider.gameObject.SendMessage("BeTransParent");
-				}
+				HitObject.collider.gameObject.SendMessage("BeTransParent");
 			}
 		}
 	}

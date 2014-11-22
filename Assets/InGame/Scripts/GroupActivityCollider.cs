@@ -68,12 +68,8 @@ public class GroupActivityCollider : MonoBehaviour
 
 					if(Var.DrkCnt == 15)
 					{
-						Var.AchBoolList[15] = true;
-						
-						Var.NewAchs.Add (22);
-						PlayerPrefs.SetInt("Ach22", 1);
-						
-						Var.Fame += 50;
+						Var.Mng.GetAch(22, 50);
+						Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.M, "M");
 					}
 				}
 
@@ -130,6 +126,7 @@ public class GroupActivityCollider : MonoBehaviour
 						Var.Mng.NewMember.Gender = true;
 						Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.김고니;
 						Var.Mng.NewMember.Controllable = false;
+						Var.Mng.NewMember.UnControllableDuration = 200;
 						Var.NewSpecMems.Add ("김고니");
 					}
 				}

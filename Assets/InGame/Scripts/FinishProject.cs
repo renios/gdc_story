@@ -33,7 +33,20 @@ public class FinishProject : MonoBehaviour
 			
 			float MoneyChange = 0;
 			int FameChange = 0;
-			
+
+			foreach(Character Mem in Var.Mems)
+			{
+				if(Mem.Name == "트롤러")
+				{
+					int BreakProject = UnityEngine.Random.Range(0, Maker.Projects.Count);
+					Maker.Projects.RemoveAt(BreakProject);
+
+					SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;
+					SpecEffect.Special = SpecAbil.SpecAbils.Troll;
+					SpecEffect.BrokenPjNum = BreakProject+1;
+				}
+			}
+
 			foreach(Project PJ in Maker.Projects)
 			{
 				List<int> PjScores = new List<int>();
@@ -64,6 +77,7 @@ public class FinishProject : MonoBehaviour
 					if(Var.AchTimesList[0] == 4)
 					{
 						Var.Mng.GetAch(15, 250);
+						Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.트롤러, "트롤러");
 					}
 				}
 				else if(TotalScore >= Var.Stan2nd)
@@ -135,6 +149,7 @@ public class FinishProject : MonoBehaviour
 						if(Var.AchTimesList[3] == 3)
 						{
 							Var.Mng.GetAch(9, 100);
+							Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.강참치, "강참치");
 							CheckSuperAch();
 						}
 					}
@@ -146,6 +161,7 @@ public class FinishProject : MonoBehaviour
 						if(Var.AchTimesList[4] == 3)
 						{
 							Var.Mng.GetAch(10, 100);
+							Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.코딩형근로자, "코딩형근로자");
 							CheckSuperAch();
 						}
 					}
@@ -179,6 +195,7 @@ public class FinishProject : MonoBehaviour
 					if(PJ.Rank <= 3)
 					{
 						Var.Mng.GetAch(7, 50);
+						Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.네모누리, "네모누리");
 					}
 				}
 				

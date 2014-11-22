@@ -150,6 +150,25 @@ public class GameManager : MonoBehaviour
 				NewMember.Simplity = PlayerPrefs.GetInt("Slot"+Slot+"Simplity"+i);
 				NewMember.Story = PlayerPrefs.GetInt("Slot"+Slot+"Story"+i);
 
+				if(PlayerPrefs.GetInt("Slot"+Slot+"Controllabel"+i) == 1)
+				{
+					NewMember.Controllable = true;
+				}
+				else
+				{
+					NewMember.Controllable = false;
+				}
+				NewMember.UnControllableDuration = PlayerPrefs.GetInt("Slot"+Slot+"UnControllableDuration"+i);
+				if(PlayerPrefs.GetInt("Slot"+Slot+"DoubleBuff"+i) == 1)
+				{
+					NewMember.DoubleBuff = true;
+				}
+				else
+				{
+					NewMember.DoubleBuff = false;
+				}
+				NewMember.UnControllableDuration = PlayerPrefs.GetInt("Slot"+Slot+"UnControllableDuration"+i);
+
 				SetPrevActs(Slot, NewMember, i);
 				
 				for(int j=0; j<PlayerPrefs.GetInt("Slot"+Slot+"Members"); j++)

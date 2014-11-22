@@ -50,7 +50,6 @@ public class Calendar : MonoBehaviour
 
 					PlanMember.Loyalty -= Var.DecLoyalHard;
 					CheckSpecialAbilityForLoyalty(Var.PlanMems, true);
-
 				}
 				foreach(Character ProgrammingMember in Var.ProgramMems)
 				{
@@ -211,6 +210,22 @@ public class Calendar : MonoBehaviour
 					}
 				}
 			}
+			if(Mem.Controllable == false)
+			{
+				Mem.UnControllableDuration -= 1;
+				if(Mem.UnControllableDuration == 0)
+				{
+					Mem.Controllable = true;
+				}
+			}
+			if(Mem.DoubleBuff == true)
+			{
+				Mem.BuffDuration -= 1;
+				if(Mem.BuffDuration == 0)
+				{
+					Mem.DoubleBuff = false;
+				}
+			}
 		}
 	}
 
@@ -260,6 +275,10 @@ public class Calendar : MonoBehaviour
 			}
 		}
 		else if(Mem.Name == "강참치" && Mem.CurrentAct == Character.ActionIndex.Game)
+		{
+			return 2;
+		}
+		else if(Mem.Name == "펜펜" && Mem.DoubleBuff == true)
 		{
 			return 2;
 		}
@@ -349,6 +368,17 @@ public class Calendar : MonoBehaviour
 					{
 						Mem.Loyalty -= Var.DecLoyalEasy*CoupleCount/10;
 					}
+				}
+			}
+			else if(Mem.Name == "네모누리" && ActMemList.Count == 1)
+			{
+				if(Hard == true)
+				{
+					Mem.Loyalty += Var.DecLoyalHard;
+				}
+				else
+				{
+					Mem.Loyalty += Var.DecLoyalEasy;
 				}
 			}
 		}
