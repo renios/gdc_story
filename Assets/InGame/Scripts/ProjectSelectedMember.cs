@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ProjectSelectedMember : MonoBehaviour 
@@ -23,45 +23,45 @@ public class ProjectSelectedMember : MonoBehaviour
 
 	void Update()
 	{
-		if(ProjectRoleType == ProjectRoleTypes.Plan && ParentSetting.ParentProject.ProjectManager != null)
+		if(ProjectRoleType == ProjectRoleTypes.Plan && ParentSetting.ParentProject.PjMems[0] != null)
 		{
-			Renderer.sprite = ParentSetting.ParentProject.ProjectManager.Renderer.sprite;
-			HairRenderer.sprite = ParentSetting.ParentProject.ProjectManager.HairRenderer.sprite;
-			HairRenderer.color = ParentSetting.ParentProject.ProjectManager.HairRenderer.color;
-			ShirtsRenderer.sprite = ParentSetting.ParentProject.ProjectManager.ShirtsRenderer.sprite;
-			ShirtsRenderer.color = ParentSetting.ParentProject.ProjectManager.ShirtsRenderer.color;
-			PantsRenderer.sprite = ParentSetting.ParentProject.ProjectManager.PantsRenderer.sprite;
-			PantsRenderer.color = ParentSetting.ParentProject.ProjectManager.PantsRenderer.color;
+			Renderer.sprite = ParentSetting.ParentProject.PjMems[0].Renderer.sprite;
+			HairRenderer.sprite = ParentSetting.ParentProject.PjMems[0].HairRenderer.sprite;
+			HairRenderer.color = ParentSetting.ParentProject.PjMems[0].HairRenderer.color;
+			ShirtsRenderer.sprite = ParentSetting.ParentProject.PjMems[0].ShirtsRenderer.sprite;
+			ShirtsRenderer.color = ParentSetting.ParentProject.PjMems[0].ShirtsRenderer.color;
+			PantsRenderer.sprite = ParentSetting.ParentProject.PjMems[0].PantsRenderer.sprite;
+			PantsRenderer.color = ParentSetting.ParentProject.PjMems[0].PantsRenderer.color;
 		}
-		else if(ProjectRoleType == ProjectRoleTypes.Programming && ParentSetting.ParentProject.Programmer != null)
+		else if(ProjectRoleType == ProjectRoleTypes.Programming && ParentSetting.ParentProject.PjMems[1] != null)
 		{
-			Renderer.sprite = ParentSetting.ParentProject.Programmer.Renderer.sprite;
-			HairRenderer.sprite = ParentSetting.ParentProject.Programmer.HairRenderer.sprite;
-			HairRenderer.color = ParentSetting.ParentProject.Programmer.HairRenderer.color;
-			ShirtsRenderer.sprite = ParentSetting.ParentProject.Programmer.ShirtsRenderer.sprite;
-			ShirtsRenderer.color = ParentSetting.ParentProject.Programmer.ShirtsRenderer.color;
-			PantsRenderer.sprite = ParentSetting.ParentProject.Programmer.PantsRenderer.sprite;
-			PantsRenderer.color = ParentSetting.ParentProject.Programmer.PantsRenderer.color;
+			Renderer.sprite = ParentSetting.ParentProject.PjMems[1].Renderer.sprite;
+			HairRenderer.sprite = ParentSetting.ParentProject.PjMems[1].HairRenderer.sprite;
+			HairRenderer.color = ParentSetting.ParentProject.PjMems[1].HairRenderer.color;
+			ShirtsRenderer.sprite = ParentSetting.ParentProject.PjMems[1].ShirtsRenderer.sprite;
+			ShirtsRenderer.color = ParentSetting.ParentProject.PjMems[1].ShirtsRenderer.color;
+			PantsRenderer.sprite = ParentSetting.ParentProject.PjMems[1].PantsRenderer.sprite;
+			PantsRenderer.color = ParentSetting.ParentProject.PjMems[1].PantsRenderer.color;
 		}
-		else if(ProjectRoleType == ProjectRoleTypes.Art && ParentSetting.ParentProject.ArtDirecter != null)
+		else if(ProjectRoleType == ProjectRoleTypes.Art && ParentSetting.ParentProject.PjMems[2] != null)
 		{
-			Renderer.sprite = ParentSetting.ParentProject.ArtDirecter.Renderer.sprite;
-			HairRenderer.sprite = ParentSetting.ParentProject.ArtDirecter.HairRenderer.sprite;
-			HairRenderer.color = ParentSetting.ParentProject.ArtDirecter.HairRenderer.color;
-			ShirtsRenderer.sprite = ParentSetting.ParentProject.ArtDirecter.ShirtsRenderer.sprite;
-			ShirtsRenderer.color = ParentSetting.ParentProject.ArtDirecter.ShirtsRenderer.color;
-			PantsRenderer.sprite = ParentSetting.ParentProject.ArtDirecter.PantsRenderer.sprite;
-			PantsRenderer.color = ParentSetting.ParentProject.ArtDirecter.PantsRenderer.color;
+			Renderer.sprite = ParentSetting.ParentProject.PjMems[2].Renderer.sprite;
+			HairRenderer.sprite = ParentSetting.ParentProject.PjMems[2].HairRenderer.sprite;
+			HairRenderer.color = ParentSetting.ParentProject.PjMems[2].HairRenderer.color;
+			ShirtsRenderer.sprite = ParentSetting.ParentProject.PjMems[2].ShirtsRenderer.sprite;
+			ShirtsRenderer.color = ParentSetting.ParentProject.PjMems[2].ShirtsRenderer.color;
+			PantsRenderer.sprite = ParentSetting.ParentProject.PjMems[2].PantsRenderer.sprite;
+			PantsRenderer.color = ParentSetting.ParentProject.PjMems[2].PantsRenderer.color;
 		}
-		else if(ProjectRoleType == ProjectRoleTypes.Sound && ParentSetting.ParentProject.SoundDirecter != null)
+		else if(ProjectRoleType == ProjectRoleTypes.Sound && ParentSetting.ParentProject.PjMems[3] != null)
 		{
-			Renderer.sprite = ParentSetting.ParentProject.SoundDirecter.Renderer.sprite;
-			HairRenderer.sprite = ParentSetting.ParentProject.SoundDirecter.HairRenderer.sprite;
-			HairRenderer.color = ParentSetting.ParentProject.SoundDirecter.HairRenderer.color;
-			ShirtsRenderer.sprite = ParentSetting.ParentProject.SoundDirecter.ShirtsRenderer.sprite;
-			ShirtsRenderer.color = ParentSetting.ParentProject.SoundDirecter.ShirtsRenderer.color;
-			PantsRenderer.sprite = ParentSetting.ParentProject.SoundDirecter.PantsRenderer.sprite;
-			PantsRenderer.color = ParentSetting.ParentProject.SoundDirecter.PantsRenderer.color;
+			Renderer.sprite = ParentSetting.ParentProject.PjMems[3].Renderer.sprite;
+			HairRenderer.sprite = ParentSetting.ParentProject.PjMems[3].HairRenderer.sprite;
+			HairRenderer.color = ParentSetting.ParentProject.PjMems[3].HairRenderer.color;
+			ShirtsRenderer.sprite = ParentSetting.ParentProject.PjMems[3].ShirtsRenderer.sprite;
+			ShirtsRenderer.color = ParentSetting.ParentProject.PjMems[3].ShirtsRenderer.color;
+			PantsRenderer.sprite = ParentSetting.ParentProject.PjMems[3].PantsRenderer.sprite;
+			PantsRenderer.color = ParentSetting.ParentProject.PjMems[3].PantsRenderer.color;
 		}
 	}
 	

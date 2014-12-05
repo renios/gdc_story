@@ -18,7 +18,7 @@ public class ProjectSetting : MonoBehaviour
 	{
 		if(Var.OnTutorial == false || Var.Mng.PjTuto.Page == 11)
 		{
-			Var.Mng.WallInstance.transform.Translate (Var.Mng.WallInstance.transform.position.x, Var.Mng.WallInstance.transform.position.y, 1.5f);
+			//Var.Mng.WallInstance.transform.Translate (Var.Mng.WallInstance.transform.position.x, Var.Mng.WallInstance.transform.position.y, 1.5f);
 			Destroy (gameObject);
 
 			if(Var.OnTutorial == true)

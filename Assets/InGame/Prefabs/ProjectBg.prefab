@@ -184,6 +184,7 @@ MonoBehaviour:
   Maker: {fileID: 11400006}
   ResultPrefab: {fileID: 11400000, guid: 5df6bf1c0923c3b4a9b88eebf1186574, type: 2}
   NoticePrefab: {fileID: 11400000, guid: 57f9f55305b81e4479e0d0c0eb18fa41, type: 2}
+  SpecEffectPf: {fileID: 11400000, guid: c40d5502983e77644a69c93f7040ae68, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

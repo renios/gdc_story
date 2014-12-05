@@ -24,6 +24,20 @@ public class Character : MonoBehaviour
 
 	public bool Special;
 	public bool Gender;
+
+	public bool Controllable;
+	public int UnControllableDuration;
+	public bool DoubleBuff;
+	public int BuffDuration;
+
+	public int Violence;
+	public int Emotion;
+	public int Strategy;
+	public int Control;
+	public int Liberty;
+	public int Puzzle;
+	public int Simplity;
+	public int Story;
 	
 	public bool Chief;
 	public bool Loaded;
@@ -50,6 +64,16 @@ public class Character : MonoBehaviour
 		오레오,
 		부렁봇,
 		쎈타,
+		타쿠호,
+		코딩형근로자,
+		다리,
+		M,
+		요미,
+		강참치,
+		퐝순,
+		펜펜,
+		네모누리,
+		트롤러,
 	}
 	public SpecialNameIndex SpecialName;
 	public string Name;
@@ -69,6 +93,9 @@ public class Character : MonoBehaviour
 		Plan,
 	}
 	public ActionIndex CurrentAct;
+
+	public ActionIndex PrevAct1;
+	public ActionIndex PrevAct2;
 
 	public enum ProjectPositionIndex
 	{
@@ -101,20 +128,34 @@ public class Character : MonoBehaviour
 	public Sprite Burung;
 	public Sprite Center;
 	public Sprite Oreo;
-
-	public int Plan;
-	public int Programming;
-	public int Art;
-	public int Sound;
+	public Sprite Takuho;
+	public Sprite Worker;
+	public Sprite Bridge;
+	public Sprite Moon;
+	public Sprite Yomi;
+	public Sprite Tuna;
+	public Sprite Soon;
+	public Sprite Penpen;
+	public Sprite Nemo;
+	public Sprite Troll;
+	
 	public int Loyalty;
-
+	
+	public List <int> Abilities = new List<int>();
 	public List <int> Relationship = new List<int>();
 	public List <Character> Friends = new List<Character> ();
 	public List <Character> Lovers = new List<Character>();
 
 	public int MemberNumber;
 	public int GenderMemberNumber;
-		
+
+	public BoxCollider2D Collider;
+
+	public int ReqRelationToLover()
+	{
+		return 35 * (Lovers.Count + 2);
+	}
+
 	IEnumerator Start ()
 	{
 		if(Chief == true)
@@ -182,6 +223,15 @@ public class Character : MonoBehaviour
 				PantsR = (float)UnityEngine.Random.Range (0, 11);
 				PantsG = (float)UnityEngine.Random.Range (0, 11);
 				PantsB = (float)UnityEngine.Random.Range (0, 11);
+
+				Violence = (int)UnityEngine.Random.Range (1, 10);
+				Emotion = (int)UnityEngine.Random.Range (1, 10);
+				Strategy = (int)UnityEngine.Random.Range (1, 10);
+				Control = (int)UnityEngine.Random.Range (1, 10);
+				Liberty = (int)UnityEngine.Random.Range (1, 10);
+				Puzzle = (int)UnityEngine.Random.Range (1, 10);
+				Simplity = (int)UnityEngine.Random.Range (1, 10);
+				Story = (int)UnityEngine.Random.Range (1, 10);
 
 				SetRendererColors();
 
@@ -273,7 +323,7 @@ public class Character : MonoBehaviour
 		InitMosPos = Camera.main.ScreenToWorldPoint(InitMosPos);
 		
 		Self.transform.position = new Vector3(Self.transform.position.x + PositionDifference.x, Self.transform.position.y + PositionDifference.y, Self.transform.position.z + PositionDifference.z);
-
+		
 		RaycastHit2D[] HitObjects = Physics2D.RaycastAll (transform.position, transform.forward);
 		
 		foreach(RaycastHit2D HitObject in HitObjects)
@@ -287,9 +337,12 @@ public class Character : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		Var.DraggingMem = null;
-		CancelCurrentAction();
-		SetCurrentAction();
+		if(Controllable == true)
+		{
+			Var.DraggingMem = null;
+			CancelCurrentAction();
+			SetCurrentAction();
+		}
 	}
 
 	void SetRandomAbility()
@@ -306,185 +359,185 @@ public class Character : MonoBehaviour
 		
 		if(RandomAbility1 == 0)
 		{
-			Plan = StanAbil*4;
+			Abilities[0] = StanAbil*4;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*2;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 		}
 		else if(RandomAbility1 == 1)
 		{
-			Plan = StanAbil*3;
+			Abilities[0] = StanAbil*3;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*2;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
 		else if(RandomAbility1 == 2)
 		{
-			Plan = StanAbil*2;
+			Abilities[0] = StanAbil*2;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil;
 				}
 				else
 				{
-					Art = StanAbil;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil;
+				Abilities[1] = StanAbil;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*3;
 				}
 				else
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
 		else if(RandomAbility1 == 3)
 		{
-			Plan = StanAbil;
+			Abilities[0] = StanAbil;
 			if(RandomAbility2 == 0)
 			{
-				Programming = StanAbil*4;
+				Abilities[1] = StanAbil*4;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*3;
 				}
 			}
 			else if(RandomAbility2 == 1)
 			{
-				Programming = StanAbil*3;
+				Abilities[1] = StanAbil*3;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*2;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*2;
 				}
 				else
 				{
-					Art = StanAbil*2;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*2;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 			else if(RandomAbility2 == 2)
 			{
-				Programming = StanAbil*2;
+				Abilities[1] = StanAbil*2;
 				if(RandomAbility3 == 0)
 				{
-					Art = StanAbil*4;
-					Sound = StanAbil*3;
+					Abilities[2] = StanAbil*4;
+					Abilities[3] = StanAbil*3;
 				}
 				else
 				{
-					Art = StanAbil*3;
-					Sound = StanAbil*4;
+					Abilities[2] = StanAbil*3;
+					Abilities[3] = StanAbil*4;
 				}
 			}
 		}
@@ -602,68 +655,374 @@ public class Character : MonoBehaviour
 			Tal = Talents.Art;
 			UnTal = Talents.Sound;
 		}
+		else if(Name == "타쿠호")
+		{
+			Renderer.sprite = Takuho;
+			Tal = Talents.Plan;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "코딩형근로자")
+		{
+			Renderer.sprite = Worker;
+			Tal = Talents.Programming;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "다리")
+		{
+			Renderer.sprite = Bridge;
+			Tal = Talents.Programming;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "M")
+		{
+			Renderer.sprite = Moon;
+			Tal = Talents.Plan;
+			UnTal = Talents.Art;
+		}
+		else if(Name == "요미")
+		{
+			Renderer.sprite = Yomi;
+			Tal = Talents.Art;
+			UnTal = Talents.Plan;
+		}
+		else if(Name == "강참치")
+		{
+			Renderer.sprite = Tuna;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "퐝순")
+		{
+			Renderer.sprite = Soon;
+			Tal = Talents.Plan;
+			UnTal = Talents.Programming;
+		}
+		else if(Name == "펜펜")
+		{
+			Renderer.sprite = Penpen;
+			Tal = Talents.Programming;
+			UnTal = Talents.Plan;
+		}
+		else if(Name == "네모누리")
+		{
+			Renderer.sprite = Nemo;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
+		else if(Name == "트롤러")
+		{
+			Renderer.sprite = Troll;
+			Tal = Talents.Plan;
+			UnTal = Talents.Sound;
+		}
 	}
 
 	public void SetSpecMemAbil()
 	{
 		if(Name == "변회장")
 		{
-			Plan = 70;
-			Art = 70;
+			Abilities[0] = 70;
+			Abilities[2] = 70;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
 			
 			Loyalty = 1000;
 		}
 		else if(Name == "이유진")
 		{
-			Plan = 250;
-			Programming = 10;
-			Art = 20;
-			Sound = 5;
+			Abilities[0] = 250;
+			Abilities[1] = 10;
+			Abilities[2] = 20;
+			Abilities[3] = 5;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 10;
 		}
 		else if(Name == "부렁봇")
 		{
-			Plan = 50;
-			Programming = 10;
-			Art = 430;
-			Sound = 50;
-			
+			Abilities[0] = 50;
+			Abilities[1] = 10;
+			Abilities[2] = 430;
+			Abilities[3] = 50;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "쎈타")
 		{
-			Plan = 50;
-			Programming = 30;
-			Art = 5;
-			Sound = 430;
-			
+			Abilities[0] = 50;
+			Abilities[1] = 30;
+			Abilities[2] = 5;
+			Abilities[3] = 430;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "오레오")
 		{
-			Plan = 200;
-			Programming = 210;
-			Art = 5;
-			Sound = 210;
-			
+			Abilities[0] = 200;
+			Abilities[1] = 210;
+			Abilities[2] = 5;
+			Abilities[3] = 210;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
 			Loyalty = 20;
 		}
 		else if(Name == "오키드")
 		{
-			Plan = 20;
-			Programming = 150;
-			Art = 5;
-			Sound = 150;
-			
+			Abilities[0] = 20;
+			Abilities[1] = 150;
+			Abilities[2] = 5;
+			Abilities[3] = 150;
+
+			Violence = 5;
+			Emotion = 6;
+			Strategy = 9;
+			Control = 4;
+			Liberty = 5;
+			Puzzle = 8;
+			Simplity = 2;
+			Story = 8;
+
 			Loyalty = 20;
 		}
 		else if(Name == "김고니")
 		{
-			Plan = 25;
-			Programming = 200;
-			Art = 200;
-			Sound = 10;
+			Abilities[0] = 25;
+			Abilities[1] = 200;
+			Abilities[2] = 200;
+			Abilities[3] = 10;
 
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
+			Loyalty = 20;
+
+			Controllable = false;
+		}
+		else if(Name == "타쿠호")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+
+			Loyalty = 20;
+		}
+		else if(Name == "코딩형근로자")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "다리")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "M")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "요미")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "강참치")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "퐝순")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "펜펜")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "네모누리")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
+			Loyalty = 20;
+		}
+		else if(Name == "트롤러")
+		{
+			Abilities[0] = 1;
+			Abilities[1] = 1;
+			Abilities[2] = 1;
+			Abilities[3] = 1;
+			
+			Violence = 5;
+			Emotion = 5;
+			Strategy = 5;
+			Control = 5;
+			Liberty = 5;
+			Puzzle = 5;
+			Simplity = 5;
+			Story = 5;
+			
 			Loyalty = 20;
 		}
 	}
@@ -675,7 +1034,7 @@ public class Character : MonoBehaviour
 		PantsRenderer.color = new Color(0.1f*PantsR, 0.1f*PantsG, 0.1f*PantsB, 1f);
 	}
 
-	void CancelCurrentAction()
+	public void CancelCurrentAction()
 	{
 		if(CurrentAct == ActionIndex.Plan)
 		{

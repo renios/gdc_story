@@ -31,7 +31,7 @@ public class GlobalVariables
 	public int DecLoyalHard = 5;
 	public int DecLoyalEasy = 3;
 	
-	public int DinCnt;
+	public int DrkCnt;
 	public int MTCnt;
 	
 	public float TalentModifier = 1.3f;
@@ -88,6 +88,8 @@ public class GlobalVariables
 	
 	public List <int> ProjectRanks = new List<int> ();
 	public int ProjectHighScore;
+
+	public List <int> AchFames = new List<int> ();
 	
 	public List <int> NewAchs = new List<int> ();
 	public List <string> NewSpecMems = new List<string> ();

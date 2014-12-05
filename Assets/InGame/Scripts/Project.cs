@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Project : MonoBehaviour 
 {	
@@ -14,10 +15,7 @@ public class Project : MonoBehaviour
 	public int ArtAbility;
 	public int SoundAbility;
 
-	public Character ProjectManager;
-	public Character Programmer;
-	public Character ArtDirecter;
-	public Character SoundDirecter;
+	public List<Character> PjMems = new List<Character> ();
 
 	public SpriteRenderer Renderer;
 
@@ -28,6 +26,21 @@ public class Project : MonoBehaviour
 	public Sprite Project5;
 	
 	public int Rank;
+
+	public enum Types
+	{
+		None,
+		Violence,
+		Emotion,
+		Strategy,
+		Control,
+		Liberty,
+		Puzzle,
+		Simplity,
+		Story,
+	}
+	
+	public Types Type;
 
 	void Start()
 	{

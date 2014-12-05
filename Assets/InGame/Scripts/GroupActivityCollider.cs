@@ -63,6 +63,14 @@ public class GroupActivityCollider : MonoBehaviour
 					SceneIS = Instantiate(Parent.ScenePF) as CutScene;
 					SceneIS.SceneType = CutScene.SceneTypes.Drink;
 					Var.MoneyReasonLog.Add ("음주");
+
+					Var.DrkCnt += 1;
+
+					if(Var.DrkCnt == 15)
+					{
+						Var.Mng.GetAch(22, 50);
+						Var.Mng.MakeNewSpecMem(true, Character.SpecialNameIndex.M, "M");
+					}
 				}
 
 				Var.GroupActivityType = GlobalVariables.GroupActivityTypes.Drink;
@@ -74,20 +82,6 @@ public class GroupActivityCollider : MonoBehaviour
 					SceneIS = Instantiate(Parent.ScenePF) as CutScene;
 					SceneIS.SceneType = CutScene.SceneTypes.Dinner;
 					Var.MoneyReasonLog.Add ("회식");
-
-					Var.DinCnt += 1;
-					if(Var.AchBoolList[11] == false)
-					{
-						if(Var.DinCnt == 15)
-						{
-							Var.AchBoolList[11] = true;
-
-							Var.NewAchs.Add (16);
-							PlayerPrefs.SetInt("Ach16", 1);
-
-							Var.Fame += 50;
-						}
-					}
 				}
 
 				Var.GroupActivityType = GlobalVariables.GroupActivityTypes.Dinner;
@@ -119,22 +113,21 @@ public class GroupActivityCollider : MonoBehaviour
 					Var.MoneyReasonLog.Add ("엠티");
 
 					Var.MTCnt += 1;
-					if(Var.AchBoolList[12] == false)
+					if(Var.MTCnt == 5)
 					{
-						if(Var.MTCnt == 5)
-						{
-							Var.AchBoolList[12] = true;
-							Var.NewAchs.Add (17);
-							PlayerPrefs.SetInt("Ach17", 1);
-
-							Var.Fame += 100;
-							
-							Var.Mng.NewMember = Instantiate(Var.Mng.NewMemberPrefab) as Character;
-							Var.Mng.NewMember.Special = true;
-							Var.Mng.NewMember.Gender = true;
-							Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.김고니;
-							Var.NewSpecMems.Add ("김고니");
-						}
+						Var.AchBoolList[16] = true;
+						Var.NewAchs.Add (23);
+						PlayerPrefs.SetInt("Ach23", 1);
+						
+						Var.Fame += 100;
+						
+						Var.Mng.NewMember = Instantiate(Var.Mng.NewMemPf) as Character;
+						Var.Mng.NewMember.Special = true;
+						Var.Mng.NewMember.Gender = true;
+						Var.Mng.NewMember.SpecialName = Character.SpecialNameIndex.김고니;
+						Var.Mng.NewMember.Controllable = false;
+						Var.Mng.NewMember.UnControllableDuration = 200;
+						Var.NewSpecMems.Add ("김고니");
 					}
 				}
 
@@ -150,19 +143,6 @@ public class GroupActivityCollider : MonoBehaviour
 		{
 			Var.GroupActivityType = GlobalVariables.GroupActivityTypes.Dinner;
 			Var.MoneyReasonLog.Add ("회식");
-
-			Var.DinCnt += 1;
-			if(Var.AchBoolList[11] == false)
-			{
-				if(Var.DinCnt == 15)
-				{
-					Var.AchBoolList[11] = true;
-					Var.NewAchs.Add (16);
-					PlayerPrefs.SetInt("Ach16", 1);
-
-					Var.Fame += 50;
-				}
-			}
 
 			Var.Mng.Tutorial.SendMessage("DeActivateRenderer");
 

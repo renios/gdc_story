@@ -32,6 +32,8 @@ public class CutScene : MonoBehaviour
 		WinterMT,
 		Drink,
 		Dinner,
+		NewFriendForPj,
+		NewLoverForPj,
 	}
 	public SceneTypes SceneType;
 
@@ -69,6 +71,8 @@ public class CutScene : MonoBehaviour
 
 	void Start()
 	{
+		ActivateCutSceneEffect ();
+
 		Notice = Instantiate (NoticePrefab, new Vector3(NoticePrefab.transform.position.x, NoticePrefab.transform.position.y, -6), Quaternion.identity) as NoticeMessage;
 		Notice.NoticeType = NoticeMessage.NoticeTypes.CutSceneText;
 		Notice.Collider.enabled = false;
@@ -93,13 +97,13 @@ public class CutScene : MonoBehaviour
 			Var.WinPic = true;
 		}
 
-		if(Var.AchBoolList[13] == false)
+		if(Var.AchBoolList[17] == false)
 		{
 			if(Var.SprPic == true && Var.SumPic == true && Var.AutPic == true && Var.WinPic == true)
 			{
-				Var.AchBoolList[13] = true;
-				Var.NewAchs.Add(18);
-				PlayerPrefs.SetInt("Ach18", 1);
+				Var.AchBoolList[17] = true;
+				Var.NewAchs.Add(24);
+				PlayerPrefs.SetInt("Ach24", 1);
 				Var.Fame += 50;
 			}
 		}
@@ -319,7 +323,7 @@ public class CutScene : MonoBehaviour
 			int LeaveMemberNumber = UnityEngine.Random.Range(0, Var.LeaveMems.Count);
 			Notice.SceneText = Var.LeaveMems[LeaveMemberNumber].Name+" : 이건 미친짓이야. 난 여기서 나가겠어.";
 		}
-		else if(SceneType == SceneTypes.NewFriend)
+		else if(SceneType == SceneTypes.NewFriend || SceneType == SceneTypes.NewFriendForPj)
 		{
 			if(CutSceneTextType == 0)
 			{
@@ -343,7 +347,7 @@ public class CutScene : MonoBehaviour
 			}
 			Notice.SceneText += "\n\n두 사람은 친구가 되었다!";
 		}
-		else if(SceneType == SceneTypes.NewLover)
+		else if(SceneType == SceneTypes.NewLover || SceneType == SceneTypes.NewLoverForPj)
 		{
 			if(CutSceneTextType == 0)
 			{
@@ -533,7 +537,7 @@ public class CutScene : MonoBehaviour
 			Character PlanMaster = AfterShuffle[0];
 			foreach(Character Member in Var.Mems)
 			{
-				if(Member.Plan > PlanMaster.Plan)
+				if(Member.Abilities[0] > PlanMaster.Abilities[0])
 				{
 					PlanMaster = Member;
 				}
@@ -638,13 +642,13 @@ public class CutScene : MonoBehaviour
 				Character ProgrammingMaster = AfterShuffle[0];
 				foreach(Character Member in Var.Mems)
 				{
-					if(Member.Programming > ProgrammingMaster.Programming)
+					if(Member.Abilities[1] > ProgrammingMaster.Abilities[1])
 					{
 						ProgrammingMaster = Member;
 					}
 				}
 
-				if(ProgrammingMaster.Programming >= 30)
+				if(ProgrammingMaster.Abilities[1] >= 30)
 				{
 					Notice.SceneText += ProgrammingMaster.Name+Notice.CheckSubjectFinalConsonant1(ProgrammingMaster.Name)+" 프로그래밍 과목에서 A+를 받았다.";
 				}
@@ -988,11 +992,11 @@ public class CutScene : MonoBehaviour
 		{
 			Renderer.sprite = Drop;
 		}
-		else if(SceneType == SceneTypes.NewFriend)
+		else if(SceneType == SceneTypes.NewFriend || SceneType == SceneTypes.NewFriendForPj)
 		{
 			Renderer.sprite = NewFriend;
 		}
-		else if(SceneType == SceneTypes.NewLover)
+		else if(SceneType == SceneTypes.NewLover || SceneType == SceneTypes.NewLoverForPj)
 		{
 			Renderer.sprite = NewLover;
 		}
@@ -1063,6 +1067,71 @@ public class CutScene : MonoBehaviour
 		else if(SceneType == SceneTypes.Dinner)
 		{
 			Renderer.sprite = Dinner;
+		}
+	}
+
+	void ActivateCutSceneEffect()
+	{
+		if(SceneType == SceneTypes.Valentine)
+		{
+			foreach(Character Mem in Var.Mems)
+			{
+				if(Mem.Lovers.Count != 0)
+				{
+					Mem.Loyalty += 5;
+				}
+			}
+		}
+		else if(SceneType == SceneTypes.Festival)
+		{
+			foreach(Character Mem in Var.Mems)
+			{
+				Mem.Loyalty += Mem.Friends.Count*3;
+			}
+		}
+		else if(SceneType == SceneTypes.Festival)
+		{
+			foreach(Character Mem in Var.Mems)
+			{
+				if(Mem.Lovers.Count == 0)
+				{
+					Mem.Loyalty += 10;
+				}
+			}
+		}
+		else if(SceneType == SceneTypes.BoardGameJam)
+		{
+			foreach(Character Mem in Var.Mems)
+			{
+				Mem.Abilities[0] += 3;
+			}
+		}
+		else if(SceneType == SceneTypes.BoardGameJam)
+		{
+			foreach(Character Mem in Var.Mems)
+			{
+				Mem.Abilities[0] += 1;
+				Mem.Abilities[1] += 1;
+				Mem.Abilities[2] += 1;
+				Mem.Abilities[3] += 1;
+
+				if(Mem.Tal == Character.Talents.Plan)
+				{
+					Mem.Abilities[0] += 1;
+				}
+				else if(Mem.Tal == Character.Talents.Programming)
+				{
+					Mem.Abilities[1] += 1;
+				}
+				else if(Mem.Tal == Character.Talents.Art)
+				{
+					Mem.Abilities[2] += 1;
+				}
+				else if(Mem.Tal == Character.Talents.Sound)
+				{
+					Mem.Abilities[3] += 1;
+				}
+			}
 		}
 	}
 

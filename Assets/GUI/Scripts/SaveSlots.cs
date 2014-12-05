@@ -59,11 +59,11 @@ public class SaveSlots : MonoBehaviour
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"CookLV", Var.Mng.Ck.Level);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"PiaLV", Var.Mng.Pia.Level);
 		
-		for(int i=0; i<5; i++)
+		for(int i=0; i<7; i++)
 		{
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"AchTimes"+i, Var.AchTimesList[i]);
 		}
-		for(int i=0; i<17; i++)
+		for(int i=0; i<24; i++)
 		{
 			if(Var.AchBoolList[i] == true)
 			{
@@ -90,34 +90,35 @@ public class SaveSlots : MonoBehaviour
 		{
 			string NameConvert = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes (Mem.Name));
 			PlayerPrefs.SetString("Slot"+SlotNumber+"Name"+Mem.MemberNumber, NameConvert);
-			
-			if(Mem.Gender == true)
-			{
-				PlayerPrefs.SetInt("Slot"+SlotNumber+"Gender"+Mem.MemberNumber, 1);
-			}
-			else
-			{
-				PlayerPrefs.SetInt("Slot"+SlotNumber+"Gender"+Mem.MemberNumber, 0);
-			}
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Plan"+Mem.MemberNumber, Mem.Plan);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Programming"+Mem.MemberNumber, Mem.Programming);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Art"+Mem.MemberNumber, Mem.Art);
-			PlayerPrefs.SetInt("Slot"+SlotNumber+"Sound"+Mem.MemberNumber, Mem.Sound);
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Gender"+Mem.MemberNumber, BoolToInt(Mem.Gender));
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Plan"+Mem.MemberNumber, Mem.Abilities[0]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Programming"+Mem.MemberNumber, Mem.Abilities[1]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Art"+Mem.MemberNumber, Mem.Abilities[2]);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Sound"+Mem.MemberNumber, Mem.Abilities[3]);
 			PlayerPrefs.SetInt ("Slot"+SlotNumber+"Loyalty"+Mem.MemberNumber, Mem.Loyalty);
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"Number"+Mem.MemberNumber, Mem.MemberNumber);
-			
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"PrevAct1"+Mem.MemberNumber, ActionToInt(Mem.PrevAct1));
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"PrevAct2"+Mem.MemberNumber, ActionToInt(Mem.PrevAct2));
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Talent"+Mem.MemberNumber, TalentToInt(Mem.Tal));
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"UnTalent"+Mem.MemberNumber, TalentToInt(Mem.UnTal));
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Controllable"+Mem.MemberNumber, BoolToInt(Mem.Controllable));
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"UnControllableDuration"+Mem.MemberNumber, Mem.UnControllableDuration);
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"DoubleBuff"+Mem.MemberNumber, BoolToInt(Mem.DoubleBuff));
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"BuffDuration"+Mem.MemberNumber, Mem.BuffDuration);
+
 			for(int i=0; i<Var.Mems.Count; i++)
 			{
 				PlayerPrefs.SetInt("Slot"+SlotNumber+"RelationShip"+Mem.MemberNumber+"."+i, Mem.Relationship[i]);
 			}
-			
-			if(Mem.Special == true)
+
+			PlayerPrefs.SetInt("Slot"+SlotNumber+"Special"+Mem.MemberNumber, BoolToInt(Mem.Special));
+			if(Mem.Special == false)
 			{
-				PlayerPrefs.SetInt("Slot"+SlotNumber+"Special"+Mem.MemberNumber, 1);
-			}
-			else
-			{
-				PlayerPrefs.SetInt("Slot"+SlotNumber+"Special"+Mem.MemberNumber, 0);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairR"+Mem.MemberNumber, Mem.HairR);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairG"+Mem.MemberNumber, Mem.HairG);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairB"+Mem.MemberNumber, Mem.HairB);
@@ -127,58 +128,112 @@ public class SaveSlots : MonoBehaviour
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsR"+Mem.MemberNumber, Mem.PantsR);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsG"+Mem.MemberNumber, Mem.PantsG);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"PantsB"+Mem.MemberNumber, Mem.PantsB);
-				
-				if(Mem.Tal == Character.Talents.Plan)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"Talent"+Mem.MemberNumber, 1);
-				}
-				else if(Mem.Tal == Character.Talents.Programming)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"Talent"+Mem.MemberNumber, 2);
-				}
-				else if(Mem.Tal == Character.Talents.Art)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"Talent"+Mem.MemberNumber, 3);
-				}
-				else if(Mem.Tal == Character.Talents.Sound)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"Talent"+Mem.MemberNumber, 4);
-				}
-				if(Mem.UnTal == Character.Talents.Plan)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"UnTalent"+Mem.MemberNumber, 1);
-				}
-				else if(Mem.UnTal == Character.Talents.Programming)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"UnTalent"+Mem.MemberNumber, 2);
-				}
-				else if(Mem.UnTal == Character.Talents.Art)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"UnTalent"+Mem.MemberNumber, 3);
-				}
-				else if(Mem.UnTal == Character.Talents.Sound)
-				{
-					PlayerPrefs.SetInt("Slot"+SlotNumber+"UnTalent"+Mem.MemberNumber, 4);
-				}
-				
+
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Violence"+Mem.MemberNumber, Mem.Violence);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Emotion"+Mem.MemberNumber, Mem.Emotion);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Strategy"+Mem.MemberNumber, Mem.Strategy);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Control"+Mem.MemberNumber, Mem.Control);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Liberty"+Mem.MemberNumber, Mem.Liberty);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Puzzle"+Mem.MemberNumber, Mem.Puzzle);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Simplity"+Mem.MemberNumber, Mem.Simplity);
+				PlayerPrefs.SetInt ("Slot"+SlotNumber+"Story"+Mem.MemberNumber, Mem.Story);
 			}
 		}
 		
-		PlayerPrefs.SetInt("Slot"+SlotNumber+"DinCnt", Var.DinCnt);
+		PlayerPrefs.SetInt("Slot"+SlotNumber+"DinCnt", Var.DrkCnt);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"MTCnt", Var.MTCnt);
-		if(Var.TutorialPass == true)
-		{
-			PlayerPrefs.SetInt ("Slot" + SlotNumber + "TutorialPass", 1);
-		}
-		else
-		{
-			PlayerPrefs.SetInt ("Slot" + SlotNumber + "TutorialPass", 0);
-		}
+
+		PlayerPrefs.SetInt ("Slot" + SlotNumber + "TutorialPass", BoolToInt(Var.TutorialPass));
 		
 		Debug.Log ("Saved.");
 		Notice = Instantiate(SaveNoticePf) as NoticeMessage;
 		Notice.NoticeType = NoticeMessage.NoticeTypes.SaveMessage;
 		
 		Destroy (Parent.gameObject);
+	}
+
+	int TalentToInt(Character.Talents Talent)
+	{
+		if(Talent == Character.Talents.Plan)
+		{
+			return 1;
+		}
+		else if(Talent == Character.Talents.Programming)
+		{
+			return 2;
+		}
+		else if(Talent == Character.Talents.Art)
+		{
+			return 3;
+		}
+		else if(Talent == Character.Talents.Sound)
+		{
+			return 4;
+		}
+		else
+		{
+			Debug.LogError("No (Un)Talent For this Member.");
+			return 0;
+		}
+	}
+
+	int BoolToInt(bool Boolean)
+	{
+		if(Boolean == true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	int ActionToInt(Character.ActionIndex Act)
+	{
+		if(Act == Character.ActionIndex.None)
+		{
+			return 0;
+		}
+		else if(Act == Character.ActionIndex.Plan)
+		{
+			return 1;
+		}
+		else if(Act == Character.ActionIndex.Programming)
+		{
+			return 2;
+		}
+		else if(Act == Character.ActionIndex.Draw)
+		{
+			return 3;
+		}
+		else if(Act == Character.ActionIndex.Compose)
+		{
+			return 4;
+		}
+		else if(Act == Character.ActionIndex.BdGm)
+		{
+			return 5;
+		}
+		else if(Act == Character.ActionIndex.Watch)
+		{
+			return 6;
+		}
+		else if(Act == Character.ActionIndex.Game)
+		{
+			return 7;
+		}
+		else if(Act == Character.ActionIndex.Book)
+		{
+			return 8;
+		}
+		else if(Act == Character.ActionIndex.Cook)
+		{
+			return 9;
+		}
+		else
+		{
+			return 10;
+		}
 	}
 }

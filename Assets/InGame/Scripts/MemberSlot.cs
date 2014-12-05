@@ -66,13 +66,13 @@ public class MemberSlot : MonoBehaviour
 					if(Var.OnTutorial == false || Var.Mng.PjTuto.Page == 10)
 					{
 						Var.Mems[IndexNumber].ProjectPosition = Character.ProjectPositionIndex.Plan;
-						ParentSetting.ParentProject.PlanAbility = Var.Mems[IndexNumber].Plan;
+						ParentSetting.ParentProject.PlanAbility = Var.Mems[IndexNumber].Abilities[0];
 
-						if(ParentSetting.ParentProject.ProjectManager != null)
+						if(ParentSetting.ParentProject.PjMems[0] != null)
 						{
-							ParentSetting.ParentProject.ProjectManager.ProjectPosition = Character.ProjectPositionIndex.None;
+							ParentSetting.ParentProject.PjMems[0].ProjectPosition = Character.ProjectPositionIndex.None;
 						}
-						ParentSetting.ParentProject.ProjectManager = Var.Mems[IndexNumber];
+						ParentSetting.ParentProject.PjMems[0] = Var.Mems[IndexNumber];
 
 						if(Var.OnTutorial == true)
 						{
@@ -86,13 +86,13 @@ public class MemberSlot : MonoBehaviour
 					if(Var.OnTutorial == false || Var.Mng.PjTuto.Page == 10)
 					{
 						Var.Mems[IndexNumber].ProjectPosition = Character.ProjectPositionIndex.Programming;
-						ParentSetting.ParentProject.ProgrammingAbility = Var.Mems[IndexNumber].Programming;
+						ParentSetting.ParentProject.ProgrammingAbility = Var.Mems[IndexNumber].Abilities[1];
 
-						if(ParentSetting.ParentProject.Programmer != null)
+						if(ParentSetting.ParentProject.PjMems[1] != null)
 						{
-							ParentSetting.ParentProject.Programmer.ProjectPosition = Character.ProjectPositionIndex.None;
+							ParentSetting.ParentProject.PjMems[1].ProjectPosition = Character.ProjectPositionIndex.None;
 						}
-						ParentSetting.ParentProject.Programmer = Var.Mems[IndexNumber];
+						ParentSetting.ParentProject.PjMems[1] = Var.Mems[IndexNumber];
 						
 						if(Var.OnTutorial == true)
 						{
@@ -106,13 +106,13 @@ public class MemberSlot : MonoBehaviour
 					if(Var.OnTutorial == false || Var.Mng.PjTuto.Page == 10)
 					{
 						Var.Mems[IndexNumber].ProjectPosition = Character.ProjectPositionIndex.Art;
-						ParentSetting.ParentProject.ArtAbility = Var.Mems[IndexNumber].Art;
+						ParentSetting.ParentProject.ArtAbility = Var.Mems[IndexNumber].Abilities[2];
 
-						if(ParentSetting.ParentProject.ArtDirecter != null)
+						if(ParentSetting.ParentProject.PjMems[2] != null)
 						{
-							ParentSetting.ParentProject.ArtDirecter.ProjectPosition = Character.ProjectPositionIndex.None;
+							ParentSetting.ParentProject.PjMems[2].ProjectPosition = Character.ProjectPositionIndex.None;
 						}
-						ParentSetting.ParentProject.ArtDirecter = Var.Mems[IndexNumber];
+						ParentSetting.ParentProject.PjMems[2] = Var.Mems[IndexNumber];
 						
 						if(Var.OnTutorial == true)
 						{
@@ -126,13 +126,13 @@ public class MemberSlot : MonoBehaviour
 					if(Var.OnTutorial == false || Var.Mng.PjTuto.Page == 10)
 					{
 						Var.Mems[IndexNumber].ProjectPosition = Character.ProjectPositionIndex.Sound;
-						ParentSetting.ParentProject.SoundAbility = Var.Mems[IndexNumber].Sound;
+						ParentSetting.ParentProject.SoundAbility = Var.Mems[IndexNumber].Abilities[3];
 
-						if(ParentSetting.ParentProject.SoundDirecter != null)
+						if(ParentSetting.ParentProject.PjMems[3] != null)
 						{
-							ParentSetting.ParentProject.SoundDirecter.ProjectPosition = Character.ProjectPositionIndex.None;
+							ParentSetting.ParentProject.PjMems[3].ProjectPosition = Character.ProjectPositionIndex.None;
 						}
-						ParentSetting.ParentProject.SoundDirecter = Var.Mems[IndexNumber];
+						ParentSetting.ParentProject.PjMems[3] = Var.Mems[IndexNumber];
 						
 						if(Var.OnTutorial == true)
 						{

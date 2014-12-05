@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public Character Jiwon;
 	public Character Chief;
 	
-	public Character NewMemberPrefab;
+	public Character NewMemPf;
 	public Character NewMember;
 	
 	public NoticeMessage NoticePrefab;
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 	
 	public AudioClip[] Clips;
 	public AudioSource[] AudioSources;
+
+	public AudioSource BGM;
 	
 	void Awake()
 	{
@@ -126,18 +128,48 @@ public class GameManager : MonoBehaviour
 			
 			for(int i = 0; i < PlayerPrefs.GetInt("Slot"+Slot+"Members"); i++)
 			{
-				NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+				NewMember = Instantiate(NewMemPf, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemPf.transform.position.z), Quaternion.identity) as Character;
 				NewMember.SetPosition();
 				NewMember.Loaded = true;
 				
 				NewMember.Name = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(PlayerPrefs.GetString("Slot"+Slot+"Name"+i)));
 				
-				NewMember.Plan = PlayerPrefs.GetInt("Slot"+Slot+"Plan"+i);
-				NewMember.Programming = PlayerPrefs.GetInt("Slot"+Slot+"Programming"+i);
-				NewMember.Art = PlayerPrefs.GetInt("Slot"+Slot+"Art"+i);
-				NewMember.Sound = PlayerPrefs.GetInt("Slot"+Slot+"Sound"+i);
+				NewMember.Abilities[0] = (PlayerPrefs.GetInt("Slot"+Slot+"Plan"+i));
+				NewMember.Abilities[1] = (PlayerPrefs.GetInt("Slot"+Slot+"Programming"+i));
+				NewMember.Abilities[2] = (PlayerPrefs.GetInt("Slot"+Slot+"Art"+i));
+				NewMember.Abilities[3] = (PlayerPrefs.GetInt("Slot"+Slot+"Sound"+i));
 				NewMember.Loyalty = PlayerPrefs.GetInt("Slot"+Slot+"Loyalty"+i);
 				NewMember.MemberNumber = PlayerPrefs.GetInt("Slot"+Slot+"Number"+i);
+
+				NewMember.Violence = PlayerPrefs.GetInt("Slot"+Slot+"Violence"+i);
+				NewMember.Emotion = PlayerPrefs.GetInt("Slot"+Slot+"Emotion"+i);
+				NewMember.Strategy = PlayerPrefs.GetInt("Slot"+Slot+"Strategy"+i);
+				NewMember.Control = PlayerPrefs.GetInt("Slot"+Slot+"Control"+i);
+				NewMember.Liberty = PlayerPrefs.GetInt("Slot"+Slot+"Liberty"+i);
+				NewMember.Puzzle = PlayerPrefs.GetInt("Slot"+Slot+"Puzzle"+i);
+				NewMember.Simplity = PlayerPrefs.GetInt("Slot"+Slot+"Simplity"+i);
+				NewMember.Story = PlayerPrefs.GetInt("Slot"+Slot+"Story"+i);
+
+				if(PlayerPrefs.GetInt("Slot"+Slot+"Controllabel"+i) == 1)
+				{
+					NewMember.Controllable = true;
+				}
+				else
+				{
+					NewMember.Controllable = false;
+				}
+				NewMember.UnControllableDuration = PlayerPrefs.GetInt("Slot"+Slot+"UnControllableDuration"+i);
+				if(PlayerPrefs.GetInt("Slot"+Slot+"DoubleBuff"+i) == 1)
+				{
+					NewMember.DoubleBuff = true;
+				}
+				else
+				{
+					NewMember.DoubleBuff = false;
+				}
+				NewMember.UnControllableDuration = PlayerPrefs.GetInt("Slot"+Slot+"UnControllableDuration"+i);
+
+				SetPrevActs(Slot, NewMember, i);
 				
 				for(int j=0; j<PlayerPrefs.GetInt("Slot"+Slot+"Members"); j++)
 				{
@@ -221,11 +253,11 @@ public class GameManager : MonoBehaviour
 			CreateNormMem(2);
 			Var.NewMembers.Clear();
 			
-			for(int i=0; i<5; i++)
+			for(int i=0; i<7; i++)
 			{
 				Var.AchTimesList.Add(0);
 			}
-			for(int i=0; i<17; i++)
+			for(int i=0; i<24; i++)
 			{
 				Var.AchBoolList.Add (false);
 			}
@@ -247,11 +279,11 @@ public class GameManager : MonoBehaviour
 	{
 		int Slot = PlayerPrefs.GetInt ("LoadedSlot");
 		
-		for(int i=0; i<5; i++)
+		for(int i=0; i<7; i++)
 		{
 			Var.AchTimesList.Add (PlayerPrefs.GetInt("Slot"+Slot+"AchTimes"+i));
 		}
-		for(int i=0; i<17; i++)
+		for(int i=0; i<24; i++)
 		{
 			if(PlayerPrefs.GetInt("Slot"+Slot+"AchBool"+i) == 1)
 			{
@@ -423,7 +455,7 @@ public class GameManager : MonoBehaviour
 		
 		SetPositionAll ();
 		
-		Var.DinCnt = PlayerPrefs.GetInt ("Slot"+Slot+"DinCnt");
+		Var.DrkCnt = PlayerPrefs.GetInt ("Slot"+Slot+"DinCnt");
 		Var.MTCnt = PlayerPrefs.GetInt ("Slot"+Slot+"MTCnt");
 		if(PlayerPrefs.GetInt("Slot"+Slot+"TutorialPass") == 1)
 		{
@@ -436,6 +468,16 @@ public class GameManager : MonoBehaviour
 	}
 	
 	public void SetPositionAll()
+	{
+		SetPositionItems ();
+		
+		foreach(Character Mem in Var.Mems)
+		{
+			Mem.SetPosition();
+		}
+	}
+
+	public void SetPositionItems()
 	{
 		Room.transform.position = new Vector3 (0, 0, 1);
 		Wb.SendMessage ("SetPosition");
@@ -456,11 +498,6 @@ public class GameManager : MonoBehaviour
 		Rfr.SendMessage ("SetPosition");
 		Ck.SendMessage ("SetPosition");
 		Pia.SendMessage ("SetPosition");
-		
-		foreach(Character Mem in Var.Mems)
-		{
-			Mem.SetPosition();
-		}
 	}
 	
 	public void RecordMoneyChange(float MoneyChange, string Reason)
@@ -476,7 +513,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < Count; i++)
 		{
-			NewMember = Instantiate(NewMemberPrefab, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemberPrefab.transform.position.z), Quaternion.identity) as Character;
+			NewMember = Instantiate(NewMemPf, new Vector3(Random.Range(-1.5f, 1.8f), Random.Range(-0.7f, 1.2f), NewMemPf.transform.position.z), Quaternion.identity) as Character;
 			
 			int NewMemberGender = UnityEngine.Random.Range(0, 2);
 			if(NewMemberGender == 0)
@@ -490,5 +527,123 @@ public class GameManager : MonoBehaviour
 
 			Var.NewMembers.Add (NewMember);
 		}
+	}
+
+	void SetPrevActs(int Slot, Character Mem, int i)
+	{
+		if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 0)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.None;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 1)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Plan;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 2)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Programming;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 3)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Draw;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 4)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Compose;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 5)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.BdGm;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 6)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Watch;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 7)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Game;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 8)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Book;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 9)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Cook;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct1"+i) == 10)
+		{
+			Mem.PrevAct1 = Character.ActionIndex.Piano;
+		}
+		
+		if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 0)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.None;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 1)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Plan;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 2)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Programming;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 3)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Draw;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 4)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Compose;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 5)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.BdGm;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 6)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Watch;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 7)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Game;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 8)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Book;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 9)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Cook;
+		}
+		else if(PlayerPrefs.GetInt("Slot"+Slot+"PrevAct2"+i) == 10)
+		{
+			Mem.PrevAct2 = Character.ActionIndex.Piano;
+		}
+	}
+
+	public void GetAch(int Num, int FameChange)
+	{
+		if(Num <= 6)
+		{
+			Var.AchTimesList[Num] += 1;
+		}
+		else
+		{
+			Var.AchBoolList[Num-7] = true;
+		}
+
+		Var.NewAchs.Add (Num);
+		Var.Fame += FameChange;
+		PlayerPrefs.SetInt("Ach"+Num, 1);
+	}
+
+	public void MakeNewSpecMem(bool NewMemGender, Character.SpecialNameIndex EnumName, string StringName)
+	{
+		NewMember = Instantiate (NewMemPf) as Character;
+		NewMember.Special = true;
+		NewMember.Gender = NewMemGender;
+		NewMember.SpecialName = EnumName;
+		Var.NewSpecMems.Add (StringName);
 	}
 }
