@@ -8,6 +8,6 @@ public class CloseOption : MonoBehaviour {
 	void OnMouseUpAsButton()
 	{
 		Instantiate (OptionButtonPrefab);
-		Destroy(transform.parent.gameObject);
+		Destroy(transform.gameObject);
 	}
 }

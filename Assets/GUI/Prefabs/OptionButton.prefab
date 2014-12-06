@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: OptionButton
   m_TagString: Untagged
@@ -53,23 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e26f5a1451211243a29451cc598c425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OptionPrefab: {fileID: 100002, guid: 2700fac18139fec4dbbbbae4bfb9a4b7, type: 2}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Closer: {fileID: 0}
-  HelpPf: {fileID: 0}
-  SavePopupPf: {fileID: 0}
-  LoadPopupPf: {fileID: 0}
-  ButtonType: 4
+  OptionPrefab: {fileID: 100000, guid: 1d99687bcbbf7eb4f99f353865f57050, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

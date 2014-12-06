@@ -17,8 +17,8 @@ public class OptionButton : MonoBehaviour
 		ToTitle,
 		Save,
 		Load,
+		Sound,
 		Help,
-		None,
 	}
 	public ButtonTypes ButtonType;
 
@@ -28,7 +28,12 @@ public class OptionButton : MonoBehaviour
 		{
 			Var.Mng.AudioSources [0].Play ();
 		}
-		if(ButtonType == ButtonTypes.Save)
+
+		if(ButtonType == ButtonTypes.ToTitle)
+		{
+			Application.LoadLevel ("Title");
+		}
+		else if(ButtonType == ButtonTypes.Save)
 		{
 			Instantiate(SavePopupPf);
 			Closer.SendMessage("OnMouseUpAsButton");
@@ -37,6 +42,17 @@ public class OptionButton : MonoBehaviour
 		{
 			Instantiate(LoadPopupPf);
 			Closer.SendMessage("OnMouseUpAsButton");
+		}
+		else if(ButtonType == ButtonTypes.Sound)
+		{
+			if(Var.Mng.BGM.enabled == true)
+			{
+				Var.Mng.BGM.enabled = false;
+			}
+			else
+			{
+				Var.Mng.BGM.enabled = true;
+			}
 		}
 		else if(ButtonType == ButtonTypes.Help)
 		{
