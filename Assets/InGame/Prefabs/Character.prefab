@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.00999999978}
+  m_LocalPosition: {x: -.00499999989, y: -.0949999988, z: -.00999999978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.00999999978}
+  m_LocalPosition: {x: .00499999989, y: 0, z: -.00999999978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -181,6 +181,9 @@ MonoBehaviour:
   Special: 0
   Gender: 0
   Controllable: 1
+  UnControllableDuration: 0
+  DoubleBuff: 0
+  BuffDuration: 0
   Violence: 0
   Emotion: 0
   Strategy: 0
@@ -194,14 +197,8 @@ MonoBehaviour:
   HairRenderer: {fileID: 21200000}
   ShirtsRenderer: {fileID: 21200002}
   PantsRenderer: {fileID: 21200004}
-  MaleBase: {fileID: 21200000, guid: f63c482f4ea96bf499e625e63674e470, type: 2}
-  FemaleBase: {fileID: 21200000, guid: d4c07c4be43f7f149848977894e4299c, type: 2}
-  MaleHair1: {fileID: 21200000, guid: 513fb7619dc25de458622b154f2fb406, type: 2}
-  MaleShirts1: {fileID: 21200000, guid: 8f4ad43bc4bac1046a30f31964de292b, type: 2}
-  MalePants1: {fileID: 21200000, guid: 3922f37b7ab851e4c913da6a91dc30c8, type: 2}
-  FemaleHair1: {fileID: 21200000, guid: 5bf27e1cd390cd14f85b2307da7485fd, type: 2}
-  FemaleShirts1: {fileID: 21200000, guid: 7e0caa16b920c2744ab6dac7aa53d08d, type: 2}
-  FemalePants1: {fileID: 21200000, guid: 3e4cc45e659fb334f9eb1ad0bf1f78b7, type: 2}
+  Renderer: {fileID: 21200006}
+  Balloon: {fileID: 21200008}
   SpecialName: 0
   Name: 
   CurrentAct: 0
@@ -210,8 +207,6 @@ MonoBehaviour:
   ProjectPosition: 0
   Tal: 0
   UnTal: 0
-  Renderer: {fileID: 21200006}
-  Balloon: {fileID: 21200008}
   Jiwon: {fileID: 21300000, guid: ca29f1d66a908fd4497e95da3eb35927, type: 3}
   Orchid: {fileID: 21300000, guid: 6ffe1a6956122064d9729a2e8f4cdb20, type: 3}
   Yujin: {fileID: 21300000, guid: 21f4b1b5af69f434da3300d4371ae5be, type: 3}
@@ -229,6 +224,18 @@ MonoBehaviour:
   Penpen: {fileID: 0}
   Nemo: {fileID: 0}
   Troll: {fileID: 0}
+  MaleBase: {fileID: 21300000, guid: b7c38cfa503212c48804b2c3c60d2d67, type: 3}
+  MaleHairs:
+  - {fileID: 21300000, guid: aadd50c89c247497b8059bcda24e2d88, type: 3}
+  - {fileID: 21300000, guid: e661231bd59d44dfb8f3768665f71d90, type: 3}
+  MaleShirts: {fileID: 21300000, guid: 331d814333f5e6f49a3cb396ed2d4b10, type: 3}
+  MalePants: {fileID: 21300000, guid: 85e445274c023784da807d7e14dd2b88, type: 3}
+  FemaleBase: {fileID: 21300000, guid: 2f7b3ac81eb01eb4c85b6dd4398d1459, type: 3}
+  FemaleHairs:
+  - {fileID: 21300000, guid: 608a339ac3ca0499d87ba699bb45891f, type: 3}
+  - {fileID: 21300000, guid: ebefffcba315d48169dd2c91e47d4ef8, type: 3}
+  FemaleShirts: {fileID: 21300000, guid: 1a8cc43a907248b4a888e87277aedd9d, type: 3}
+  FemalePants: {fileID: 21300000, guid: 01932658cec8c024798e69d88119a10a, type: 3}
   Loyalty: 0
   Abilities: 00000000000000000000000000000000
   Relationship: 

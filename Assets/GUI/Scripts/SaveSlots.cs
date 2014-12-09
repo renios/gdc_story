@@ -47,7 +47,7 @@ public class SaveSlots : MonoBehaviour
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"Fame", Var.Fame);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"Members", Var.Mems.Count);
 		
-		PlayerPrefs.SetInt ("Slot"+SlotNumber+"RoomLV", Var.Mng.Room.Level);
+		PlayerPrefs.SetInt ("Slot"+SlotNumber+"RoomLV", Var.Mng.RoomObject.Level);
 		PlayerPrefs.SetInt("Slot"+SlotNumber+"WBLV", Var.Mng.Wb.Level);
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"CPULV", Var.Mng.Cpu.Level);
 		PlayerPrefs.SetInt ("Slot"+SlotNumber+"SBLV", Var.Mng.Sb.Level);
@@ -119,6 +119,8 @@ public class SaveSlots : MonoBehaviour
 			PlayerPrefs.SetInt("Slot"+SlotNumber+"Special"+Mem.MemberNumber, BoolToInt(Mem.Special));
 			if(Mem.Special == false)
 			{
+				SaveHairInfo(Mem);
+
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairR"+Mem.MemberNumber, Mem.HairR);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairG"+Mem.MemberNumber, Mem.HairG);
 				PlayerPrefs.SetFloat("Slot"+SlotNumber+"HairB"+Mem.MemberNumber, Mem.HairB);
@@ -150,6 +152,30 @@ public class SaveSlots : MonoBehaviour
 		Notice.NoticeType = NoticeMessage.NoticeTypes.SaveMessage;
 		
 		Destroy (Parent.gameObject);
+	}
+
+	void SaveHairInfo(Character Member)
+	{
+		if(Member.Gender == true)
+		{
+			for(int i = 0; i < Member.MaleHairs.Length; i++)
+			{
+				if(Member.MaleHairs[i] == Member.HairRenderer.sprite)
+				{
+					PlayerPrefs.SetInt("Slot"+SlotNumber+"HairStyle"+Member.MemberNumber, i);
+				}
+			}
+		}
+		else
+		{
+			for(int i = 0; i < Member.FemaleHairs.Length; i++)
+			{
+				if(Member.FemaleHairs[i] == Member.HairRenderer.sprite)
+				{
+					PlayerPrefs.SetInt("Slot"+SlotNumber+"HairStyle"+Member.MemberNumber, i);
+				}
+			}
+		}
 	}
 
 	int TalentToInt(Character.Talents Talent)

@@ -466,7 +466,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b14056f9eb7b647758fb9ea37de120e2, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b14056f9eb7b647758fb9ea37de120e2, type: 2}
@@ -1737,7 +1737,7 @@ MonoBehaviour:
   Sf: {fileID: 1151830131}
   Hanger: {fileID: 115464018}
   Rfr: {fileID: 886687930}
-  Room: {fileID: 230752329}
+  RoomObject: {fileID: 230752329}
   DoorInstance: {fileID: 56568488}
   Table: {fileID: 651626630}
   Reset: {fileID: 2067951013}
@@ -2777,13 +2777,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 18d7ba27e7a452e42b4405ec7b97aa7c, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 18d7ba27e7a452e42b4405ec7b97aa7c, type: 2}
       propertyPath: m_LocalScale.y
       value: .949000001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 18d7ba27e7a452e42b4405ec7b97aa7c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 18d7ba27e7a452e42b4405ec7b97aa7c, type: 2}
   m_RootGameObject: {fileID: 1943786277}
   m_IsPrefabParent: 0
@@ -3086,7 +3087,6 @@ GameObject:
   - 212: {fileID: 1943786281}
   - 114: {fileID: 1943786280}
   - 61: {fileID: 1943786279}
-  - 114: {fileID: 1943786278}
   m_Layer: 0
   m_Name: MenuButton
   m_TagString: Untagged
@@ -3094,23 +3094,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1943786278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 18d7ba27e7a452e42b4405ec7b97aa7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1762633197}
-  m_GameObject: {fileID: 1943786277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Closer: {fileID: 0}
-  HelpPf: {fileID: 0}
-  SavePopupPf: {fileID: 0}
-  LoadPopupPf: {fileID: 0}
-  ButtonType: 0
 --- !u!61 &1943786279
 BoxCollider2D:
   m_ObjectHideFlags: 0

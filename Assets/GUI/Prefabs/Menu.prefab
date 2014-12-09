@@ -100,7 +100,6 @@ GameObject:
   - 212: {fileID: 21200002}
   - 114: {fileID: 11400016}
   - 61: {fileID: 6100004}
-  - 114: {fileID: 11400026}
   m_Layer: 0
   m_Name: MenuFame
   m_TagString: Untagged
@@ -119,7 +118,6 @@ GameObject:
   - 212: {fileID: 21200004}
   - 114: {fileID: 11400018}
   - 61: {fileID: 6100000}
-  - 114: {fileID: 11400028}
   m_Layer: 0
   m_Name: MenuRoom
   m_TagString: Untagged
@@ -136,7 +134,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 114: {fileID: 11400012}
-  - 114: {fileID: 11400020}
   - 61: {fileID: 6100002}
   - 212: {fileID: 21200006}
   m_Layer: 0
@@ -157,7 +154,6 @@ GameObject:
   - 212: {fileID: 21200008}
   - 114: {fileID: 11400014}
   - 61: {fileID: 6100008}
-  - 114: {fileID: 11400022}
   m_Layer: 0
   m_Name: MenuMoney
   m_TagString: Untagged
@@ -176,7 +172,6 @@ GameObject:
   - 212: {fileID: 21200010}
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100006}
-  - 114: {fileID: 11400024}
   m_Layer: 0
   m_Name: MenuMemebers
   m_TagString: Untagged
@@ -656,81 +651,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPrefab: {fileID: 100000, guid: 8a24258da87f20b48aa3b670e080adce, type: 2}
   popupInstance: {fileID: 0}
---- !u!114 &11400020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveButton: 0
-  LoadButton: 0
-  SaveNoticePf: {fileID: 0}
-  Closer: {fileID: 0}
---- !u!114 &11400022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveButton: 0
-  LoadButton: 0
-  SaveNoticePf: {fileID: 0}
-  Closer: {fileID: 0}
---- !u!114 &11400024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveButton: 0
-  LoadButton: 0
-  SaveNoticePf: {fileID: 0}
-  Closer: {fileID: 0}
---- !u!114 &11400026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveButton: 0
-  LoadButton: 0
-  SaveNoticePf: {fileID: 0}
-  Closer: {fileID: 0}
---- !u!114 &11400028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e3cc266ae1a81439c333f9433d2238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SaveButton: 0
-  LoadButton: 0
-  SaveNoticePf: {fileID: 0}
-  Closer: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

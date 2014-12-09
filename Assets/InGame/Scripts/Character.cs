@@ -45,14 +45,18 @@ public class Character : MonoBehaviour
 	public SpriteRenderer HairRenderer;
 	public SpriteRenderer ShirtsRenderer;
 	public SpriteRenderer PantsRenderer;
-	public SpriteRenderer MaleBase;
+
+	/*public SpriteRenderer MaleBase;
 	public SpriteRenderer FemaleBase;
 	public SpriteRenderer MaleHair1;
 	public SpriteRenderer MaleShirts1;
 	public SpriteRenderer MalePants1;
 	public SpriteRenderer FemaleHair1;
 	public SpriteRenderer FemaleShirts1;
-	public SpriteRenderer FemalePants1;
+	public SpriteRenderer FemalePants1;*/
+
+	public SpriteRenderer Renderer;
+	public SpriteRenderer Balloon;
 
 	public enum SpecialNameIndex
 	{
@@ -118,9 +122,6 @@ public class Character : MonoBehaviour
 	public Talents Tal;
 	public Talents UnTal;
 
-	public SpriteRenderer Renderer;
-	public SpriteRenderer Balloon;
-
 	public Sprite Jiwon;
 	public Sprite Orchid;
 	public Sprite Yujin;
@@ -138,6 +139,15 @@ public class Character : MonoBehaviour
 	public Sprite Penpen;
 	public Sprite Nemo;
 	public Sprite Troll;
+
+	public Sprite MaleBase;
+	public Sprite[] MaleHairs;
+	public Sprite MaleShirts;
+	public Sprite MalePants;
+	public Sprite FemaleBase;
+	public Sprite[] FemaleHairs;
+	public Sprite FemaleShirts;
+	public Sprite FemalePants;
 	
 	public int Loyalty;
 	
@@ -192,10 +202,12 @@ public class Character : MonoBehaviour
 					Name = Var.MaleNameList[NameNumber];
 					Var.MaleNameList.Remove(Var.MaleNameList[NameNumber]);
 					
-					Renderer.sprite = MaleBase.sprite;
-					HairRenderer.sprite = MaleHair1.sprite;
-					ShirtsRenderer.sprite = MaleShirts1.sprite;
-					PantsRenderer.sprite = MalePants1.sprite;
+					Renderer.sprite = MaleBase;
+
+					int HairStyle = UnityEngine.Random.Range(0, MaleHairs.Length);
+					HairRenderer.sprite = MaleHairs[HairStyle];
+					ShirtsRenderer.sprite = MaleShirts;
+					PantsRenderer.sprite = MalePants;
 					
 					GenderMemberNumber = Var.MaleMems.Count;
 				}
@@ -206,10 +218,11 @@ public class Character : MonoBehaviour
 					Name = Var.FemaleNameList[NameNumber];
 					Var.FemaleNameList.Remove(Var.FemaleNameList[NameNumber]);
 					
-					Renderer.sprite = FemaleBase.sprite;
-					HairRenderer.sprite = FemaleHair1.sprite;
-					ShirtsRenderer.sprite = FemaleShirts1.sprite;
-					PantsRenderer.sprite = FemalePants1.sprite;
+					Renderer.sprite = FemaleBase;
+					int HairStyle = UnityEngine.Random.Range(0, FemaleHairs.Length);
+					HairRenderer.sprite = FemaleHairs[HairStyle];
+					ShirtsRenderer.sprite = FemaleShirts;
+					PantsRenderer.sprite = FemalePants;
 					
 					GenderMemberNumber = Var.FemaleMems.Count;
 				}
@@ -288,6 +301,9 @@ public class Character : MonoBehaviour
 		Var.DraggingMem = this;
 		if(DoubleClick == false)
 		{
+			Debug.Log(Var);
+			Debug.Log (Var.Mng);
+			Debug.Log (Var.Mng.AudioSources[1]);
 			Var.Mng.AudioSources[1].Play();
 			DoubleClick = true;
 		}

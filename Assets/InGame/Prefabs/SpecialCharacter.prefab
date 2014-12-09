@@ -180,27 +180,33 @@ MonoBehaviour:
   PantsB: 0
   Special: 1
   Gender: 0
+  Controllable: 0
+  UnControllableDuration: 0
+  DoubleBuff: 0
+  BuffDuration: 0
+  Violence: 0
+  Emotion: 0
+  Strategy: 0
+  Control: 0
+  Liberty: 0
+  Puzzle: 0
+  Simplity: 0
+  Story: 0
   Chief: 0
   Loaded: 0
   HairRenderer: {fileID: 21200004}
   ShirtsRenderer: {fileID: 21200006}
   PantsRenderer: {fileID: 21200008}
-  MaleBase: {fileID: 0}
-  FemaleBase: {fileID: 0}
-  MaleHair1: {fileID: 0}
-  MaleShirts1: {fileID: 0}
-  MalePants1: {fileID: 0}
-  FemaleHair1: {fileID: 0}
-  FemaleShirts1: {fileID: 0}
-  FemalePants1: {fileID: 0}
+  Renderer: {fileID: 21200000}
+  Balloon: {fileID: 21200002}
   SpecialName: 1
   Name: 
   CurrentAct: 0
+  PrevAct1: 0
+  PrevAct2: 0
   ProjectPosition: 0
   Tal: 0
   UnTal: 0
-  Renderer: {fileID: 21200000}
-  Balloon: {fileID: 21200002}
   Jiwon: {fileID: 21300000, guid: ca29f1d66a908fd4497e95da3eb35927, type: 3}
   Orchid: {fileID: 0}
   Yujin: {fileID: 0}
@@ -208,16 +214,32 @@ MonoBehaviour:
   Burung: {fileID: 0}
   Center: {fileID: 0}
   Oreo: {fileID: 0}
-  Plan: 20
-  Programming: 5
-  Art: 15
-  Sound: 10
+  Takuho: {fileID: 0}
+  Worker: {fileID: 0}
+  Bridge: {fileID: 0}
+  Moon: {fileID: 0}
+  Yomi: {fileID: 0}
+  Tuna: {fileID: 0}
+  Soon: {fileID: 0}
+  Penpen: {fileID: 0}
+  Nemo: {fileID: 0}
+  Troll: {fileID: 0}
+  MaleBase: {fileID: 0}
+  MaleHairs: []
+  MaleShirts: {fileID: 0}
+  MalePants: {fileID: 0}
+  FemaleBase: {fileID: 0}
+  FemaleHairs: []
+  FemaleShirts: {fileID: 0}
+  FemalePants: {fileID: 0}
   Loyalty: 1000
+  Abilities: 00000000000000000000000000000000
   Relationship: 
   Friends: []
   Lovers: []
   MemberNumber: 0
   GenderMemberNumber: 0
+  Collider: {fileID: 0}
   Self: {fileID: 100000}
 --- !u!212 &21200000
 SpriteRenderer:

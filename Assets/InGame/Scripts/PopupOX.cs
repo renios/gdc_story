@@ -80,7 +80,7 @@ public class PopupOX : MonoBehaviour
 		{
 			Notice = Instantiate(NoticePrefab, new Vector3(NoticePrefab.transform.position.x, NoticePrefab.transform.position.y, -4), Quaternion.identity) as NoticeMessage;
 
-			if(Var.Mng.Room.Level == 1)
+			if(Var.Mng.RoomObject.Level == 1)
 			{
 				if(Var.Fame >= 120)
 				{
@@ -88,8 +88,8 @@ public class PopupOX : MonoBehaviour
 					{
 						Var.Money -= 25*OreoMultiplier;
 						UsedMoney = 25*OreoMultiplier;
-						Var.Mng.Room.Level = 2;
-						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room2;
+						Var.Mng.RoomObject.Level = 2;
+						Var.Mng.RoomObject.Renderer.sprite = Var.Mng.RoomObject.Room2;
 
 						if(Var.AchBoolList[18] == false)
 						{
@@ -117,7 +117,7 @@ public class PopupOX : MonoBehaviour
 					Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughFame;
 				}
 			}
-			else if(Var.Mng.Room.Level == 2)
+			else if(Var.Mng.RoomObject.Level == 2)
 			{
 				if(Var.Fame >= 420)
 				{
@@ -125,8 +125,8 @@ public class PopupOX : MonoBehaviour
 					{
 						Var.Money -= 40*OreoMultiplier;
 						UsedMoney = 40*OreoMultiplier;
-						Var.Mng.Room.Level = 3;
-						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room3;
+						Var.Mng.RoomObject.Level = 3;
+						Var.Mng.RoomObject.Renderer.sprite = Var.Mng.RoomObject.Room3;
 						
 						Var.AchBoolList[19] = true;
 						Var.NewAchs.Add (26);
@@ -145,7 +145,7 @@ public class PopupOX : MonoBehaviour
 					Notice.NoticeType = NoticeMessage.NoticeTypes.NotEnoughFame;
 				}
 			}
-			else if(Var.Mng.Room.Level == 3)
+			else if(Var.Mng.RoomObject.Level == 3)
 			{
 				if(Var.Fame >= 830)
 				{
@@ -153,8 +153,8 @@ public class PopupOX : MonoBehaviour
 					{
 						Var.Money -= 55*OreoMultiplier;
 						UsedMoney = 55*OreoMultiplier;
-						Var.Mng.Room.Level = 4;
-						Var.Mng.Room.Renderer.sprite = Var.Mng.Room.Room4;
+						Var.Mng.RoomObject.Level = 4;
+						Var.Mng.RoomObject.Renderer.sprite = Var.Mng.RoomObject.Room4;
 						
 						Var.AchBoolList[20] = true;
 						Var.NewAchs.Add (27);
@@ -183,7 +183,7 @@ public class PopupOX : MonoBehaviour
 
 			if(Var.Mng.Wb.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 100)
 					{
@@ -212,7 +212,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Wb.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 350)
 					{
@@ -249,7 +249,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Cpu.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 100)
 					{
@@ -278,7 +278,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Cpu.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 350)
 					{
@@ -315,7 +315,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Sb.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 100)
 					{
@@ -344,7 +344,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Sb.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 350)
 					{
@@ -383,7 +383,7 @@ public class PopupOX : MonoBehaviour
 
 			if(Var.Mng.Cps.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 100)
 					{
@@ -412,7 +412,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Cps.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 350)
 					{
@@ -451,7 +451,7 @@ public class PopupOX : MonoBehaviour
 
 			if(Var.Mng.Bg.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 150)
 					{
@@ -480,7 +480,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Bg.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 400)
 					{
@@ -509,7 +509,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Bg.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 650)
 					{
@@ -546,7 +546,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Tv.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 2)
+				if(Var.Mng.RoomObject.Level >= 2)
 				{
 					if(Var.Fame >= 150)
 					{
@@ -575,7 +575,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Tv.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 450)
 					{
@@ -604,7 +604,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Tv.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 550)
 					{
@@ -641,7 +641,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Gm.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 500)
 					{
@@ -670,7 +670,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Gm.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 600)
 					{
@@ -699,7 +699,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Gm.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 700)
 					{
@@ -736,7 +736,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Bk.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 400)
 					{
@@ -765,7 +765,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Bk.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 500)
 					{
@@ -794,7 +794,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Bk.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 600)
 					{
@@ -831,7 +831,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Pia.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 500)
 					{
@@ -860,7 +860,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Pia.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 600)
 					{
@@ -889,7 +889,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Pia.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 700)
 					{
@@ -926,7 +926,7 @@ public class PopupOX : MonoBehaviour
 			
 			if(Var.Mng.Ck.Level == 0)
 			{
-				if(Var.Mng.Room.Level >= 3)
+				if(Var.Mng.RoomObject.Level >= 3)
 				{
 					if(Var.Fame >= 500)
 					{
@@ -955,7 +955,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Ck.Level == 1)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 700)
 					{
@@ -976,7 +976,7 @@ public class PopupOX : MonoBehaviour
 			}
 			else if(Var.Mng.Ck.Level == 2)
 			{
-				if(Var.Mng.Room.Level >= 4)
+				if(Var.Mng.RoomObject.Level >= 4)
 				{
 					if(Var.Fame >= 800)
 					{

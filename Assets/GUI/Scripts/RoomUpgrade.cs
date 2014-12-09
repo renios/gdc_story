@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class RoomUpgrade : MonoBehaviour 
@@ -38,19 +38,19 @@ public class RoomUpgrade : MonoBehaviour
 	{
 		if(ObjectType == ObjectTypes.Room)
 		{
-			if(Var.Mng.Room.Level == 1)
+			if(Var.Mng.RoomObject.Level == 1)
 			{
 				Text.text = "동아리방 2단계\n25만원/명성 120";
 			}
-			else if(Var.Mng.Room.Level == 2)
+			else if(Var.Mng.RoomObject.Level == 2)
 			{
 				Text.text = "동아리방 3단계\n40만원/명성 420";
 			}
-			else if(Var.Mng.Room.Level == 3)
+			else if(Var.Mng.RoomObject.Level == 3)
 			{
 				Text.text = "동아리방 4단계\n55만원/명성 830";
 			}
-			else if(Var.Mng.Room.Level == 4)
+			else if(Var.Mng.RoomObject.Level == 4)
 			{
 				Text.text = "동아리방\n업그레이드 완료";
 				Collider.enabled = false;
@@ -134,7 +134,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Bg)
 		{
-			if(Var.Mng.Room.Level > 1)
+			if(Var.Mng.RoomObject.Level > 1)
 			{
 				if(Var.Mng.Bg.Level == 0)
 				{
@@ -165,7 +165,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Tv)
 		{
-			if(Var.Mng.Room.Level > 1)
+			if(Var.Mng.RoomObject.Level > 1)
 			{
 				if(Var.Mng.Tv.Level == 0)
 				{
@@ -196,7 +196,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Gm)
 		{
-			if(Var.Mng.Room.Level > 2)
+			if(Var.Mng.RoomObject.Level > 2)
 			{
 				if(Var.Mng.Gm.Level == 0)
 				{
@@ -227,7 +227,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Bk)
 		{
-			if(Var.Mng.Room.Level > 2)
+			if(Var.Mng.RoomObject.Level > 2)
 			{
 				if(Var.Mng.Bk.Level == 0)
 				{
@@ -258,7 +258,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Ck)
 		{
-			if(Var.Mng.Room.Level > 3)
+			if(Var.Mng.RoomObject.Level > 3)
 			{
 				if(Var.Mng.Ck.Level == 0)
 				{
@@ -289,7 +289,7 @@ public class RoomUpgrade : MonoBehaviour
 		}
 		else if(ObjectType == ObjectTypes.Pia)
 		{
-			if(Var.Mng.Room.Level > 3)
+			if(Var.Mng.RoomObject.Level > 3)
 			{
 				if(Var.Mng.Pia.Level == 0)
 				{

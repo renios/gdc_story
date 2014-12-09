@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour 
 {
-	public GlobalVariables Var = GlobalVariables.GetInstance ();
+	public GlobalVariables Var = GlobalVariables.GetInstance();
 	
 	public Character Jiwon;
 	public Character Chief;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 	public RoomObj Sf;
 	public RoomObj Hanger;
 	public RoomObj Rfr;
-	public Room Room;
+	public Room RoomObject;
 	public RoomObj DoorInstance;
 	public RoomObj Table;
 	
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 	
 	void Awake()
 	{
+		Var.Mng = this;
 		int Slot = PlayerPrefs.GetInt ("LoadedSlot");
 		
 		if(PlayerPrefs.HasKey("NewGame") == true)
@@ -196,17 +197,17 @@ public class GameManager : MonoBehaviour
 				{
 					if(PlayerPrefs.GetInt("Slot"+Slot+"Gender"+i) == 1)
 					{
-						NewMember.Renderer.sprite = NewMember.MaleBase.sprite;
-						NewMember.HairRenderer.sprite = NewMember.MaleHair1.sprite;
-						NewMember.ShirtsRenderer.sprite = NewMember.MaleShirts1.sprite;
-						NewMember.PantsRenderer.sprite = NewMember.MalePants1.sprite;
+						NewMember.Renderer.sprite = NewMember.MaleBase;
+						NewMember.HairRenderer.sprite = NewMember.MaleHairs[PlayerPrefs.GetInt("Slot"+Slot+"HairStyle"+i)];
+						NewMember.ShirtsRenderer.sprite = NewMember.MaleShirts;
+						NewMember.PantsRenderer.sprite = NewMember.MalePants;
 					}
 					else
 					{
-						NewMember.Renderer.sprite = NewMember.FemaleBase.sprite;
-						NewMember.HairRenderer.sprite = NewMember.FemaleHair1.sprite;
-						NewMember.ShirtsRenderer.sprite = NewMember.FemaleShirts1.sprite;
-						NewMember.PantsRenderer.sprite = NewMember.FemalePants1.sprite;
+						NewMember.Renderer.sprite = NewMember.FemaleBase;
+						NewMember.HairRenderer.sprite = NewMember.FemaleHairs[PlayerPrefs.GetInt("Slot"+Slot+"HairStyle"+i)];
+						NewMember.ShirtsRenderer.sprite = NewMember.FemaleShirts;
+						NewMember.PantsRenderer.sprite = NewMember.FemalePants;
 					}
 					
 					NewMember.HairR = PlayerPrefs.GetFloat("Slot"+Slot+"HairR"+i);
@@ -295,22 +296,22 @@ public class GameManager : MonoBehaviour
 			}
 		}
 		
-		Room.Level = PlayerPrefs.GetInt ("Slot"+Slot+"RoomLV");
-		if(Room.Level == 1)
+		RoomObject.Level = PlayerPrefs.GetInt ("Slot"+Slot+"RoomLV");
+		if(RoomObject.Level == 1)
 		{
-			Room.Renderer.sprite = Room.Room1;
+			RoomObject.Renderer.sprite = RoomObject.Room1;
 		}
-		else if(Room.Level == 2)
+		else if(RoomObject.Level == 2)
 		{
-			Room.Renderer.sprite = Room.Room2;
+			RoomObject.Renderer.sprite = RoomObject.Room2;
 		}
-		else if(Room.Level == 3)
+		else if(RoomObject.Level == 3)
 		{
-			Room.Renderer.sprite = Room.Room3;
+			RoomObject.Renderer.sprite = RoomObject.Room3;
 		}
 		else
 		{
-			Room.Renderer.sprite = Room.Room4;
+			RoomObject.Renderer.sprite = RoomObject.Room4;
 		}
 		
 		Wb.Level = PlayerPrefs.GetInt ("Slot"+Slot+"WBLV");
@@ -479,7 +480,7 @@ public class GameManager : MonoBehaviour
 
 	public void SetPositionItems()
 	{
-		Room.transform.position = new Vector3 (0, 0, 1);
+		RoomObject.transform.position = new Vector3 (0, 0, 1);
 		Wb.SendMessage ("SetPosition");
 		Cpu.SendMessage ("SetPosition");
 		Table.SendMessage ("SetPosition");
