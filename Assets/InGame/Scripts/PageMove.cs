@@ -23,19 +23,19 @@ public class PageMove : MonoBehaviour
 	{
 		if(Next == true && Parent.Page == 18)
 		{
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 		}
 		else if(Next == true)
 		{
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 		}
 		else if(Next == false && Parent.Page == 0)
 		{
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 		}
 		else
 		{
-			renderer.enabled= true;
+			GetComponent<Renderer>().enabled= true;
 		}
 	}
 }

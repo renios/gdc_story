@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
 			
 			child.transform.parent = gameObject.transform;
 			
-			AudioSources[j] = child.AddComponent("AudioSource") as AudioSource;
+			AudioSources[j] = child.AddComponent<AudioSource>() as AudioSource;
 			
 			AudioSources[j].clip = Clips[j];
 			

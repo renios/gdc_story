@@ -12,7 +12,7 @@ public class MenuMoneyClick : MonoBehaviour
 	{
 		if(Variables.OnTutorial == false || Variables.Mng.Tutorial.Page == 2)
 		{
-			renderer.material.color=Color.gray;
+			GetComponent<Renderer>().material.color=Color.gray;
 			popupInstance = Instantiate (popupPrefab) as GameObject;
 			Destroy(GameObject.FindGameObjectWithTag("Menu"));
 

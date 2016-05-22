@@ -34,16 +34,16 @@ public class ResetProject : MonoBehaviour
 
 	IEnumerator Blink()
 	{
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		yield return new WaitForSeconds(0.5f);
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		yield return new WaitForSeconds(0.5f);
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 	}
 }

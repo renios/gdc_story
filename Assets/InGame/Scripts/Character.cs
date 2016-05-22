@@ -170,17 +170,17 @@ public class Character : MonoBehaviour
 	{
 		if(Chief == true)
 		{
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 			yield return new WaitForSeconds(0.5f);
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 			yield return new WaitForSeconds(0.5f);
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 			yield return new WaitForSeconds(0.5f);
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 			yield return new WaitForSeconds(0.5f);
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 			yield return new WaitForSeconds(0.5f);
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 		}
 		else if(Loaded == false)
 		{

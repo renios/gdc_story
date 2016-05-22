@@ -1,0 +1,1207 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ano",
+				"anotherIt"
+			],
+			[
+				"is",
+				"isEqual"
+			],
+			[
+				"mov",
+				"movieList"
+			],
+			[
+				"movi",
+				"Movie"
+			],
+			[
+				"re",
+				"results"
+			],
+			[
+				"sear",
+				"searchResults"
+			],
+			[
+				"qu",
+				"query"
+			],
+			[
+				"q",
+				"query"
+			],
+			[
+				"se",
+				"searchResults"
+			],
+			[
+				"Mo",
+				"Movie"
+			],
+			[
+				"mo",
+				"movieList"
+			],
+			[
+				"gen",
+				"genre"
+			],
+			[
+				"get",
+				"getGenre"
+			],
+			[
+				"last",
+				"lastItem"
+			],
+			[
+				"new",
+				"newGenre"
+			],
+			[
+				"par",
+				"parsedArgs"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"Movie",
+				"MovieDatabaseConsole"
+			],
+			[
+				"curr",
+				"currentPosition"
+			],
+			[
+				"compar",
+				"compareTo"
+			],
+			[
+				"to",
+				"toString"
+			],
+			[
+				"com",
+				"compareTo"
+			],
+			[
+				"next",
+				"nextNode"
+			],
+			[
+				"ha",
+				"head"
+			],
+			[
+				"anoth",
+				"anotherNode"
+			],
+			[
+				"imple",
+				"implements"
+			],
+			[
+				"cur",
+				"currentPosition"
+			],
+			[
+				"ena",
+				"enabled	Renderer.*"
+			],
+			[
+				"Audio",
+				"AudioSource	[class]"
+			],
+			[
+				"isClient",
+				"isClientReady"
+			],
+			[
+				"bgm",
+				"BgmManager"
+			],
+			[
+				"wait",
+				"waitForSeconds	*(seconds)"
+			],
+			[
+				"Resor",
+				"Resources.Load	*(path)"
+			],
+			[
+				"ApplyHak",
+				"ApplyHaskellUserSkill"
+			],
+			[
+				"pintos",
+				"pintosUserSkillSound"
+			],
+			[
+				"Sound",
+				"SoundEffect"
+			],
+			[
+				"Wait",
+				"WaitForSeconds	*(seconds)"
+			],
+			[
+				"Charac",
+				"CharacterIndex"
+			],
+			[
+				"Soun",
+				"SoundEffect"
+			],
+			[
+				"Audi",
+				"AudioSource	[class]"
+			],
+			[
+				"Soud",
+				"SoundEffect"
+			],
+			[
+				"Game",
+				"GameObject	*()"
+			],
+			[
+				"N",
+				"NetworkManager"
+			],
+			[
+				"net",
+				"networkInstance"
+			],
+			[
+				"Count",
+				"Count_btn"
+			],
+			[
+				"true",
+				"trues"
+			],
+			[
+				"che",
+				"check_each_val_result"
+			],
+			[
+				"con",
+				"contain_only_false_val_from_pairs"
+			],
+			[
+				"check",
+				"check_each_val"
+			],
+			[
+				"prin",
+				"print_pair"
+			],
+			[
+				"Has",
+				"HasNum"
+			],
+			[
+				"print",
+				"print_endline"
+			],
+			[
+				"fil",
+				"filter_lst"
+			],
+			[
+				"Tag",
+				"TagGen"
+			],
+			[
+				"v_",
+				"v_e1"
+			],
+			[
+				"Hsa",
+				"HasRead"
+			],
+			[
+				"S",
+				"Say"
+			],
+			[
+				"make",
+				"make_line"
+			],
+			[
+				"V",
+				"VarGen"
+			],
+			[
+				"H",
+				"HasSum"
+			],
+			[
+				"is_",
+				"is_false2"
+			],
+			[
+				"ma",
+				"match	match"
+			],
+			[
+				"tf_",
+				"tf_num_lst"
+			],
+			[
+				"p",
+				"p_val"
+			],
+			[
+				"no",
+				"norm_val"
+			],
+			[
+				"T",
+				"Todo"
+			],
+			[
+				"norm",
+				"norm_num"
+			],
+			[
+				"rev",
+				"rev_lst"
+			],
+			[
+				"a",
+				"avail_exp"
+			],
+			[
+				"e_",
+				"e_v1"
+			],
+			[
+				"minu",
+				"minus_v1"
+			],
+			[
+				"add",
+				"add_v2"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"Re",
+				"Repeat"
+			],
+			[
+				"lim",
+				"markov_limit"
+			],
+			[
+				"ini",
+				"initial_mat"
+			],
+			[
+				"squ",
+				"square_calc"
+			],
+			[
+				"mat",
+				"matrix"
+			],
+			[
+				"init",
+				"init_mat"
+			],
+			[
+				"sqrt",
+				"sqrt_2"
+			],
+			[
+				"add_",
+				"add_column"
+			],
+			[
+				"mat_",
+				"mat_large_square"
+			],
+			[
+				"matri",
+				"matrix"
+			],
+			[
+				"sh",
+				"shelter_names"
+			],
+			[
+				"ro",
+				"robot_names"
+			],
+			[
+				"sp",
+				"split_pair"
+			],
+			[
+				"rob",
+				"robot_locs"
+			],
+			[
+				"ch",
+				"check_crossed"
+			],
+			[
+				"fli",
+				"flist"
+			],
+			[
+				"flist",
+				"flist_head"
+			],
+			[
+				"new_",
+				"new_ith"
+			],
+			[
+				"tar",
+				"target_list"
+			],
+			[
+				"find",
+				"find_nth"
+			],
+			[
+				"pair",
+				"pair_list"
+			],
+			[
+				"tr",
+				"true"
+			],
+			[
+				"be",
+				"before_dist"
+			],
+			[
+				"dis",
+				"dist_rA_sB"
+			],
+			[
+				"dist",
+				"dist_rB_sA"
+			],
+			[
+				"di",
+				"dist_rB_sB"
+			],
+			[
+				"sA",
+				"sA_x"
+			],
+			[
+				"rA",
+				"rA_x"
+			],
+			[
+				"robot",
+				"robot_locs"
+			],
+			[
+				"Em",
+				"EMPTY_Q"
+			],
+			[
+				"liq",
+				"liquid"
+			],
+			[
+				"l",
+				"l"
+			],
+			[
+				"wri",
+				"write_tape"
+			],
+			[
+				"No",
+				"None"
+			],
+			[
+				"ne",
+				"next_state"
+			],
+			[
+				"wr",
+				"Write"
+			],
+			[
+				"move",
+				"move_tape_left"
+			],
+			[
+				"sym",
+				"symbol"
+			],
+			[
+				"E",
+				"Erase"
+			],
+			[
+				"match",
+				"match_rule"
+			],
+			[
+				"rul",
+				"rules"
+			],
+			[
+				"pre_",
+				"pre_state"
+			],
+			[
+				"pre",
+				"pre_symbol"
+			],
+			[
+				"rule",
+				"ruletable"
+			],
+			[
+				"ex_",
+				"ex_lst_with_dot"
+			],
+			[
+				"make_",
+				"make_string"
+			],
+			[
+				"fr",
+				"make_front_space"
+			],
+			[
+				"tap",
+				"tape1"
+			],
+			[
+				"Tu",
+				"TuringMachine"
+			],
+			[
+				"ins",
+				"insert_at"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"diff_",
+				"diff_list_of_TIMES"
+			],
+			[
+				"diff",
+				"diff_nth_in_pre_list"
+			],
+			[
+				"cra",
+				"crazy2val"
+			],
+			[
+				"for",
+				"formula"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Searching 591 files for \"center\" (whole word)\n\n/Users/Reny/gdc_story/Assets/GUI/Scripts/SpecAbil.cs:\n   14  		Gon,\n   15  		Eugene,\n   16: 		Center,\n   17  		Oreo,\n   18  		Worker,\n   ..\n   45  			Text.text = \"이유진이 방학 동안 사라집니다!\";\n   46  		}\n   47: 		else if(Special == SpecAbils.Center)\n   48  		{\n   49  			Text.text = \"쎈타가 롤을 하느라 일을 하지 않습니다!\";\n\n/Users/Reny/gdc_story/Assets/InGame/Prefabs/Character.prefab:\n  213    Gon: {fileID: 21300000, guid: 17c33fdc4f0e3684190904d0c5661d19, type: 3}\n  214    Burung: {fileID: 21300000, guid: 4777aa1315eec1b4faba9c0cbab431bf, type: 3}\n  215:   Center: {fileID: 21300000, guid: 9fd859169a3c13d4b8cfad727d92de56, type: 3}\n  216    Oreo: {fileID: 21300000, guid: 41d1ab2e7f7a7fe4782a1e517aabbdc6, type: 3}\n  217    Takuho: {fileID: 0}\n\n/Users/Reny/gdc_story/Assets/InGame/Prefabs/Chief.prefab:\n  120    Gon: {fileID: 0}\n  121    Burung: {fileID: 0}\n  122:   Center: {fileID: 0}\n  123    Oreo: {fileID: 0}\n  124    Plan: 20\n\n/Users/Reny/gdc_story/Assets/InGame/Prefabs/SpecialCharacter.prefab:\n  213    Gon: {fileID: 0}\n  214    Burung: {fileID: 0}\n  215:   Center: {fileID: 0}\n  216    Oreo: {fileID: 0}\n  217    Takuho: {fileID: 0}\n\n/Users/Reny/gdc_story/Assets/InGame/Scripts/Calendar.cs:\n   29  					{\n   30  						SpecEffect = Instantiate(SpecEffectPf) as SpecAbil;\n   31: 						SpecEffect.Special = SpecAbil.SpecAbils.Center;\n   32  \n   33  						Mem.CurrentAct = Character.ActionIndex.None;\n\n/Users/Reny/gdc_story/Assets/InGame/Scripts/Character.cs:\n  119  	public Sprite Gon;\n  120  	public Sprite Burung;\n  121: 	public Sprite Center;\n  122  	public Sprite Oreo;\n  123  	public Sprite Takuho;\n  ...\n  641  		else if(Name == \"쎈타\")\n  642  		{\n  643: 			Renderer.sprite = Center;\n  644  			Tal = Talents.Sound;\n  645  			UnTal = Talents.Art;\n\n8 matches across 6 files\n",
+			"settings":
+			{
+				"buffer_size": 1811,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "Packages/Java/JavaC.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"select colo",
+				"ColorSchemeSelector: Next Color Scheme"
+			],
+			[
+				"color",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"paka",
+				"Package Control: Add Repository"
+			],
+			[
+				"pa",
+				"Package Control: Create Package File"
+			],
+			[
+				"ocaml",
+				"Set Syntax: OCaml"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"dash",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git a",
+				"Git: Add..."
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git diff",
+				"Git: Diff Staged"
+			],
+			[
+				"gitadd",
+				"Git: Add..."
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"gitdiff",
+				"Git: Diff All"
+			],
+			[
+				"git add ",
+				"Git: Add..."
+			],
+			[
+				"codefol",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"fold",
+				"Code Folding: Unfold All"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git diff ",
+				"Git: Diff Staged"
+			],
+			[
+				"gitlog",
+				"Git: Log All"
+			],
+			[
+				"gitstatus",
+				"Git: Status"
+			],
+			[
+				"gitcomm",
+				"Git: Commit"
+			],
+			[
+				"gitdif",
+				"Git: Diff Staged"
+			],
+			[
+				"gitgraph",
+				"Git: Graph All"
+			],
+			[
+				"git",
+				"Git: Open..."
+			],
+			[
+				"packagecontrol",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 550.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Reny/data_structure/MovieDatabase/Movie.java",
+		"/Users/Reny/data_structure/MovieDatabase/QueryResult.java",
+		"/Users/Reny/data_structure/MovieDatabase/Genre.java",
+		"/Users/Reny/data_structure/MovieDatabase/MovieDatabase.java",
+		"/Users/Reny/data_structure/MovieDatabase/InsertCmd.java",
+		"/Users/Reny/data_structure/MovieDatabase/AbstractCommand.java",
+		"/Users/Reny/data_structure/MovieDatabase/MyLinkedList.java",
+		"/Users/Reny/data_structure/MovieDatabase/MyLinkedListIterator.java",
+		"/Users/Reny/data_structure/MovieDatabase/MovieDatabaseConsole.java",
+		"/Users/Reny/data_structure/MovieDatabase/SearchCmd.java",
+		"/Users/Reny/data_structure/MovieDatabase/PrintCmd.java",
+		"/Users/Reny/data_structure/MovieDatabase/AssignmentGuide.java",
+		"/Users/Reny/data_structure/MovieDatabase/Command.java",
+		"/Users/Reny/data_structure/MovieDatabase/CommandParseException.java",
+		"/Users/Reny/csim.c",
+		"/Users/Reny/Desktop/copy.c",
+		"/Users/Reny/proj_13/Assets/Script/OneClient/Local_TeamSelect.cs",
+		"/Users/Reny/proj_13/Assets/Script/OneClient/LocalCharacter.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/Tile.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/InteractableObject.cs",
+		"/Users/Reny/proj_13/Assets/Script/Title/GotoCredits.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/Character.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/GameManager.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/ReadyButton.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/StartButton.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/BackToLobby.cs",
+		"/Users/Reny/proj_13/Assets/Script/Title/BGMManager.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/Buff.cs",
+		"/Users/Reny/proj_13/Assets/CreditsManager.cs",
+		"/Users/Reny/proj_13/Assets/Script/Title/EndGame.cs",
+		"/Users/Reny/proj_13/Assets/Script/OneClient/GoToLocal.cs",
+		"/Users/Reny/proj_13/Assets/Script/Title/GotoNetworkConnect.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/BackToTitle.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/NetworkManager.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/JoinRoomButton.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/CreateRoom_btn.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/UserSkill.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/NoticeMessage.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/LobbyAndRoomManager.cs",
+		"/Users/Reny/proj_13/Assets/Script/CommonVariableAndConstant/CommonConstants.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/InGameUI.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/ReadyChecker.cs",
+		"/Users/Reny/proj_13/Assets/Script/InGame/CutScene.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/InputIpField.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/MyInfoText.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/Connect_text.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/GuestReadyText.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/HostReadyText.cs",
+		"/Users/Reny/proj_13/Assets/Script/TeamAndCharacterSelect/CS_ReadyButton.cs",
+		"/Users/Reny/proj_13/Assets/Title/GotoNetworkConnect.cs",
+		"/Users/Reny/proj_13/Assets/Script/TeamAndCharacterSelect/CS_CursorMovement.cs",
+		"/Users/Reny/proj_13/Assets/Script/Network/NetworkInfo.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/JoinLocalRoomButton.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/NoticeText.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/NetworkManager.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/RPC_library.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/JoinRoom_btn.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/CreateRoom_btn.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/NetworkManager.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/NetworkTest.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/Count_btn.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/Count_text.cs",
+		"/Users/Reny/proj_13/Assets/NetworkTest/Connect_text.cs",
+		"/Users/Reny/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/LocalTest/ui/LobbyToLocalTest.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/LocalTest/ui/ServerButtonClick.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/LocalTest/ui/ClientButtonClick.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/LocalTest/LocalTestNetwork.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/NetworkManager_Enemy.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/NetworkManager_Battle.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Network/LocalTest/LocalTestNetwork.cs.meta",
+		"/Users/Reny/Downloads/pp_hw7/hw7_1.ml",
+		"/Users/Reny/Downloads/pp_prj/3/t.ml",
+		"/Users/Reny/Downloads/pp_prj/3/check_cmd.ml",
+		"/Users/Reny/Downloads/pp_prj/3/check_exp.ml",
+		"/Users/Reny/Downloads/pp_prj/1/prj1.ml",
+		"/Users/Reny/Downloads/pp_prj/2/prj2.ml",
+		"/Users/Reny/Downloads/pp_hw6/hw6-8-grade.rkt",
+		"/Users/Reny/Downloads/pp_hw6/hw6-8-library.rkt",
+		"/Users/Reny/Downloads/pp_hw6/hw6-8.rkt",
+		"/Users/Reny/Downloads/pp_hw6/hw6_4.ml",
+		"/Users/Reny/Downloads/pp_hw7/hw7_3.ml",
+		"/Users/Reny/Downloads/pp_hw7/hw7_2.ml",
+		"/Users/Reny/Downloads/pp_hw6/hw6_5.ml",
+		"/Users/Reny/Downloads/pp_hw6/hw6_7.ml",
+		"/Users/Reny/Downloads/pp_hw6/hw6_6.ml",
+		"/Users/Reny/Downloads/pp_hw8/hw8_1.ml",
+		"/Users/Reny/Downloads/pp_prj/1/prj1_grade.ml",
+		"/Users/Reny/Downloads/pp_prj/2/prj2_grade.ml",
+		"/Users/Reny/Downloads/pp_prj1_test/prj1_test.ml",
+		"/Users/Reny/Downloads/pp_hw8-2/hw8_3_grade.ml",
+		"/Users/Reny/Downloads/pp_hw8/hw8_3_grade.ml",
+		"/Users/Reny/Downloads/pp_hw5/hw5-3-grade.rkt",
+		"/Users/Reny/Downloads/pp_hw5/hw5-3.rkt",
+		"/Users/Reny/Downloads/pp_hw7/hw7_1_grade.ml",
+		"/Users/Reny/Downloads/pp_hw6/test.ml",
+		"/Users/Reny/gdc-story_new/Assets/InGame/Scripts/NoticeMessage.cs",
+		"/Users/Reny/BeerWorld/Assets/Smooth/Foundations/Algebraics/Option.cs",
+		"/Users/Reny/Library/Application Support/Sublime Text 2/Packages/Unity3D/README.md",
+		"/Users/Reny/Library/Application Support/Sublime Text 2/Packages/Unity3D Build System/UnityBuild.sublime-project",
+		"/Users/Reny/Library/Application Support/Sublime Text 2/Packages/Unity3D Build System/README.md",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Character/Character.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Character/Enemy.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Character/EnemyPlaceHolder.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/GameManager.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleResultApplier.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleManager.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/Unit.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Character/UnitManager.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Const.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Character/CharacterManager.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleCalculator.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattlePlayer.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Dice.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleUtil.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Enemy/EnemyGenerator",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/Enemy/EnemyGenerator",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleResult.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Tile.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleStartButton.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleRollDice.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/UI/DiceRollerButton.cs",
+		"/Users/Reny/BeerWorld/Assets/Editor/TileEditor.cs",
+		"/Users/Reny/BeerWorld/Assets/Resources/Dice/DiceAnimation.cs",
+		"/Users/Reny/BeerWorld/Assets/Prefabs/character.prefab",
+		"/Users/Reny/BeerWorld/Assets/Scenes/Battle.unity",
+		"/Users/Reny/BeerWorld/Assets/Editor/MapGeneratorEditor.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/CharacterManager.cs"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"GameManager.cs",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"center",
+			"orchid",
+			"center",
+			"Soon",
+			"iTween",
+			"hash",
+			"applydamage",
+			"endturn",
+			"Buff",
+			"InteractableObject",
+			"6",
+			"endTurn",
+			"turnEnd",
+			"show",
+			"hitSound",
+			"hit",
+			"move",
+			"awake",
+			"move",
+			"apply",
+			"applybuff",
+			"spawnbuff",
+			"buff",
+			"4.5",
+			"hitSoun",
+			"hit",
+			"apply",
+			"skill",
+			"doattack",
+			"hot",
+			"printlog",
+			"loadlevel",
+			"printlog",
+			"loadlevel",
+			"endGame",
+			"DeactivateAllTiles",
+			"doattack",
+			"cutSceneSpeed",
+			"cutScene",
+			"doattack",
+			"Soun",
+			"characterIndex",
+			"gamecharacterIndex",
+			"characterIndex",
+			"doatt",
+			"local_cha",
+			"spawnTiles",
+			"tile",
+			"networkView",
+			"networkInstance",
+			"networkView",
+			"nth",
+			"sister's",
+			"cut",
+			"cut-print",
+			"cut-print-",
+			"cut-0",
+			"cut",
+			"GetFirstEnemyId",
+			"GetEnemy",
+			"enemies",
+			"ShowBattle",
+			"showBattle",
+			"InstantiateEnemyByNetwork",
+			"enemies",
+			"awake",
+			"Default",
+			"applier",
+			"applyer",
+			"BattleResult",
+			"player",
+			"ToString",
+			"characterIn",
+			"character",
+			"numberOf",
+			"inca",
+			"changeAttackOrDefense",
+			"totalDamage",
+			"IsDie",
+			"c#",
+			"ShowDamage",
+			"Defence",
+			"defence",
+			"numberOfDefenceDice",
+			"Defence",
+			"defence",
+			"GetMyChar",
+			"PassTurnToNextPlayer",
+			"nextPlayersId",
+			"turnIndex",
+			"indexOfActivePlayer",
+			"MakeIndex",
+			"indexofPlayers",
+			"indexOfPlayers",
+			"indexofplayers",
+			"cameraFollow",
+			"update",
+			"AddUser",
+			"SendGameStartMessage",
+			"characterManager",
+			"arrowPrefeb",
+			"static",
+			"charactermanagerinstance",
+			"charactermanager",
+			"characterManagerInstance",
+			"networkInstance",
+			"SerializeField",
+			"Key",
+			"IsPreTile",
+			"GetTileDictionaryOfMovableTiles",
+			"IsArrowCreated",
+			"isSelectDirection",
+			"isMovable",
+			"Moving",
+			"SetDestination",
+			"SetDirection",
+			"howManyMove",
+			"CreateArrowIfBranch",
+			"SearchMovableTiles",
+			"SearchBorderTiles",
+			"movableDictionary",
+			"movablelist",
+			"movable",
+			"isSelectDirection",
+			"            isSelectDirection = false;",
+			"isArrowCreated",
+			"SelectDirection",
+			"ismovavle"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"player",
+			"Defense",
+			"defense",
+			"myCharacterManager",
+			"TileKey",
+			"IsArrowCreated",
+			"CreateArrow",
+			"isMovable",
+			"isMovavle",
+			"GetTileDictionaryOfBorderTiles"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 1811,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										141,
+										147
+									],
+									[
+										279,
+										285
+									],
+									[
+										585,
+										591
+									],
+									[
+										896,
+										902
+									],
+									[
+										1095,
+										1101
+									],
+									[
+										1361,
+										1367
+									],
+									[
+										1573,
+										1579
+									],
+									[
+										1715,
+										1721
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 323.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 133.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"unit",
+				"Assets/Scripts/Battle/Unit.cs"
+			],
+			[
+				"netwokr",
+				"Assets/Scripts/Network/NetworkManager.cs"
+			],
+			[
+				"networkmana",
+				"Assets/Scripts/Network/NetworkManager.cs"
+			],
+			[
+				"charactermanager",
+				"Assets/Scripts/CharacterManager.cs"
+			],
+			[
+				"tilemana",
+				"Assets/Scripts/TileManager.cs"
+			],
+			[
+				"gamema",
+				"Assets/Scripts/GameManager.cs"
+			],
+			[
+				"charactermanager.cs",
+				"Assets/Scripts/CharacterManager.cs"
+			],
+			[
+				"gamemana",
+				"Assets/Scripts/GameManager.cs"
+			],
+			[
+				"dicerollerbutton",
+				"Assets/Scripts/UI/DiceRollerButton.cs"
+			],
+			[
+				".gitig",
+				".gitignore"
+			],
+			[
+				"networkmanager.cs",
+				"Assets/Scripts/Network/NetworkManager.cs"
+			],
+			[
+				"gamemanager.cs",
+				"Assets/Scripts/GameManager.cs"
+			],
+			[
+				"directionarrow.cs",
+				"Assets/Scripts/DirectionArrow.cs"
+			],
+			[
+				"util",
+				"Assets/Scripts/FieldTileUtility.cs"
+			],
+			[
+				"",
+				"untitled"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true
+}

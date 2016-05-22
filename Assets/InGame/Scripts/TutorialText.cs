@@ -289,14 +289,14 @@ public class TutorialText : MonoBehaviour
 
 	void ActivateRenderer()
 	{
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		ChiefRenderer.enabled = true;
 		TextBoxRenderer.enabled = true;
 	}
 
 	void DeActivateRenderer()
 	{
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		ChiefRenderer.enabled = false;
 		TextBoxRenderer.enabled = false;
 	}

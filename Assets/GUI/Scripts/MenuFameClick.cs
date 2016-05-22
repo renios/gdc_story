@@ -12,7 +12,7 @@ public class MenuFameClick : MonoBehaviour
 	{
 		if(Var.OnTutorial == false || Var.Mng.Tutorial.Page == 6)
 		{
-			renderer.material.color=Color.gray;
+			GetComponent<Renderer>().material.color=Color.gray;
 			popupInstance = Instantiate (popupPrefab) as GameObject;
 			Destroy(GameObject.FindGameObjectWithTag("Menu"));
 			

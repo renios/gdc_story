@@ -143,14 +143,14 @@ public class PjTutoText : MonoBehaviour
 
 	void ActivateRenderer()
 	{
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		OrchidRenderer.enabled = true;
 		TextBoxRenderer.enabled = true;
 	}
 	
 	void DeActivateRenderer()
 	{
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		OrchidRenderer.enabled = false;
 		TextBoxRenderer.enabled = false;
 	}
